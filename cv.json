@@ -1,6 +1,5 @@
 {
   "analyticsCode": "",
-  "pageLayout": "two-column",
   "basics": {
     "name": "Mario Andrés Morales",
     "label": "Senior Full Stack Developer",
@@ -29,8 +28,13 @@
         "username": "Mandres07",
         "url": "https://github.com/Mandres07"
       }
-    ]
+    ],
+     "beian": {
+       "mint": "赣ICP备2021005460号-1",
+       "police": "赣公网安备 36010302000349号"
+     }
   },
+  
   "images": {
     "intro": "Photography is the art of light, and images are the contours of memory.",
     "list": [
