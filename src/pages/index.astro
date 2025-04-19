@@ -24,7 +24,7 @@ enum PageLayout {
 
 <Layout title={`${name}'s' Portfolio - ${label}`}>
   <main
-    class="relative grid h-full max-w-7xl gap-12 p-8 max-sm:py-16 md:min-h-screen md:grid-cols-6 md:p-16 xl:gap-24 print:max-w-none print:grid-cols-1 print:gap-6"
+    class="relative grid h-100vh max-w-7xl gap-12 p-8 max-sm:py-16 md:min-h-screen grid-cols-1 md:grid-cols-5 md:p-16 xl:gap-24 print:max-w-none print:grid-cols-1 print:gap-6"
   >
     <div
       class="slide-enter space-y-6 ease-in md:col-span-2 print:col-span-1 print:grid print:grid-cols-2 print:gap-5 print:space-y-0"
@@ -34,7 +34,7 @@ enum PageLayout {
       <ThemeSwitch />
     </div>
     <div
-      class="slide-enter-content space-y-12 md:col-span-4 print:col-span-1 print:grid print:grid-cols-4 print:gap-2 print:space-y-0"
+      class="slide-enter-content space-y-12 md:col-span-3 md:overflow-y-auto print:col-span-1 print:grid print:grid-cols-4 print:gap-2 print:space-y-0"
     >
       <Experience className="print:col-span-3" />
       {

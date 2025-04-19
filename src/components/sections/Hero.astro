@@ -4,7 +4,7 @@ import Section from '@/components/Section.astro'
 import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
 
-const { name, label, image, location, profiles, email } = basics
+const { name, label, image, location, profiles, email, phone } = basics
 const { city, region, address } = location
 ---
 
@@ -13,13 +13,13 @@ const { city, region, address } = location
     <div class='info'>
       <h1>{name}</h1>
       <h2>{label}</h2>
-      <div class='flex items-center gap-2 pt-2 text-sm text-skin-muted'>
+      <section class='flex items-center gap-2 pt-2 text-sm text-skin-muted'>
         <Icon class='print:hidden' name='mdi:world' width={20} height={20} />
         {address}, {city}, {region}
-      </div>
-      <footer class='print'>
+      </section>
+      <section class='print none'>
         {email}
-      </footer>
+      </section>
       <footer class='print:hidden'>
         {
           email && (
@@ -31,6 +31,22 @@ const { city, region, address } = location
               <Icon
                 class='print:hidden'
                 name='mdi:email'
+                width={20}
+                height={20}
+              />
+            </a>
+          )
+        }
+        {
+          phone && (
+            <a
+              href={`https://wa.me/${phone}`}
+              title={`Send me a message`}
+              target='_blank'
+              rel='noopener noreferrer'>
+              <Icon
+                class='print:hidden'
+                name='ri:whatsapp-fill'
                 width={20}
                 height={20}
               />
