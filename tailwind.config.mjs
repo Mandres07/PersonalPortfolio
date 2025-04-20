@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 function withOpacity(variableName) {
    return ({ opacityValue }) => {
       if (opacityValue !== undefined) {
@@ -52,5 +54,9 @@ export default {
    variants: {
       extend: {},
    },
-   plugins: [],
+   plugins: [
+      plugin(function({addVariant}){
+         addVariant('theme-blackwhite', '[data-theme="blackwhite"] &');
+      })
+   ],
 };
