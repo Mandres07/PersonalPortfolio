@@ -5,8 +5,8 @@ import { education } from '@cv'
 import { certificates } from '@cv'
 ---
 
-<Section className={Astro.props.className} title='Education'>
-  <ul class='space-y-4 py-3 print:space-y-0'>
+<Section className={Astro.props.className} title='Education' id="education">
+  <ul class='space-y-4 pb-3 print:space-y-0'>
     {
       education.map(
         ({ institution, startDate, endDate, area, url }) => {

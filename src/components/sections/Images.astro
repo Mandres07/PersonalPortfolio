@@ -6,7 +6,7 @@ import CV from "@cv";
 const images = CV.images!;
 ---
 
-<Section className={Astro.props.className} title="Images Gallery">
+<Section className={Astro.props.className} title="Images Gallery" id="images">
   {images?.intro && <p class="font-mono ml-3 text-skin-muted">{images.intro}</p>}
   <div
     class="grid grid-cols-1 gap-2 p-2 pt-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"

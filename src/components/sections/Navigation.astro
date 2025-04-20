@@ -1,0 +1,70 @@
+<nav
+   class="z-10 hidden w-full bg-skin-fill/90 py-3 md:sticky md:top-0 md:block print:hidden"
+>
+   <ul class="flex items-center justify-start gap-4">
+      <li
+         data-section="experience"
+         class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
+      >
+         <a href="#experience">🧑🏽‍💻 Experience</a>
+      </li>
+      <li
+         data-section="work"
+         class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
+      >
+         <a href="#work">🛠️ Projects</a>
+      </li>
+      <li
+         data-section="education"
+         class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
+      >
+         <a href="#education">🎓 Education</a>
+      </li>
+      <li
+         data-section="images"
+         class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
+      >
+         <a href="#images">🏞️ Images</a>
+      </li>
+      <li
+         data-section="skills"
+         class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
+      >
+         <a href="#skills">⚡️ Skills</a>
+      </li>
+   </ul>
+</nav>
+
+<script>
+   document.addEventListener("DOMContentLoaded", () => {
+      const sections = document.querySelectorAll(".main-section");
+      const navItems = document.querySelectorAll(".nav-item");
+
+      const observer = new IntersectionObserver(
+         (entries) => {
+            entries.forEach((entry) => {
+               const id = entry.target.getAttribute("id");
+               const navItem = document.querySelector(
+                  `.nav-item[data-section="${id}"]`,
+               );
+               if (entry.isIntersecting && entry.intersectionRatio >= 0.75) {
+                  navItems.forEach((item) =>
+                     item.classList.remove(
+                        "bg-skin-button-accent/20",
+                        "text-skin-hue",
+                     ),
+                  );
+                  navItem?.classList.add(
+                     "bg-skin-button-accent/20",
+                     "text-skin-hue",
+                  );
+               }
+            });
+         },
+         {
+            threshold: 0.8,
+         },
+      );
+      sections.forEach((section) => observer.observe(section));
+   });
+</script>

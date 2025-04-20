@@ -36,19 +36,18 @@ const { image, summary, url, theme } = CV.basics;
       <meta name="twitter:image" content="" />
       {CV?.analyticsCode && <script is:inline src={CV.analyticsCode} />}
    </head>
-   <body data-theme={theme} class="relative bg-skin-fill font-sans h-screen">
-      <div class="absolute top-0 -z-10 h-full w-full print:hidden">
-         <div
-            class="absolute bottom-auto left-[20%] right-auto top-0 h-[200px] w-[200px] -translate-x-[30%] translate-y-[20%] rounded-full bg-skin-hue/10 blur-[80px] invert-0 dark:bg-white/5"
-         >
-         </div>
-      </div>
+   <body data-theme={theme} class="relative bg-skin-fill font-sans">
       <ArtPlums />
-      <main class="grid h-screen grid-rows-[1fr_auto_auto_auto_auto] grid-cols-1">
+      <main
+         class="grid h-screen grid-cols-1 grid-rows-[1fr_auto_auto_auto_auto]"
+      >
          <slot />
       </main>
 
       <style>
+         html {
+            scroll-behavior: smooth;
+         }
          body,
          figure {
             margin: 0;

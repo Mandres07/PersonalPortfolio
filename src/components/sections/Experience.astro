@@ -4,7 +4,7 @@ import { work } from '@cv'
 import { Icon } from 'astro-icon/components'
 ---
 
-<Section className={Astro.props.className} title="Experience">
+<Section className={Astro.props.className} title="Experience" id="experience">
   <ul class="flex flex-col">
     {work.map(({ name, startDate, endDate, position, summary, responsibilities, achievements, url, skills, location, location_type }) => {
       const startYear = new Date(startDate).getFullYear()
