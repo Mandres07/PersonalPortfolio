@@ -12,11 +12,11 @@ import { Icon } from 'astro-icon/components'
 
       return (
         <li class="relative print:py-2">
-          <div data-expanded="false" class="group relative grid pb-1 print:pb-0 transition-all print:grid-cols-1 print:gap-1 sm:grid-cols-12 sm:gap-8 md:gap-6 lg:hover:!opacity-100 expand-container">
-            <header class="relative mt-1 text-xs font-semibold sm:col-span-2">
+          <div data-expanded="false" class="group relative grid pb-1 print:pb-0 transition-all print:grid-cols-1 print:gap-1 sm:grid-cols-10 sm:gap-8 md:gap-6 lg:hover:!opacity-100 expand-container">
+            <header class="relative mt-1 text-xs font-semibold font-mono sm:col-span-2">
               <time datetime={startDate} data-title={startDate}>{startYear}</time> - <time datetime={endDate} data-title={endDate}>{endYear}</time>
             </header>
-            <div class="relative flex flex-col pb-6 print:pb-0 before:-ml-6 sm:col-span-10 before:w-px print:before:hidden before:absolute before:bg-skin-muted before:h-full before:mt-2">
+            <div class="relative flex flex-col pb-6 print:pb-0 before:-ml-6 sm:col-span-8 before:w-px print:before:hidden before:absolute before:bg-skin-muted before:h-full before:mt-2">
             <div class="absolute w-2 h-2 bg-skin-muted rounded-full mt-2 -translate-x-[1.71rem] ring print:hidden ring-skin-fill"></div>
               <h3>
                 <div class="inline-flex items-center text-lg print:text-base leading-tight group/link focus-visible:text-amber-500" aria-label="{position} - {company}">
@@ -87,7 +87,7 @@ import { Icon } from 'astro-icon/components'
                 </button>
 
 
-                <ul class="flex print:hidden flex-wrap gap-2" aria-label="Technologies used">
+                <ul class="flex print:hidden font-mono flex-wrap gap-2" aria-label="Technologies used">
                   {skills && Object.entries(skills).map(([label, icon]) =>  (
                       <li class="bg-skin-button-accent/20 border-skin-hue/20 text-skin-hue print:p-0 print:bg-transparent print:text-zinc-800 flex gap-1 items-center border-solid print:border-none border rounded-md px-2 py-0.5 text-xs backdrop-blur-sm">
                         {icon && <Icon name={icon} width={16} height={16} />} <span>{label}</span>

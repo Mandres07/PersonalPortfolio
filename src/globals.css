@@ -1,6 +1,9 @@
+@import 'styles/fonts.css';
 @tailwind base;
 
 @layer base {
+
+
   :root {
     --color-text-base: 0, 0, 0;
     --color-text-muted: 120, 120, 120;
