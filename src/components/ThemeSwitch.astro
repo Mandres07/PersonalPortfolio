@@ -43,6 +43,14 @@ import { Icon } from "astro-icon/components";
          <option value="sepia">Sepia</option>
          <option value="blackwhite">Mono</option>
       </select>
+
+      <select
+         id="languageSelect"
+         class="block rounded-md border-0 bg-transparent py-1.5 pl-3 pr-10 font-mono text-skin-base ring-1 ring-inset ring-skin-muted focus:ring-2 focus:ring-skin-hue sm:text-sm sm:leading-6"
+      >
+         <option value="en">🇺🇸 English</option>
+         <option value="es">🇪🇸 Español</option>
+      </select>
    </div>
 </div>
 
@@ -54,7 +62,7 @@ import { Icon } from "astro-icon/components";
 
 <script>
    let isDark = document.documentElement.classList.contains("dark");
-
+   
    function toggleDark(event: MouseEvent) {
       const isAppearanceTransition =
          "startViewTransition" in document &&
@@ -99,6 +107,10 @@ import { Icon } from "astro-icon/components";
       });
    }
 
+   function updateLanguage(value: string) {
+      localStorage.setItem("language", value);
+   }
+
    function updateTheme() {
       document.documentElement.classList.toggle("dark", isDark);
       localStorage.setItem("theme", isDark ? "dark" : "light");
@@ -125,12 +137,24 @@ import { Icon } from "astro-icon/components";
       });
    }
 
+   const languageSelect = document.getElementById(
+      "languageSelect",
+   ) as HTMLSelectElement;
+
+   if(languageSelect){
+      languageSelect.addEventListener("change", (e) => {
+         const selectedLanguage = (e.target as HTMLSelectElement).value;
+         updateLanguage(selectedLanguage);
+      });
+   }
+
+   const browserLanguage = navigator.language || "en";
+   const language = localStorage.getItem("language") || (browserLanguage.startsWith("es") ? "es" : "en");
+   updateLanguage(language);
+
    // Initialize theme based on user preference or system setting
-   if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-         window.matchMedia("(prefers-color-scheme: dark)").matches)
-   ) {
+   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+   if (localStorage.theme === "dark" || (!("theme" in localStorage) && prefersDark)) {
       isDark = true;
       updateTheme();
    }
