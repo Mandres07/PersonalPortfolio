@@ -57,94 +57,249 @@
    },
    "education": [
       {
-         "institution": "Nanchang No.27 Middle School",
-         "url": "",
-         "area": "Regular Student",
+         "institution": "Universidad Tecnológica de Panamá",
+         "url": "https://utp.ac.pa",
+         "area": "Degree in Computer and Systems Engineering",
          "studyType": "Full-time student",
-         "startDate": "2021-9-01",
-         "endDate": null
+         "startDate": "2010-01-01",
+         "endDate": "2015-06-01"
+      },
+      {
+         "institution": "Colegio Nuestra Señora de Lourdes",
+         "url": "http://www.nuestrasenoradelourdes.edu.pa",
+         "area": "Bachelor of Science and Letters",
+         "studyType": "Full-time student",
+         "startDate": null,
+         "endDate": "2009-12-15"
       }
    ],
    "certificates": [
       {
-         "name": "Success has lived a day in the world.",
-         "date": "2010-04-14",
-         "url": "",
-         "issuer": "Myself"
+         "name": "Angular - The Complete Guide",
+         "date": "2021-10-07",
+         "url": "https://www.udemy.com/certificate/UC-0e631566-c6f9-4f14-b877-841f090761b2/",
+         "issuer": "Udemy"
       },
       {
-         "name": "TCCP - Senior Cloud Architecture Engineer",
-         "date": "2023-05-01",
-         "url": "",
-         "issuer": "Tencent Cloud"
+         "name": "Cypress End-to-End Testing - Getting Started",
+         "date": "2023-11-28",
+         "url": "https://www.udemy.com/certificate/UC-1a7a661f-0190-4f19-af6e-f0d8ca911fbf/",
+         "issuer": "Udemy"
+      },
+      {
+         "name": "NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)",
+         "date": "2021-01-27",
+         "url": "https://www.udemy.com/certificate/UC-c90bc2cc-2757-4e8c-a79b-648cc77a3d8b/",
+         "issuer": "Udemy"
+      },
+      {
+         "name": "React - The Complete Guide (incl Hooks, React Router, Redux)",
+         "date": "2021-03-28",
+         "url": "https://www.udemy.com/certificate/UC-7c32fb93-c8b7-4fb1-8448-f950debfebad/",
+         "issuer": "Udemy"
+      },
+      {
+         "name": "React Native - The Practical Guide 2020",
+         "date": "2020-06-09",
+         "url": "https://www.udemy.com/certificate/UC-0f0943c4-273b-45b0-9f52-e4a58ee4a3f1/",
+         "issuer": "Udemy"
+      },
+      {
+         "name": "Understanding TypeScript - 2022 Edition",
+         "date": "2022-05-29",
+         "url": "https://www.udemy.com/certificate/UC-fdedfcc2-dc70-4aa2-b85b-5c3c2ab99363/",
+         "issuer": "Udemy"
+      },
+      {
+         "name": "Ok, Umbraco",
+         "date": "2021-08-18",
+         "url": "https://www.udemy.com/certificate/UC-d757f986-c1d7-4440-9645-6a2dd858c543/",
+         "issuer": "Udemy"
+      },
+      {
+         "name": "100 Days Of Code - 2022 Web Development Bootcamp",
+         "date": "2022-09-13",
+         "url": "https://www.udemy.com/certificate/UC-40a9654f-383a-41ed-a009-195dd2cccae6/",
+         "issuer": "Udemy"
       }
    ],
    "work": [
-      {
-         "name": "Sgguo Development Team",
-         "position": "Full-stack Developer",
+       {
+         "name": "eFiscal Networks",
+         "position": "Lead Software Developer",
          "location_type": "Remote",
-         "location": "CN",
-         "url": "https://github.com/Sgguo-Development-Team",
-         "startDate": "2022-06-01",
+         "location": "PA",
+         "url": "https://www.efiscal.net",
+         "startDate": "2025-04-14",
          "endDate": null,
-         "summary": "Developing high-availability full-stack projects.",
+         "summary": "Lead Software Developer with a focus on frontend development using .NET Core, C# and Blazor.",
          "highlights": [
-            "Enhanced internal workflow efficiency by 30%."
+            "Responsible of the design system of the SDS suite.",
+            "Implemented a suite of SQL server reports.",
+            "Responsible for the integration of PayPal's Braintree payment system.",
+            "Enhanced the microservices architecture of the SDs suite using MassTransit and RabbitMQ."
          ],
          "responsibilities": [
-            "Developed and maintained backend services using Node.js and Golang."
+            "Backend development using .NET Core with RabbitMQ",
+            "Frontend development using Blazor, ReactJS and NextJS.",
+            "Maintained and improved existing codebases.",
+            "Decision making and planning of the UI for the SDS suite."
          ],
          "achievements": [
-            "Implemented a cloud drive and verification code system."
+            "Implemented a reliable design system for the SDS suite using bootstrap.",
+            "Enhanced the delivery process of the web application by implementing CI/CD pipelines using Azure DevOps."
          ],
          "skills": {
-            "PHP": "simple-icons:php",
+            ".Net Core": "simple-icons:dotnet",
+            "Blazor": "simple-icons:blazor",
             "Node": "ri:nodejs-line",
-            "Golang": "simple-icons:go",
+            "Express": "simple-icons:express",
             "Next.js": "ri:nextjs-fill",
             "React": "mdi:react",
             "SQL": "simple-icons:mysql",
             "Git": "mdi:git",
-            "GitHub": "mdi:github",
-            "NestJS": "simple-icons:nestjs",
-            "Vue": "mdi:vuejs"
+            "HTML": "simple-icons:html5",
+            "CSS": "ri:css3-fill",
+            "Bootstrap": "mdi:bootstrap",
+            "RabbitMQ": "simple-icons:rabbitmq",
+            "Azure": "simple-icons:azuredevops",
+            "AWS": "simple-icons:amazonaws"
          }
       },
       {
-         "name": "Riddle Town Team",
-         "position": "Full-stack Developer",
+         "name": "Devsu",
+         "position": "Senior Software Developer",
          "location_type": "Remote",
-         "location": "CN",
-         "url": "https://rth2.gcxstudio.cn",
-         "startDate": "2023-01-01",
-         "endDate": "2024-02-11",
-         "summary": "Led page design and account systems.",
+         "location": "PA",
+         "url": "https://devsu.com",
+         "startDate": "2021-04-08",
+         "endDate": "2025-04-11",
+         "summary": "Full Stack developer (backend and frontend) using NodeJs, ExpressJS, ReactJS, NextJS, .NET Core and Blazor for development of international projects.",
          "highlights": [
-            "Completed 95% of project content."
+            "Created a NodeJS and ExpressJS backend for a web application from scratch.",
+            "Responsible for the UI development of a .NET Core and Blazor suite.",
+            "Implemented a suite of SQL server reports.",
+            "Responsible for the integration of PayPal's Braintree payment system."
          ],
          "responsibilities": [
-            "Developed complete pages.",
-            "Integrated user-facing elements with server-side logic."
+            "Backend development using NodeJS and ExpressJS.",
+            "Frontend development using Blazor, Angular, ReactJS and NextJS.",
+            "Maintained and improved existing codebases.",
+            "Created and maintained several websites using NextJS and ReactJS."
          ],
          "achievements": [
-            "Ensured smooth project execution."
+            "Implemented a reliable design system for the SDS suite using bootstrap.",
+            "Enhanced the delivery process of the web application by implementing CI/CD pipelines using Azure DevOps."
          ],
          "skills": {
+            ".Net Core": "simple-icons:dotnet",
+            "Blazor": "simple-icons:blazor",
+            "Node": "ri:nodejs-line",
+            "Express": "simple-icons:express",
+            "Next.js": "ri:nextjs-fill",
+            "React": "mdi:react",
+            "SQL": "simple-icons:mysql",
+            "Git": "mdi:git",
             "HTML": "simple-icons:html5",
             "CSS": "ri:css3-fill",
-            "JavaScript": "simple-icons:javascript",
-            "TypeScript": "simple-icons:typescript",
-            "Vite": "simple-icons:vite",
-            "Node": "ri:nodejs-line",
-            "Docker": "mdi:docker",
-            "WordPress": "ri:wordpress-fill",
-            "Astro": "simple-icons:astro",
+            "Bootstrap": "mdi:bootstrap",
+            "RabbitMQ": "simple-icons:rabbitmq",
+            "Azure": "simple-icons:azuredevops",
+            "AWS": "simple-icons:amazonaws"
+         }
+      },
+      {
+         "name": "Exceltec Software, S.A.",
+         "position": "Software Developer",
+         "location_type": "Remote",
+         "location": "PA",
+         "url": "https://www.exceltecgroup.com",
+         "startDate": "2019-06-01",
+         "endDate": "2020-05-01",
+         "summary": "Agile methodologies (scrum), frontend and backend (REST API) implemented in .NET, SQL Server and Microsoft Azure",
+         "highlights": [
+            "Led the development of a web application using .NET",
+            "Responsible for the integration of electronic invoicing with the Costa Rican tax authority."
+         ],
+         "responsibilities": [
+            "Design and planning of the architecture of the web application."
+         ],
+         "achievements": [
+            "Enhanced the delivery process of the web application by implementing CI/CD pipelines using Azure DevOps."
+         ],
+         "skills": {
+            ".Net Core": "simple-icons:dotnet",
+            "Azure": "simple-icons:azuredevops",
             "SQL": "simple-icons:mysql",
-            "Tailwind": "mdi:tailwind",
-            "React": "mdi:react",
-            "GitHub": "mdi:github",
-            "Git": "mdi:git"
+            "Git": "mdi:git",
+            "HTML": "simple-icons:html5",
+            "CSS": "ri:css3-fill",
+            "Bootstrap": "mdi:bootstrap"
+         }
+      },
+      {
+         "name": "Intercoud",
+         "position": "CEO, Founder and Development Leader",
+         "location_type": "Remote",
+         "location": "PA",
+         "url": null,
+         "startDate": "2017-11-01",
+         "endDate": "2023-12-31",
+         "summary": "My first startup, it did not prosper as expected but the knowledge acquired has been very significant. I created Luvet PetsCare, a web application that helps veterinary clinics to manage and run all their business, developed with ASP.NET, SQL Server and Microsoft Azure.",
+         "highlights": [
+            "Responsible for the entire design, build, dpeloyment and maintenance of the web application.",
+            "Gained invaluable experience in the field of customer service and support.",
+            "Learned about Mobile first UI design and development."
+         ],
+         "responsibilities": [
+            "Design and planning of the architecture of the web application.",
+            "Maintained and improved existing codebases.",
+            "Implemented several requested features according to customer needs."
+         ],
+         "achievements": [
+            "My first rodeo being an entrepreneur.",
+            "Experience, experience and experience."
+         ],
+         "skills": {
+            ".Net Core": "simple-icons:dotnet",
+            "Azure": "simple-icons:azuredevops",
+            "SQL": "simple-icons:mysql",
+            "Git": "mdi:git",
+            "HTML": "simple-icons:html5",
+            "CSS": "ri:css3-fill",
+            "Bootstrap": "mdi:bootstrap",
+            "Android": "simple-icons:android"
+         }
+      },
+      {
+         "name": "Hypernova Labs",
+         "position": "Junior Software Developer",
+         "location_type": "Office",
+         "location": "PA",
+         "url": "https://www.hypernovalabs.com",
+         "startDate": "2015-09-01",
+         "endDate": "2016-01-31",
+         "summary": "Mobile app developer (Java, Android Studio) and web developer (frontend and backend) with .NET, using Microsoft Azure and SQL Server",
+         "highlights": [
+            "Always on time, with eficient work."
+         ],
+         "responsibilities": [
+            "Responsible for the codebase of the Android application for Agua Cristalina.",
+            "Implemented several pages for the web application using .NET."
+         ],
+         "achievements": [
+            "My first job experience, learned about Android and web development.",
+            "Learned about SQL Server and create paginated queries."
+         ],
+         "skills": {
+            ".Net Core": "simple-icons:dotnet",
+            "Azure": "simple-icons:azuredevops",
+            "SQL": "simple-icons:mysql",
+            "Git": "mdi:git",
+            "HTML": "simple-icons:html5",
+            "CSS": "ri:css3-fill",
+            "Bootstrap": "mdi:bootstrap",
+            "Android": "simple-icons:android"
          }
       }
    ],
@@ -168,7 +323,7 @@
             "Responsive Design"
          ]
       },
-       {
+      {
          "name": "C#",
          "icon": "simple-icons:csharp",
          "level": "Expert",
@@ -423,6 +578,14 @@
             "Serverless",
             "Static Site Hosting"
          ]
+      },
+      {
+         "name": "Android",
+         "icon": "simple-icons:android",
+         "level": "Beginner",
+         "keywords": [
+            "Mobile Development"
+         ]
       }
    ],
    "languages": [
@@ -440,7 +603,49 @@
          "name": "Technology",
          "keywords": [
             "AI",
-            "Blockchain"
+            "Responsive Design",
+            "Web Development",
+            "Programming"
+         ]
+      },
+      {
+         "name": "Music",
+         "keywords": [
+            "Music",
+            "Guitar",
+            "Piano",
+            "Singing",
+            "Accordion",
+            "Entertainment",
+            "Relaxing"
+         ]
+      },
+      {
+         "name": "Sports",
+         "keywords": [
+            "Soccer",
+            "Weightlifting",
+            "F1",
+            "Running",
+            "Boxing"
+         ]
+      },
+      {
+         "name": "Movies and TV Shows",
+         "keywords": [
+            "Movies",
+            "Cinema",
+            "TV Shows",
+            "Entertainment",
+            "Series"
+         ]
+      },
+      {
+         "name": "Pets",
+         "keywords": [
+            "Dogs",
+            "Beagle",
+            "Pitbull"
          ]
       }
    ],
