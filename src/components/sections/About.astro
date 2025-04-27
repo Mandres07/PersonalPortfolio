@@ -6,8 +6,7 @@ const { summary } = CV.basics;
 ---
 
 <Section title="About" className="gap-0">
-  <p class="font-sans opacity-60 print:font-sans">
-    {summary}
-  </p>
+   <p class="font-sans opacity-60 print:font-sans">
+      <span set:html={summary} />
+   </p>
 </Section>
-
