@@ -132,7 +132,7 @@
          "url": "https://www.efiscal.net",
          "startDate": "2025-04-14",
          "endDate": null,
-         "summary": "Lead Software Developer with a focus on frontend development using .NET Core, C# and Blazor.",
+         "summary": "Lead Software Developer with full-stack expertise, specializing in frontend development with Blazor, C#, and .NET Core.",
          "highlights": [
             "Responsible of the design system of the SDS suite.",
             "Implemented a suite of SQL server reports.",
@@ -174,7 +174,7 @@
          "url": "https://devsu.com",
          "startDate": "2021-04-08",
          "endDate": "2025-04-11",
-         "summary": "Full Stack developer (backend and frontend) using NodeJs, ExpressJS, ReactJS, NextJS, .NET Core and Blazor for development of international projects.",
+         "summary": "Full-stack developer responsible for backend and frontend development in international projects, using Node.js, Express.js, React, Next.js, .NET Core, and Blazor.",
          "highlights": [
             "Created a NodeJS and ExpressJS backend for a web application from scratch.",
             "Responsible for the UI development of a .NET Core and Blazor suite.",
@@ -216,7 +216,7 @@
          "url": "https://www.exceltecgroup.com",
          "startDate": "2019-06-01",
          "endDate": "2020-05-01",
-         "summary": "Agile methodologies (scrum), frontend and backend (REST API) implemented in .NET, SQL Server and Microsoft Azure",
+         "summary": "Developed frontend and backend solutions (REST APIs) using .NET and SQL Server, following Agile methodologies (Scrum) and deploying applications on Microsoft Azure.",
          "highlights": [
             "Led the development of a web application using .NET",
             "Responsible for the integration of electronic invoicing with the Costa Rican tax authority."
@@ -245,7 +245,7 @@
          "url": null,
          "startDate": "2017-11-01",
          "endDate": "2023-12-31",
-         "summary": "My first startup, it did not prosper as expected but the knowledge acquired has been very significant. I created Luvet PetsCare, a web application that helps veterinary clinics to manage and run all their business, developed with ASP.NET, SQL Server and Microsoft Azure.",
+         "summary": "Founded and developed Luvet PetsCare, a web application designed to help veterinary clinics manage their operations. Built the platform using ASP.NET, SQL Server, and Microsoft Azure. Gained significant experience in product development, cloud deployment, and business operations through this entrepreneurial venture.",
          "highlights": [
             "Responsible for the entire design, build, dpeloyment and maintenance of the web application.",
             "Gained invaluable experience in the field of customer service and support.",
@@ -279,7 +279,7 @@
          "url": "https://www.hypernovalabs.com",
          "startDate": "2015-09-01",
          "endDate": "2016-01-31",
-         "summary": "Mobile app developer (Java, Android Studio) and web developer (frontend and backend) with .NET, using Microsoft Azure and SQL Server",
+         "summary": "Developed mobile applications using Java and Android Studio, and web applications (frontend and backend) with .NET, SQL Server, and Microsoft Azure.",
          "highlights": [
             "Always on time, with eficient work."
          ],
@@ -457,8 +457,19 @@
          ]
       },
       {
-         "name": "SQL",
+         "name": "MySql",
          "icon": "simple-icons:mysql",
+         "level": "Expert",
+         "keywords": [
+            "Databases",
+            "SQL",
+            "Data Storage",
+            "Backend"
+         ]
+      },
+       {
+         "name": "MSSQL",
+         "icon": "simple-icons:microsoftsqlserver",
          "level": "Expert",
          "keywords": [
             "Databases",
