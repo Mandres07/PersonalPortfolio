@@ -2,7 +2,7 @@
 import "hotkeypad/reset.css";
 import "hotkeypad/index.css";
 import { type SocialIcon } from "@/types";
-import { basics } from "@cv";
+import { basics } from "@/content/cv.json";
 import { Icon } from "astro-icon/components";
 
 const { profiles } = basics;
@@ -98,7 +98,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
          hotkey: "ctrl+P",
          section: "Actions",
          handler: () => {
-            window.print();
+            window.open("/files/CV-Mario-Morales.pdf", "_blank");
          },
       },
       ...data,

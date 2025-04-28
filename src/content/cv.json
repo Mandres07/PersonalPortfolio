@@ -7,7 +7,7 @@
       "email": "mandres0807@outlook.com",
       "phone": "50766184828",
       "url": "https://mandres.dev",
-      "summary": "Hi, I'm Mario Andrés Morales, a full-stack developer from Panama 🇵🇦.<br/>I build web applications with .NET Core, Blazor, Node.js, Next.js, and JavaScript.<br/>Outside of coding, I enjoy sports, movies, music, and time with my pets.",
+      "summary": "Hi, I'm Mario Andrés Morales, a full-stack developer from Panama 🇵🇦. I build web applications with .NET Core, Blazor, Node.js, Next.js, and JavaScript.<br/>Outside of coding, I enjoy sports, movies, music, and time with my pets.",
       "theme": "green",
       "location": {
          "address": "C. Hawai 589",
@@ -69,7 +69,7 @@
          "url": "http://www.nuestrasenoradelourdes.edu.pa",
          "area": "Bachelor of Science and Letters",
          "studyType": "Full-time student",
-         "startDate": null,
+         "startDate": "2000-03-01",
          "endDate": "2009-12-15"
       }
    ],
