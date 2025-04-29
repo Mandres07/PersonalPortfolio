@@ -1,10 +1,30 @@
 ---
-import { basics } from "@/content/cv.json";
 import Section from "@/components/Section.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 
-const { name, label, image, location, profiles, email, phone } = basics;
+interface Profile {
+   network: string;
+   icon: string;
+   url: string;
+   username: string;
+}
+
+interface Props {
+   name: string;
+   label: string;
+   image: string;
+   location: {
+      city: string;
+      region: string;
+      address: string;
+   };
+   profiles: Profile[];
+   email: string;
+   phone?: string;
+}
+
+const { name, label, image, location, profiles, email, phone } = Astro.props;
 const { city, region, address } = location;
 ---
 
@@ -13,9 +33,7 @@ const { city, region, address } = location;
       <div class="info">
          <h1>{name}</h1>
          <h2>{label}</h2>
-         <section
-            class="mt-2 flex items-center gap-2 text-skin-muted"
-         >
+         <section class="mt-2 flex items-center gap-2 text-skin-muted">
             <Icon
                class="print:hidden"
                name="mdi:world"
@@ -24,9 +42,7 @@ const { city, region, address } = location;
             />
             {address}, {city}, {region}
          </section>
-         <section
-            class="print none flex items-center gap-2 text-skin-muted"
-         >
+         <section class="print none flex items-center gap-2 text-skin-muted">
             <Icon
                class="print:hidden"
                name="mdi:email"
@@ -106,7 +122,7 @@ const { city, region, address } = location;
       <div class="flex items-end justify-start gap-2">
          <figure class="relative w-fit print:hidden">
             <Image
-               class="shadow-skin-hues shadow-lg object-cover hover:scale-105 transition-all duration-200 ease-linear object-center"
+               class="shadow-skin-hues object-cover object-center shadow-lg transition-all duration-200 ease-linear hover:scale-105"
                height={600}
                width={600}
                src={image}

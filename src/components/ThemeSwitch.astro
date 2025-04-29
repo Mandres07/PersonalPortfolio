@@ -1,5 +1,11 @@
 ---
 import { Icon } from "astro-icon/components";
+
+interface Props {
+   lang: string;
+}
+
+const { lang } = Astro.props;
 ---
 
 <div class="inline-flex items-center print:hidden">
@@ -32,24 +38,24 @@ import { Icon } from "astro-icon/components";
          id="themeSelect"
          class="block w-full rounded-md border-0 bg-transparent py-1.5 pl-3 pr-10 font-mono text-skin-base ring-1 ring-inset ring-skin-muted focus:ring-2 focus:ring-skin-hue sm:text-sm sm:leading-6"
       >
-         <option value="red">Red</option>
-         <option value="blue">Blue</option>
-         <option value="yellow">Yellow</option>
-         <option value="purple">Purple</option>
-         <option value="green">Green</option>
-         <option value="orange">Orange</option>
-         <option value="pink">Pink</option>
-         <option value="aqua">Aqua</option>
-         <option value="sepia">Sepia</option>
-         <option value="blackwhite">Mono</option>
+         <option value="red">{lang == "en" ? "Red" : "Rojo"}</option>
+         <option value="blue">{lang == "en" ? "Blue" : "Azul"}</option>
+         <option value="yellow">{lang == "en" ? "Yellow" : "Amarillo"}</option>
+         <option value="purple">{lang == "en" ? "Purple" : "Púrpura"}</option>
+         <option value="green">{lang == "en" ? "Green" : "Verde"}</option>
+         <option value="orange">{lang == "en" ? "Orange" : "Naranja"}</option>
+         <option value="pink">{lang == "en" ? "Pink" : "Rosado"}</option>
+         <option value="aqua">{lang == "en" ? "Aqua" : "Aqua"}</option>
+         <option value="sepia">{lang == "en" ? "Sepia" : "Sepia"}</option>
+         <option value="blackwhite">{lang == "en" ? "Mono" : "Mono"}</option>
       </select>
 
       <select
          id="languageSelect"
          class="block rounded-md border-0 bg-transparent py-1.5 pl-3 pr-10 font-mono text-skin-base ring-1 ring-inset ring-skin-muted focus:ring-2 focus:ring-skin-hue sm:text-sm sm:leading-6"
       >
-         <option value="en">🇺🇸 English</option>
-         <option value="es">🇪🇸 Español</option>
+         <option value="en">🇺🇸 {lang == "en" ? "English" : "Inglés"}</option>
+         <option value="es">🇪🇸 {lang == "en" ? "Spanish" : "Español"}</option>
       </select>
    </div>
 </div>

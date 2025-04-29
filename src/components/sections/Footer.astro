@@ -1,20 +1,31 @@
 ---
-import { basics } from "@cv";
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
 ---
 
 <div
-   id="tail"
-   class="slide-enter flex w-full justify-center bg-skin-hue/15 px-5 py-3 text-center font-mono md:col-span-6 md:pb-14 md:pt-1 print:hidden"
+  id="tail"
+  class="slide-enter flex w-full justify-center bg-skin-hue/15 px-5 py-3 text-center font-mono md:col-span-6 md:pb-14 md:pt-1 print:hidden"
 >
-   <div class="flex items-center space-x-0 text-xs opacity-80">
-      <span class="gap-1 text-center no-underline">
-         <p class="mt-2 text-center">
-            Working remotely 🌍 (GMT-5) - Built with Astro + Tailwind CSS.
-         </p>
-         <p class="mt-2 text-center">
-            © 2025 Mario Andrés Morales. Made with 💻, ❤️, and a lot of
-            semicolons.
-         </p>
-      </span>
-   </div>
+  <div class="flex items-center space-x-0 text-xs opacity-80">
+    <span class="gap-1 text-center no-underline">
+      <p class="mt-2 text-center">
+        {
+          lang == "en"
+            ? "Working remotely 🌍 (GMT-5) - Built with Astro + Tailwind CSS."
+            : "En Remoto 🌍 (GMT-5) - Creado con Astro + Tailwind CSS."
+        }
+      </p>
+      <p class="mt-2 text-center">
+         {
+            lang == "en"
+              ? "© 2025 Mario Andrés Morales. Made with 💻, ❤️, and a lot of semicolons."
+              : "© 2025 Mario Andrés Morales. Hecho con 💻, ❤️, y muchos punto y comas."
+          }
+      </p>
+    </span>
+  </div>
 </div>

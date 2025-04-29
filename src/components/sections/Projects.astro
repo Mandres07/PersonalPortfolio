@@ -1,12 +1,36 @@
 ---
 import Section from "../Section.astro";
 import { Icon } from "astro-icon/components";
-
-import { projects } from "@/content/cv.json";
 import { Image } from "astro:assets";
+
+interface ProjectImage {
+  url: string;
+  position: string;
+  dark?: string; // optional, as it's not guaranteed for all items
+}
+
+interface ProjectEntry {
+  name: string;
+  image: ProjectImage;
+  isActive: boolean;
+  description: string;
+  highlights: string[];
+  url: string;
+  github?: string;
+}
+interface Props {
+  className: string;
+  projects: ProjectEntry[];
+  lang: string;
+}
+const { className, projects, lang } = Astro.props;
 ---
 
-<Section className={Astro.props.className} title="Projects" id="work">
+<Section
+  className={className}
+  title={lang == "en" ? "Projects" : "Proyectos"}
+  id="work"
+>
   <div class="grid grid-cols-1 gap-3 md:grid-cols-2 print:flex print:flex-col">
     {
       projects.map(
@@ -112,7 +136,7 @@ import { Image } from "astro:assets";
               )}
             </div>
           );
-        },
+        }
       )
     }
   </div>

@@ -1,10 +1,22 @@
 ---
 import Section from "../Section.astro";
-import { skills } from "@/content/cv.json";
 import { Icon } from "astro-icon/components";
+
+interface Skill {
+  name: string;
+  icon: string;
+  level: string;
+  keywords: string[];
+}
+interface Props {
+  className: string;
+  skills: Skill[];
+  lang: string;
+}
+const { className, skills, lang } = Astro.props;
 ---
 
-<Section className={Astro.props.className} title="Skills" id="skills">
+<Section className={className} title={lang == "en" ? "Skills" : "Habilidades"} id="skills">
    <ul
       class="inline-flex flex-wrap gap-4 font-mono print:mt-4 [&>li>svg]:text-skin-hue [&>li]:text-sm"
    >

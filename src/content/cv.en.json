@@ -1,0 +1,705 @@
+{
+   "analyticsCode": "",
+   "basics": {
+      "name": "Mario Andrés Morales",
+      "label": "Senior Full Stack Developer",
+      "image": "/ghibli-avatar.jpeg",
+      "email": "mandres0807@outlook.com",
+      "phone": "50766184828",
+      "url": "https://mandres.dev",
+      "summary": "Hi, I'm Mario Andrés Morales, a full-stack developer from Panama 🇵🇦. I build web applications with .NET Core, Blazor, Node.js, Next.js, and JavaScript.<br/>Outside of coding, I enjoy sports, movies, music, and time with my pets.",
+      "theme": "green",
+      "location": {
+         "address": "C. Hawai 589",
+         "city": "Panama",
+         "countryCode": "PA",
+         "region": "Panama"
+      },
+      "profiles": [
+         {
+            "network": "LinkedIn",
+            "icon": "ri:linkedin-fill",
+            "username": "mariomorales07",
+            "url": "https://www.linkedin.com/in/mariomorales07/"
+         },
+         {
+            "network": "GitHub",
+            "icon": "mdi:github",
+            "username": "Mandres07",
+            "url": "https://github.com/Mandres07"
+         }
+      ]
+   },
+   "images": {
+      "intro": "Photography is the art of light, and images are the contours of memory.",
+      "list": [
+         {
+            "image": "https://i0.hdslb.com/bfs/article/6720a7355fd11b9666e2716cadf04e45480025691.jpg@90q_1e_1c.webp",
+            "alt": "Sunset in Nanchang",
+            "desc": "Shot on a sunny day in Nanchang. 2024.10.05"
+         },
+         {
+            "image": "https://i0.hdslb.com/bfs/article/82f680f56532d942f74d86801abf49ea480025691.jpg@90q_1e_1c.webp",
+            "alt": "My Cat",
+            "desc": "A Ragdoll cat who stayed for a year. She's a girl."
+         },
+         {
+            "image": "https://i0.hdslb.com/bfs/article/14e6ae3c368b0eddeeb2b5c338239486480025691.jpg@90q_1e_1c.webp",
+            "alt": "Emoji",
+            "desc": "True, dude"
+         },
+         {
+            "image": "https://i0.hdslb.com/bfs/article/fe1737e9d7b6c2b21eedaf60b6dc9f86480025691.jpg@90q_1e_1c.webp",
+            "alt": "Cat Kernel Crashed",
+            "desc": "Cat Kernel Crashed"
+         }
+      ]
+   },
+   "education": [
+      {
+         "institution": "Universidad Tecnológica de Panamá",
+         "url": "https://utp.ac.pa",
+         "area": "Degree in Computer and Systems Engineering",
+         "studyType": "Full-time student",
+         "startDate": "2010-01-01",
+         "endDate": "2015-06-01"
+      },
+      {
+         "institution": "Colegio Nuestra Señora de Lourdes",
+         "url": "http://www.nuestrasenoradelourdes.edu.pa",
+         "area": "Bachelor of Science and Letters",
+         "studyType": "Full-time student",
+         "startDate": "2000-03-01",
+         "endDate": "2009-12-15"
+      }
+   ],
+   "certificates": [
+      {
+         "name": "Angular - The Complete Guide",
+         "date": "2021-10-07",
+         "url": "https://www.udemy.com/certificate/UC-0e631566-c6f9-4f14-b877-841f090761b2/",
+         "issuer": "Udemy"
+      },
+      {
+         "name": "Cypress End-to-End Testing - Getting Started",
+         "date": "2023-11-28",
+         "url": "https://www.udemy.com/certificate/UC-1a7a661f-0190-4f19-af6e-f0d8ca911fbf/",
+         "issuer": "Udemy"
+      },
+      {
+         "name": "NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)",
+         "date": "2021-01-27",
+         "url": "https://www.udemy.com/certificate/UC-c90bc2cc-2757-4e8c-a79b-648cc77a3d8b/",
+         "issuer": "Udemy"
+      },
+      {
+         "name": "React - The Complete Guide (incl Hooks, React Router, Redux)",
+         "date": "2021-03-28",
+         "url": "https://www.udemy.com/certificate/UC-7c32fb93-c8b7-4fb1-8448-f950debfebad/",
+         "issuer": "Udemy"
+      },
+      {
+         "name": "React Native - The Practical Guide 2020",
+         "date": "2020-06-09",
+         "url": "https://www.udemy.com/certificate/UC-0f0943c4-273b-45b0-9f52-e4a58ee4a3f1/",
+         "issuer": "Udemy"
+      },
+      {
+         "name": "Understanding TypeScript - 2022 Edition",
+         "date": "2022-05-29",
+         "url": "https://www.udemy.com/certificate/UC-fdedfcc2-dc70-4aa2-b85b-5c3c2ab99363/",
+         "issuer": "Udemy"
+      },
+      {
+         "name": "Ok, Umbraco",
+         "date": "2021-08-18",
+         "url": "https://www.udemy.com/certificate/UC-d757f986-c1d7-4440-9645-6a2dd858c543/",
+         "issuer": "Udemy"
+      },
+      {
+         "name": "100 Days Of Code - 2022 Web Development Bootcamp",
+         "date": "2022-09-13",
+         "url": "https://www.udemy.com/certificate/UC-40a9654f-383a-41ed-a009-195dd2cccae6/",
+         "issuer": "Udemy"
+      }
+   ],
+   "work": [
+       {
+         "name": "eFiscal Networks",
+         "position": "Lead Software Developer",
+         "location_type": "Remote",
+         "location": "PA",
+         "url": "https://www.efiscal.net",
+         "startDate": "2025-04-14",
+         "endDate": null,
+         "summary": "Lead Software Developer with full-stack expertise, specializing in frontend development with Blazor, C#, and .NET Core.",
+         "highlights": [
+            "Responsible of the design system of the SDS suite.",
+            "Implemented a suite of SQL server reports.",
+            "Responsible for the integration of PayPal's Braintree payment system.",
+            "Enhanced the microservices architecture of the SDs suite using MassTransit and RabbitMQ."
+         ],
+         "responsibilities": [
+            "Backend development using .NET Core with RabbitMQ",
+            "Frontend development using Blazor, ReactJS and NextJS.",
+            "Maintained and improved existing codebases.",
+            "Decision making and planning of the UI for the SDS suite."
+         ],
+         "achievements": [
+            "Implemented a reliable design system for the SDS suite using bootstrap.",
+            "Enhanced the delivery process of the web application by implementing CI/CD pipelines using Azure DevOps."
+         ],
+         "skills": {
+            ".Net Core": "simple-icons:dotnet",
+            "Blazor": "simple-icons:blazor",
+            "Node": "ri:nodejs-line",
+            "Express": "simple-icons:express",
+            "Next.js": "ri:nextjs-fill",
+            "React": "mdi:react",
+            "SQL": "simple-icons:mysql",
+            "Git": "mdi:git",
+            "HTML": "simple-icons:html5",
+            "CSS": "ri:css3-fill",
+            "Bootstrap": "mdi:bootstrap",
+            "RabbitMQ": "simple-icons:rabbitmq",
+            "Azure": "simple-icons:azuredevops",
+            "AWS": "simple-icons:amazonaws"
+         }
+      },
+      {
+         "name": "Devsu",
+         "position": "Senior Software Developer",
+         "location_type": "Remote",
+         "location": "PA",
+         "url": "https://devsu.com",
+         "startDate": "2021-04-08",
+         "endDate": "2025-04-11",
+         "summary": "Full-stack developer responsible for backend and frontend development in international projects, using Node.js, Express.js, React, Next.js, .NET Core, and Blazor.",
+         "highlights": [
+            "Created a NodeJS and ExpressJS backend for a web application from scratch.",
+            "Responsible for the UI development of a .NET Core and Blazor suite.",
+            "Implemented a suite of SQL server reports.",
+            "Responsible for the integration of PayPal's Braintree payment system."
+         ],
+         "responsibilities": [
+            "Backend development using NodeJS and ExpressJS.",
+            "Frontend development using Blazor, Angular, ReactJS and NextJS.",
+            "Maintained and improved existing codebases.",
+            "Created and maintained several websites using NextJS and ReactJS."
+         ],
+         "achievements": [
+            "Implemented a reliable design system for the SDS suite using bootstrap.",
+            "Enhanced the delivery process of the web application by implementing CI/CD pipelines using Azure DevOps."
+         ],
+         "skills": {
+            ".Net Core": "simple-icons:dotnet",
+            "Blazor": "simple-icons:blazor",
+            "Node": "ri:nodejs-line",
+            "Express": "simple-icons:express",
+            "Next.js": "ri:nextjs-fill",
+            "React": "mdi:react",
+            "SQL": "simple-icons:mysql",
+            "Git": "mdi:git",
+            "HTML": "simple-icons:html5",
+            "CSS": "ri:css3-fill",
+            "Bootstrap": "mdi:bootstrap",
+            "RabbitMQ": "simple-icons:rabbitmq",
+            "Azure": "simple-icons:azuredevops",
+            "AWS": "simple-icons:amazonaws"
+         }
+      },
+      {
+         "name": "Exceltec Software, S.A.",
+         "position": "Software Developer",
+         "location_type": "Remote",
+         "location": "PA",
+         "url": "https://www.exceltecgroup.com",
+         "startDate": "2019-06-01",
+         "endDate": "2020-05-01",
+         "summary": "Developed frontend and backend solutions (REST APIs) using .NET and SQL Server, following Agile methodologies (Scrum) and deploying applications on Microsoft Azure.",
+         "highlights": [
+            "Led the development of a web application using .NET",
+            "Responsible for the integration of electronic invoicing with the Costa Rican tax authority."
+         ],
+         "responsibilities": [
+            "Design and planning of the architecture of the web application."
+         ],
+         "achievements": [
+            "Enhanced the delivery process of the web application by implementing CI/CD pipelines using Azure DevOps."
+         ],
+         "skills": {
+            ".Net Core": "simple-icons:dotnet",
+            "Azure": "simple-icons:azuredevops",
+            "SQL": "simple-icons:mysql",
+            "Git": "mdi:git",
+            "HTML": "simple-icons:html5",
+            "CSS": "ri:css3-fill",
+            "Bootstrap": "mdi:bootstrap"
+         }
+      },
+      {
+         "name": "Intercoud",
+         "position": "CEO, Founder and Development Leader",
+         "location_type": "Remote",
+         "location": "PA",
+         "url": null,
+         "startDate": "2017-11-01",
+         "endDate": "2023-12-31",
+         "summary": "Founded and developed Luvet PetsCare, a web application designed to help veterinary clinics manage their operations. Built the platform using ASP.NET, SQL Server, and Microsoft Azure. Gained significant experience in product development, cloud deployment, and business operations through this entrepreneurial venture.",
+         "highlights": [
+            "Responsible for the entire design, build, dpeloyment and maintenance of the web application.",
+            "Gained invaluable experience in the field of customer service and support.",
+            "Learned about Mobile first UI design and development."
+         ],
+         "responsibilities": [
+            "Design and planning of the architecture of the web application.",
+            "Maintained and improved existing codebases.",
+            "Implemented several requested features according to customer needs."
+         ],
+         "achievements": [
+            "My first rodeo being an entrepreneur.",
+            "Experience, experience and experience."
+         ],
+         "skills": {
+            ".Net Core": "simple-icons:dotnet",
+            "Azure": "simple-icons:azuredevops",
+            "SQL": "simple-icons:mysql",
+            "Git": "mdi:git",
+            "HTML": "simple-icons:html5",
+            "CSS": "ri:css3-fill",
+            "Bootstrap": "mdi:bootstrap",
+            "Android": "simple-icons:android"
+         }
+      },
+      {
+         "name": "Hypernova Labs",
+         "position": "Junior Software Developer",
+         "location_type": "Office",
+         "location": "PA",
+         "url": "https://www.hypernovalabs.com",
+         "startDate": "2015-09-01",
+         "endDate": "2016-01-31",
+         "summary": "Developed mobile applications using Java and Android Studio, and web applications (frontend and backend) with .NET, SQL Server, and Microsoft Azure.",
+         "highlights": [
+            "Always on time, with eficient work."
+         ],
+         "responsibilities": [
+            "Responsible for the codebase of the Android application for Agua Cristalina.",
+            "Implemented several pages for the web application using .NET."
+         ],
+         "achievements": [
+            "My first job experience, learned about Android and web development.",
+            "Learned about SQL Server and create paginated queries."
+         ],
+         "skills": {
+            ".Net Core": "simple-icons:dotnet",
+            "Azure": "simple-icons:azuredevops",
+            "SQL": "simple-icons:mysql",
+            "Git": "mdi:git",
+            "HTML": "simple-icons:html5",
+            "CSS": "ri:css3-fill",
+            "Bootstrap": "mdi:bootstrap",
+            "Android": "simple-icons:android"
+         }
+      }
+   ],
+   "skills": [
+      {
+         "name": "HTML",
+         "icon": "simple-icons:html5",
+         "level": "Expert",
+         "keywords": [
+            "Web Development",
+            "Frontend"
+         ]
+      },
+      {
+         "name": "CSS",
+         "icon": "ri:css3-fill",
+         "level": "Expert",
+         "keywords": [
+            "Web Development",
+            "Frontend",
+            "Responsive Design"
+         ]
+      },
+      {
+         "name": "C#",
+         "icon": "simple-icons:csharp",
+         "level": "Expert",
+         "keywords": [
+            "Web Development",
+            "Frontend",
+            "Backend",
+            "Fullstack"
+         ]
+      },
+      {
+         "name": "JavaScript",
+         "icon": "simple-icons:javascript",
+         "level": "Expert",
+         "keywords": [
+            "Web Development",
+            "Frontend",
+            "Backend",
+            "Fullstack"
+         ]
+      },
+      {
+         "name": "TypeScript",
+         "icon": "simple-icons:typescript",
+         "level": "Expert",
+         "keywords": [
+            "Web Development",
+            "Frontend",
+            "Backend",
+            "Fullstack"
+         ]
+      },
+      {
+         "name": "Tailwind",
+         "icon": "mdi:tailwind",
+         "level": "Intermediate",
+         "keywords": [
+            "Web Development",
+            "Frontend",
+            "CSS Framework",
+            "Responsive Design"
+         ]
+      },
+      {
+         "name": "Bootstrap",
+         "icon": "mdi:bootstrap",
+         "level": "Expert",
+         "keywords": [
+            "Web Development",
+            "Frontend",
+            "CSS Framework",
+            "Responsive Design"
+         ]
+      },
+      {
+         "name": ".NET Core",
+         "icon": "simple-icons:dotnet",
+         "level": "Expert",
+         "keywords": [
+            "Web Development",
+            "Frontend",
+            "Backend",
+            "Fullstack"
+         ]
+      },
+      {
+         "name": "Node",
+         "icon": "ri:nodejs-line",
+         "level": "Expert",
+         "keywords": [
+            "Web Development",
+            "Backend",
+            "JavaScript",
+            "Server"
+         ]
+      },
+      {
+         "name": "ExpressJS",
+         "icon": "simple-icons:express",
+         "level": "Expert",
+         "keywords": [
+            "Web Development",
+            "Backend",
+            "Server",
+            "Fullstack"
+         ]
+      },
+      {
+         "name": "Next.js",
+         "icon": "ri:nextjs-line",
+         "level": "Expert",
+         "keywords": [
+            "Web Development",
+            "Frontend",
+            "React Framework",
+            "SSR",
+            "Static Generation"
+         ]
+      },
+      {
+         "name": "React",
+         "icon": "mdi:react",
+         "level": "Expert",
+         "keywords": [
+            "Web Development",
+            "Frontend",
+            "JavaScript Library",
+            "UI"
+         ]
+      },
+      {
+         "name": "Blazor",
+         "icon": "simple-icons:blazor",
+         "level": "Expert",
+         "keywords": [
+            "Web Development",
+            "Frontend",
+            "C#",
+            "UI"
+         ]
+      },
+      {
+         "name": "Angular",
+         "icon": "simple-icons:angular",
+         "level": "Expert",
+         "keywords": [
+            "Web Development",
+            "Frontend",
+            "JavaScript Library",
+            "UI"
+         ]
+      },
+      {
+         "name": "MySql",
+         "icon": "simple-icons:mysql",
+         "level": "Expert",
+         "keywords": [
+            "Databases",
+            "SQL",
+            "Data Storage",
+            "Backend"
+         ]
+      },
+       {
+         "name": "MSSQL",
+         "icon": "simple-icons:microsoftsqlserver",
+         "level": "Expert",
+         "keywords": [
+            "Databases",
+            "SQL",
+            "Data Storage",
+            "Backend"
+         ]
+      },
+      {
+         "name": "MongoDB",
+         "icon": "simple-icons:mongodb",
+         "level": "Expert",
+         "keywords": [
+            "Databases",
+            "File",
+            "Data Storage",
+            "Backend"
+         ]
+      },
+      {
+         "name": "Azure",
+         "icon": "simple-icons:azuredevops",
+         "level": "Intermediate",
+         "keywords": [
+            "Cloud computing",
+            "Cloud Storage",
+            "Data Storage",
+            "Management"
+         ]
+      },
+      {
+         "name": "AWS",
+         "icon": "simple-icons:amazonaws",
+         "level": "Intermediate",
+         "keywords": [
+            "Cloud computing",
+            "Cloud Storage",
+            "Data Storage",
+            "Management"
+         ]
+      },
+      {
+         "name": "Git",
+         "icon": "mdi:git",
+         "level": "Expert",
+         "keywords": [
+            "Version Control",
+            "Collaboration",
+            "Source Code"
+         ]
+      },
+      {
+         "name": "GitHub",
+         "icon": "mdi:github",
+         "level": "Expert",
+         "keywords": [
+            "Version Control",
+            "Collaboration",
+            "Source Code",
+            "Git"
+         ]
+      },
+      {
+         "name": "Docker",
+         "icon": "mdi:docker",
+         "level": "Beginner",
+         "keywords": [
+            "Virtual Environments",
+            "Backend"
+         ]
+      },
+      {
+         "name": "Vite",
+         "icon": "simple-icons:vite",
+         "level": "Beginner",
+         "keywords": [
+            "Web Development",
+            "Frontend",
+            "Build Tool"
+         ]
+      },
+      {
+         "name": "WordPress",
+         "icon": "ri:wordpress-fill",
+         "level": "Intermediate",
+         "keywords": [
+            "PHP",
+            "Fullstack",
+            "Frontend"
+         ]
+      },
+      {
+         "name": "Astro",
+         "icon": "simple-icons:astro",
+         "level": "Intermediate",
+         "keywords": [
+            "Web Development",
+            "Frontend",
+            "SSR",
+            "Static Generation"
+         ]
+      },
+      {
+         "name": "Vercel",
+         "icon": "simple-icons:vercel",
+         "level": "Beginner",
+         "keywords": [
+            "Serverless",
+            "Static Site Hosting"
+         ]
+      },
+      {
+         "name": "Netlify",
+         "icon": "simple-icons:netlify",
+         "level": "Beginner",
+         "keywords": [
+            "Serverless",
+            "Static Site Hosting"
+         ]
+      },
+      {
+         "name": "Android",
+         "icon": "simple-icons:android",
+         "level": "Beginner",
+         "keywords": [
+            "Mobile Development"
+         ]
+      }
+   ],
+   "languages": [
+      {
+         "language": "Spanish",
+         "fluency": "Native speaker"
+      },
+      {
+         "language": "English",
+         "fluency": "Fluent"
+      }
+   ],
+   "interests": [
+      {
+         "name": "Technology",
+         "keywords": [
+            "AI",
+            "Responsive Design",
+            "Web Development",
+            "Programming"
+         ]
+      },
+      {
+         "name": "Music",
+         "keywords": [
+            "Music",
+            "Guitar",
+            "Piano",
+            "Singing",
+            "Accordion",
+            "Entertainment",
+            "Relaxing"
+         ]
+      },
+      {
+         "name": "Sports",
+         "keywords": [
+            "Soccer",
+            "Weightlifting",
+            "F1",
+            "Running",
+            "Boxing"
+         ]
+      },
+      {
+         "name": "Movies and TV Shows",
+         "keywords": [
+            "Movies",
+            "Cinema",
+            "TV Shows",
+            "Entertainment",
+            "Series"
+         ]
+      },
+      {
+         "name": "Pets",
+         "keywords": [
+            "Dogs",
+            "Beagle",
+            "Pitbull"
+         ]
+      }
+   ],
+   "references": [
+      {
+         "name": "MiraHikari",
+         "reference": "Reference…"
+      }
+   ],
+   "projects": [
+      {
+         "name": "Cloudflare Vmail",
+         "image": {
+            "url": "https://i0.hdslb.com/bfs/article/985e2caa8266dee4b9861ee6a341886d480025691.png@1e_1c.webp",
+            "position": "container",
+            "dark": "https://i0.hdslb.com/bfs/article/4d0bf8a784d22e54e3e61763c361c9ef480025691.png@100q_1e_1c.webp"
+         },
+         "isActive": true,
+         "description": "An open source temporary email tool, fully on Cloudflare. Inspired by oiov/vmail",
+         "highlights": [
+            "🎯 Privacy-friendly, no registration required, out-of-the-box",
+            "✨ Support saving passwords and retrieving email addresses",
+            "😄 Support multiple domain name suffixes",
+            "🚀 100% open source, fully based on Cloudflare."
+         ],
+         "url": "https://what-the-fuck.sbs",
+         "github": "https://github.com/MiraHikari/cloudflare-vmail"
+      },
+      {
+         "name": "Riddle Town Hunt 2",
+         "image": {
+            "url": "https://rth2-webstatic.gbclstudio.cn/wp-content/uploads/2024/02/1707656250-76b2b0d2c94824e89a2b8b2c7d1c6afe.png",
+            "position": "background"
+         },
+         "isActive": false,
+         "description": "Public decryption activity in the form of Puzzle Hunt.",
+         "highlights": [
+            "👌 More than 1000 people participated, system runs normally",
+            "😮‍ Use headless CMS: WordPress to storage and manage contents, dynamically render page",
+            "😊 Windows-like interface",
+            "💕 Based on Astro"
+         ],
+         "url": "https://rth2.gcxstudio.cn/"
+      }
+   ]
+}

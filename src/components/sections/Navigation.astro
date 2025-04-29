@@ -1,3 +1,10 @@
+---
+interface Props {
+   lang: string;
+}
+
+const { lang } = Astro.props;
+---
 <nav
    class="z-10 hidden w-full bg-skin-fill/90 py-3 font-mono md:sticky md:top-0 md:block print:hidden"
 >
@@ -6,31 +13,31 @@
          data-section="experience"
          class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
       >
-         <a href="#experience">🧑🏽‍💻 Experience</a>
+         <a href="#experience">🧑🏽‍💻 {lang == "es" ? "Experiencia" : "Experience"}</a>
       </li>
       <li
          data-section="work"
          class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
       >
-         <a href="#work">🛠️ Projects</a>
+         <a href="#work">🛠️ {lang == "es" ? "Proyectos" : "Projects"}</a>
       </li>
       <li
          data-section="education"
          class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
       >
-         <a href="#education">🎓 Education</a>
+         <a href="#education">🎓 {lang == "es" ? "Educación" : "Education"}</a>
       </li>
       <li
          data-section="images"
          class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
       >
-         <a href="#images">🏞️ Images</a>
+         <a href="#images">🏞️ {lang == "es" ? "Imágenes" : "Images"}</a>
       </li>
       <li
          data-section="skills"
          class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
       >
-         <a href="#skills">⚡️ Skills</a>
+         <a href="#skills">⚡️ {lang == "es" ? "Habilidades" : "Skills"}</a>
       </li>
    </ul>
 </nav>

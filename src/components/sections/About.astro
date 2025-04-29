@@ -1,11 +1,15 @@
 ---
 import Section from "../Section.astro";
 
-import CV from "@/content/cv.json";
-const { summary } = CV.basics;
+interface Props {
+   summary: string;
+   lang: string;
+}
+
+const { summary, lang } = Astro.props;
 ---
 
-<Section title="About" className="gap-0">
+<Section title={lang == "en" ? "About" : "Sobre Mi"} className="gap-0">
    <p class="font-sans opacity-60 print:font-sans">
       <span set:html={summary} />
    </p>

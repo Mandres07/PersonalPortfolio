@@ -1,10 +1,32 @@
 ---
 import Section from '../Section.astro'
-import { work } from '@/content/cv.json'
 import { Icon } from 'astro-icon/components'
+
+interface WorkEntry {
+  name: string;
+  position: string;
+  location_type: 'Remote' | 'Office' | string;
+  location: string;
+  url: string | null;
+  startDate: string; 
+  endDate: string | null;
+  summary: string;
+  highlights: string[];
+  responsibilities: string[];
+  achievements: string[];
+  skills: {
+    [key: string]: any;
+  };
+}
+interface Props {
+  className: string;
+  work: WorkEntry[];
+  lang: string;
+}
+const { className, work, lang } = Astro.props;
 ---
 
-<Section className={Astro.props.className} title="Experience" id="experience">
+<Section className={className} title={lang == "en" ? "Experience": "Experiencia"} id="experience">
   <ul class="flex flex-col">
     {work.map(({ name, startDate, endDate, position, summary, responsibilities, achievements, url, skills, location, location_type }) => {
       const startYear = new Date(startDate).getFullYear()
