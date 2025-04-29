@@ -6,9 +6,6 @@
          "@cv": [
             "src/content/cv.json"
          ],
-         "@cven": [
-            "src/content/cv.en.json"
-         ],
          "@cves": [
             "src/content/cv.es.json"
          ],

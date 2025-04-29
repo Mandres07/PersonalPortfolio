@@ -30,7 +30,7 @@ const { className, work, lang } = Astro.props;
   <ul class="flex flex-col">
     {work.map(({ name, startDate, endDate, position, summary, responsibilities, achievements, url, skills, location, location_type }) => {
       const startYear = new Date(startDate).getFullYear()
-      const endYear = endDate != null ? new Date(endDate).getFullYear() : "Present"
+      const endYear = endDate != null ? new Date(endDate).getFullYear() : lang == "en" ?"Present": "Presente"
 
       return (
         <li class="relative print:py-2">
@@ -65,7 +65,7 @@ const { className, work, lang } = Astro.props;
               <div class="mt-4  print:gap-0 flex flex-col gap-4 print:text-xs text-sm">
                 {summary && (
                   <div class="flex flex-col gap-1">
-                    <h4>Summary:</h4>
+                    <h4>{lang == "en" ? "Summary" : "Descripción"}:</h4>
                     <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
                       {Array.isArray(summary) ? (
                         summary.map(item => (
@@ -82,7 +82,7 @@ const { className, work, lang } = Astro.props;
                 <div class="after:from-skin-hue dark:after:to-skin-hue/0 flex relative flex-col print:!h-auto gap-4 print:gap-2 after:bg-gradient-to-t after:absolute after:bottom-0 after:w-full print:after:hidden after:h-12 after:content-[''] h-16 group-data-[expanded=true]:after:hidden group-data-[expanded=true]:h-auto overflow-hidden duration-200 ease-out">
                 {responsibilities && (
                   <div class="flex flex-col gap-1">
-                    <h4>Responsibilities:</h4>
+                    <h4>{lang == "en" ? "Responsibilities" : "Responsabilidades"}:</h4>
                     <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
                       {responsibilities.map(responsibility => (
                         <li>{responsibility}</li>
@@ -93,7 +93,7 @@ const { className, work, lang } = Astro.props;
 
                 {achievements && (
                   <div class="flex flex-col gap-1">
-                    <h4>Achievements:</h4>
+                    <h4>{lang == "en" ? "Achievements" : "Logros"}:</h4>
                     <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
                       {achievements.map(achievement => (
                         <li>{achievement}</li>
@@ -103,8 +103,8 @@ const { className, work, lang } = Astro.props;
                 )}
                 </div>
 
-                <button class="print:hidden group/more w-fit cursor-pointer items-center justify-center gap-1.5 text-xs underline text-skin-muted transition-all hover:text-skin-base flex expand-button">
-                  <span class="expand-text">Show more</span>
+                <button class="print:hidden group/more w-fit cursor-pointer items-center justify-center gap-1.5 text-xs underline text-skin-muted transition-all hover:text-skin-base flex expand-button" data-lang={lang}>
+                  <span class="expand-text">{lang == "en" ? "Show more" : "Ver más"}</span>
                   <Icon name="ri:arrow-up-s-line" class="w-4 h-4 group-hover/more:translate-y-0.5 duration-200 ease-out group-data-[expanded=true]:rotate-180" width={24} height={24}></Icon>
                 </button>
 
@@ -114,9 +114,8 @@ const { className, work, lang } = Astro.props;
                       <li class="bg-skin-button-accent/20 border-skin-hue/20 text-skin-hue print:p-0 print:bg-transparent print:text-zinc-800 flex gap-1 items-center border-solid print:border-none border rounded-md px-2 py-0.5 text-xs backdrop-blur-sm">
                         {icon && <Icon name={icon} width={16} height={16} />} <span>{label}</span>
                       </li>
-                    )
-                  )
-                  }
+                    ))
+    }
                 </ul>
 )}
               </div>
@@ -129,13 +128,16 @@ const { className, work, lang } = Astro.props;
 </Section>
 <script>
   const expandButton = document.querySelectorAll('.expand-button');
-
+  
   expandButton.forEach(button => {
     button.addEventListener('click', () => {
+      const lang = button.getAttribute('data-lang');
+      const showLessText = lang === 'en' ? 'Show less' : 'Ver menos';
+      const showMoreText = lang === 'en' ? 'Show more' : 'Ver más';
       const container = button.closest<HTMLElement>('.expand-container')!;
       container.dataset.expanded = container.dataset.expanded === 'true' ? 'false' : 'true';
       const expandText = button.querySelector('.expand-text')!;
-      expandText.innerHTML = container.dataset.expanded === 'true' ? 'Show less' : 'Show more'
+      expandText.innerHTML = container.dataset.expanded === 'true' ? showLessText : showMoreText;
     });
   });
 </script>
