@@ -3,7 +3,7 @@
    "basics": {
      "name": "Mario Andrés Morales",
      "label": "Senior Full Stack Developer",
-     "image": "/ghibli-avatar.jpeg",
+     "image": "/images/ghibli-avatar.jpeg",
      "email": "mandres0807@outlook.com",
      "phone": "50766184828",
      "url": "https://mandres.dev",
@@ -671,9 +671,9 @@
        "id": 1,
        "name": "Luvet PetsCare - AndysPets",
        "image": {
-         "url": "images/andyspets-welcome.jpg",
+         "url": "/images/andyspets-welcome.jpg",
          "position": "container",
-         "dark": "images/andyspets-welcome.jpg"
+         "dark": "/images/andyspets-welcome.jpg"
        },
        "isActive": true,
        "description": "Una implementación de Luvet PetsCare para AndysPets, una clínica veterinaria en Panamá.",
@@ -689,9 +689,9 @@
        "id": 2,
        "name": "Luvet PetsCare - Veterinaria Knino",
        "image": {
-         "url": "images/veterinaria-knino-welcome.jpg",
+         "url": "/images/veterinaria-knino-welcome.jpg",
          "position": "container",
-         "dark": "images/veterinaria-knino-welcome.jpg"
+         "dark": "/images/veterinaria-knino-welcome.jpg"
        },
        "isActive": true,
        "description": "Una implementación de Luvet PetsCare para Veterinaria Knino, una clínica veterinaria en Panamá.",
@@ -707,7 +707,7 @@
        "id": 3,
        "name": "MyResolvent.com",
        "image": {
-         "url": "images/myresolvent-section.jpg",
+         "url": "/images/myresolvent-section.jpg",
          "position": "container"
        },
        "isActive": true,
@@ -723,7 +723,7 @@
        "id": 4,
        "name": "SDS Landing Page",
        "image": {
-         "url": "images/start-myresolvent-hero.jpg",
+         "url": "/images/start-myresolvent-hero.jpg",
          "position": "container"
        },
        "isActive": true,

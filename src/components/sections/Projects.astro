@@ -12,7 +12,6 @@ interface ProjectImage {
   url: string;
   position: string;
   dark?: string;
-  src?: ImageMetadata;
 }
 
 interface ProjectEntry {
@@ -31,13 +30,6 @@ interface Props {
   lang: string;
 }
 const { className, projects, lang } = Astro.props;
-
-const ImagesById: Record<number, ImageMetadata> = {
-  1: andysPetsWelcomeImage,
-  2: kninoWelcomeImage,
-  3: myresolventSectionImage,
-  4: myresolventHeroImage,
-};
 ---
 
 <Section
@@ -48,7 +40,16 @@ const ImagesById: Record<number, ImageMetadata> = {
   <div class="grid grid-cols-1 gap-3 md:grid-cols-2 print:flex print:flex-col">
     {
       projects.map(
-        ({ id, url, description, highlights, name, isActive, github, image }) => {
+        ({
+          id,
+          url,
+          description,
+          highlights,
+          name,
+          isActive,
+          github,
+          image,
+        }) => {
           const isBackgroundImage = image && image?.position === "background";
           const isContainerImage = image && image?.position === "container";
           return (
@@ -123,7 +124,7 @@ const ImagesById: Record<number, ImageMetadata> = {
               {isContainerImage && (
                 <a data-src={image.url} data-fancybox="projects">
                   <Image
-                    src={ImagesById[id]}
+                    src={image.url}
                     alt=""
                     width={800}
                     height={1080}
@@ -134,7 +135,7 @@ const ImagesById: Record<number, ImageMetadata> = {
                   />
                   {image.dark && (
                     <Image
-                      src={ImagesById[id]}
+                      src={image.dark}
                       alt=""
                       width={800}
                       height={1080}
