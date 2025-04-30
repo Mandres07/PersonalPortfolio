@@ -6,38 +6,38 @@ interface Props {
 const { lang } = Astro.props;
 ---
 <nav
-   class="z-10 hidden w-full bg-skin-fill/90 py-3 font-mono md:sticky md:top-0 md:block print:hidden"
+   class="z-10 w-full bg-skin-fill/90 py-3 font-mono sticky top-0 md:block print:hidden"
 >
-   <ul class="flex items-center justify-start gap-4">
+   <ul class="flex items-center justify-between">
       <li
          data-section="experience"
          class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
       >
-         <a href="#experience">🧑🏽‍💻 {lang == "es" ? "Experiencia" : "Experience"}</a>
+         <a href="#experience">🧑🏽‍💻 <span class="hidden md:inline">{lang == "es" ? "Experiencia" : "Experience"}</span></a>
       </li>
       <li
          data-section="work"
          class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
       >
-         <a href="#work">🛠️ {lang == "es" ? "Proyectos" : "Projects"}</a>
+         <a href="#work">🛠️ <span class="hidden md:inline">{lang == "es" ? "Proyectos" : "Projects"}</span></a>
       </li>
       <li
          data-section="education"
          class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
       >
-         <a href="#education">🎓 {lang == "es" ? "Educación" : "Education"}</a>
+         <a href="#education">🎓 <span class="hidden md:inline">{lang == "es" ? "Educación" : "Education"}</span></a>
       </li>
       <li
          data-section="images"
          class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
       >
-         <a href="#images">🏞️ {lang == "es" ? "Imágenes" : "Images"}</a>
+         <a href="#images">🏞️ <span class="hidden md:inline">{lang == "es" ? "Imágenes" : "Images"}</span></a>
       </li>
       <li
          data-section="skills"
          class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
       >
-         <a href="#skills">⚡️ {lang == "es" ? "Skills" : "Skills"}</a>
+         <a href="#skills">⚡️ <span class="hidden md:inline">{lang == "es" ? "Skills" : "Skills"}</span></a>
       </li>
    </ul>
 </nav>
@@ -54,7 +54,7 @@ const { lang } = Astro.props;
                const navItem = document.querySelector(
                   `.nav-item[data-section="${id}"]`,
                );
-               if (entry.isIntersecting && entry.intersectionRatio >= 0.75) {
+               if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
                   navItems.forEach((item) =>
                      item.classList.remove(
                         "bg-skin-button-accent/20",
@@ -69,7 +69,7 @@ const { lang } = Astro.props;
             });
          },
          {
-            threshold: 0.8,
+            threshold: 0.3,
          },
       );
       sections.forEach((section) => observer.observe(section));
