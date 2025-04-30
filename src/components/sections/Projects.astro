@@ -2,14 +2,21 @@
 import Section from "../Section.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
+import andysPetsWelcomeImage from "@/images/andyspets-welcome.jpg";
+import kninoWelcomeImage from "@/images/veterinaria-knino-welcome.jpg";
+import myresolventSectionImage from "@/images/myresolvent-section.jpg";
+import myresolventHeroImage from "@/images/start-myresolvent-hero.jpg";
+import type { ImageMetadata } from "astro";
 
 interface ProjectImage {
   url: string;
   position: string;
-  dark?: string; // optional, as it's not guaranteed for all items
+  dark?: string;
+  src?: ImageMetadata;
 }
 
 interface ProjectEntry {
+  id: number;
   name: string;
   image: ProjectImage;
   isActive: boolean;
@@ -24,6 +31,13 @@ interface Props {
   lang: string;
 }
 const { className, projects, lang } = Astro.props;
+
+const ImagesById: Record<number, ImageMetadata> = {
+  1: andysPetsWelcomeImage,
+  2: kninoWelcomeImage,
+  3: myresolventSectionImage,
+  4: myresolventHeroImage,
+};
 ---
 
 <Section
@@ -34,7 +48,7 @@ const { className, projects, lang } = Astro.props;
   <div class="grid grid-cols-1 gap-3 md:grid-cols-2 print:flex print:flex-col">
     {
       projects.map(
-        ({ url, description, highlights, name, isActive, github, image }) => {
+        ({ id, url, description, highlights, name, isActive, github, image }) => {
           const isBackgroundImage = image && image?.position === "background";
           const isContainerImage = image && image?.position === "container";
           return (
@@ -109,7 +123,7 @@ const { className, projects, lang } = Astro.props;
               {isContainerImage && (
                 <a data-src={image.url} data-fancybox="projects">
                   <Image
-                    src={image.url}
+                    src={ImagesById[id]}
                     alt=""
                     width={800}
                     height={1080}
@@ -120,7 +134,7 @@ const { className, projects, lang } = Astro.props;
                   />
                   {image.dark && (
                     <Image
-                      src={image.dark}
+                      src={ImagesById[id]}
                       alt=""
                       width={800}
                       height={1080}

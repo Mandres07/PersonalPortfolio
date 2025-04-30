@@ -668,38 +668,72 @@
    ],
    "projects": [
       {
-         "name": "Cloudflare Vmail",
+         "id": 1,
+         "name": "Luvet PetsCare - AndysPets",
          "image": {
-            "url": "https://i0.hdslb.com/bfs/article/985e2caa8266dee4b9861ee6a341886d480025691.png@1e_1c.webp",
+            "url": "images/andyspets-welcome.jpg",
             "position": "container",
-            "dark": "https://i0.hdslb.com/bfs/article/4d0bf8a784d22e54e3e61763c361c9ef480025691.png@100q_1e_1c.webp"
+            "dark": "images/andyspets-welcome.jpg"
          },
          "isActive": true,
-         "description": "An open source temporary email tool, fully on Cloudflare. Inspired by oiov/vmail",
+         "description": "A Luvet PetsCare implementation for AndysPets, a veterinary clinic in Panama.",
          "highlights": [
-            "🎯 Privacy-friendly, no registration required, out-of-the-box",
-            "✨ Support saving passwords and retrieving email addresses",
-            "😄 Support multiple domain name suffixes",
-            "🚀 100% open source, fully based on Cloudflare."
+            "🎯 Using Luvet PetsCare for +5 years",
+            "✨ Responisve UI, works on all devices",
+            "🐶 More than 3500 pets registered, and counting",
+            "🚀 Built with Microsoft SQL Server, Azure and ASP.NET."
          ],
-         "url": "https://what-the-fuck.sbs",
-         "github": "https://github.com/MiraHikari/cloudflare-vmail"
+         "url": "https://andyspets.azurewebsites.net"
       },
       {
-         "name": "Riddle Town Hunt 2",
+         "id": 2,
+         "name": "Luvet PetsCare - Veterinaria Knino",
          "image": {
-            "url": "https://rth2-webstatic.gbclstudio.cn/wp-content/uploads/2024/02/1707656250-76b2b0d2c94824e89a2b8b2c7d1c6afe.png",
-            "position": "background"
+            "url": "images/veterinaria-knino-welcome.jpg",
+            "position": "container",
+            "dark": "images/veterinaria-knino-welcome.jpg"
          },
-         "isActive": false,
-         "description": "Public decryption activity in the form of Puzzle Hunt.",
+         "isActive": true,
+         "description": "A Luvet PetsCare implementation for Veterinaria Knino, a veterinary clinic in Panama.",
          "highlights": [
-            "👌 More than 1000 people participated, system runs normally",
-            "😮‍ Use headless CMS: WordPress to storage and manage contents, dynamically render page",
-            "😊 Windows-like interface",
-            "💕 Based on Astro"
+            "🎯 Using Luvet PetsCare for +6 years",
+            "✨ Responisve UI, works on all devices",
+            "🐶 More than 9000 pets registered, and counting",
+            "🚀 Built with Microsoft SQL Server, Azure and ASP.NET."
          ],
-         "url": "https://rth2.gcxstudio.cn/"
+         "url": "https://veterinariaknino.azurewebsites.net"
+      },
+      {
+         "id": 3,
+         "name": "MyResolvent.com",
+         "image": {
+            "url": "images/myresolvent-section.jpg",
+            "position": "container"
+         },
+         "isActive": true,
+         "description": "A responsive website for the MyResolvent team, showcasing the features and benefits of the Student Debt Solutions suite.",
+         "highlights": [
+            "🚀 Designed and structured with Bootstrap",
+            "📲 Responsive UI, works on all devices",
+            "💕 UI crafted with Next.js"
+         ],
+         "url": "https://myresolvent.com"
+      },
+      {
+         "id": 4,
+         "name": "SDS Landing Page",
+         "image": {
+            "url": "images/start-myresolvent-hero.jpg",
+            "position": "container"
+         },
+         "isActive": true,
+         "description": "Student Debt Solutions landing page. Responsive UI, features showcase.",
+         "highlights": [
+            "🚀 Designed and structured with Bootstrap",
+            "📲 Responsive UI, works on all devices",
+            "💕 UI crafted with Next.js"
+         ],
+         "url": "https://start.myresolvent.com"
       }
    ]
 }
