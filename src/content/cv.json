@@ -3,7 +3,7 @@
    "basics": {
       "name": "Mario Andrés Morales",
       "label": "Senior Full Stack Developer",
-      "image": "/images/ghibli-avatar.jpeg",
+      "image": "/images/ghibli-avatar.webp",
       "email": "mandres0807@outlook.com",
       "phone": "50766184828",
       "url": "https://mandres.dev",
@@ -34,37 +34,37 @@
       "intro": "Step into my personal gallery, where each image tells a story, captures emotion, and blends memories with a spark of AI.",
       "list": [
          {
-            "image": "/images/mario-judith-ghibli-style.jpeg",
+            "image": "/images/mario-judith-ghibli-style.webp",
             "alt": "Mario Andrés and Judith in Cartagena in ghibli drawing style",
             "desc": "Mario Andrés and Judith in Cartagena"
          },
          {
-            "image": "/images/mario-judith-animal-crossing-style.jpeg",
+            "image": "/images/mario-judith-animal-crossing-style.webp",
             "alt": "Mario Andrés and Judith in Pueblito Paisa, Medellin. With an animal crossing drawing style",
             "desc": "Mario Andrés and Judith in Pueblito Paisa, Medellin."
          },
          {
-            "image": "/images/family-onepiece-style.jpeg",
+            "image": "/images/family-onepiece-style.webp",
             "alt": "Mario Andrés and family in a beautiful beach at San Carlos, Panama. With a One Piece drawing style",
             "desc": "Mario Andrés and family in a beautiful beach at San Carlos, Panama."
          },
          {
-            "image": "/images/mario-family-ghibli-style.jpeg",
+            "image": "/images/mario-family-ghibli-style.webp",
             "alt": "Mario, his mom and Judith at a fancy restaurant. With a Ghibli drawing style",
             "desc": "Mario, his mom and Judith at a fancy restaurant."
          },
          {
-            "image": "/images/mario-judith-figure-style.jpeg",
+            "image": "/images/mario-judith-figure-style.webp",
             "alt": "Mario Andrés and Judith as action figures.",
             "desc": "Mario Andrés and Judith as action figures."
          },
          {
-            "image": "/images/mario-kids-ghibli-style.jpeg",
+            "image": "/images/mario-kids-ghibli-style.webp",
             "alt": "Mario Andrés and kids. With a Ghibli drawing style",
             "desc": "Mario Andrés and kids."
          },
          {
-            "image": "/images/mario-judith-disney-style.jpeg",
+            "image": "/images/mario-judith-disney-style.webp",
             "alt": "Mario Andrés and Judith at Cartagena's beach with a palace in the back. With a Disney drawing style",
             "desc": "Mario Andrés and Judith at Cartagena's beach with a palace in the back."
          }
@@ -685,7 +685,7 @@
       {
          "name": "Luvet PetsCare - AndysPets",
          "image": {
-            "url": "/images/andyspets-welcome.jpg",
+            "url": "/images/andyspets-welcome.webp",
             "position": "container"
          },
          "isActive": true,
@@ -701,7 +701,7 @@
       {
          "name": "Luvet PetsCare - Veterinaria Knino",
          "image": {
-            "url": "/images/veterinaria-knino-tasks.jpg",
+            "url": "/images/veterinaria-knino-tasks.webp",
             "position": "container"
          },
          "isActive": true,
@@ -717,7 +717,7 @@
       {
          "name": "MyResolvent.com",
          "image": {
-            "url": "/images/myresolvent-section.jpg",
+            "url": "/images/myresolvent-section.webp",
             "position": "container"
          },
          "isActive": true,
@@ -732,7 +732,7 @@
       {
          "name": "SDS Landing Page",
          "image": {
-            "url": "/images/start-myresolvent-hero.jpg",
+            "url": "/images/start-myresolvent-hero.webp",
             "position": "container"
          },
          "isActive": true,
@@ -747,7 +747,7 @@
       {
          "name": "SDS Borrower Portal",
          "image": {
-            "url": "/images/sds-borrower-portal-dashboard.jpg",
+            "url": "/images/sds-borrower-portal-dashboard.webp",
             "position": "container"
          },
          "isActive": true,
@@ -762,7 +762,7 @@
       {
          "name": "SDS Agency Portal",
          "image": {
-            "url": "/images/sds-agency-portal-dashboard.jpg",
+            "url": "/images/sds-agency-portal-dashboard.webp",
             "position": "container"
          },
          "isActive": true,
@@ -777,7 +777,7 @@
       {
          "name": "SDS Management Portal",
          "image": {
-            "url": "/images/sds-management-portal-profile.jpg",
+            "url": "/images/sds-management-portal-profile.webp",
             "position": "container"
          },
          "isActive": true,
