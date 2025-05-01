@@ -10,7 +10,6 @@ interface ProjectImage {
 }
 
 interface ProjectEntry {
-  id: number;
   name: string;
   image: ProjectImage;
   isActive: boolean;
@@ -19,6 +18,7 @@ interface ProjectEntry {
   url: string;
   github?: string;
 }
+
 interface Props {
   className: string;
   projects: ProjectEntry[];
@@ -35,16 +35,7 @@ const { className, projects, lang } = Astro.props;
   <div class="grid grid-cols-1 gap-3 md:grid-cols-2 print:flex print:flex-col">
     {
       projects.map(
-        ({
-          id,
-          url,
-          description,
-          highlights,
-          name,
-          isActive,
-          github,
-          image,
-        }) => {
+        ({ url, description, highlights, name, isActive, github, image }) => {
           const isBackgroundImage = image && image?.position === "background";
           const isContainerImage = image && image?.position === "container";
           return (
@@ -117,7 +108,11 @@ const { className, projects, lang } = Astro.props;
                 })}
               </ul>
               {isContainerImage && (
-                <a data-src={image.url} data-fancybox="projects">
+                <a
+                  href={image.url}
+                  data-src={image.url}
+                  data-fancybox="projects"
+                >
                   <Image
                     src={image.url}
                     alt=""

@@ -161,7 +161,6 @@ const { lang } = Astro.props;
     languageSelect.value = language;
     languageSelect.addEventListener("change", (e) => {
       const selectedLanguage = (e.target as HTMLSelectElement).value;
-      console.log("updating language:", selectedLanguage);
       updateLanguage(selectedLanguage);
       redirectByLanguage(selectedLanguage);
     });

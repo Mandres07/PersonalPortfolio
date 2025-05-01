@@ -103,9 +103,9 @@ const { className, work, lang } = Astro.props;
                 )}
                 </div>
 
-                <button class="print:hidden group/more w-fit cursor-pointer items-center justify-center gap-1.5 text-xs underline text-skin-muted transition-all hover:text-skin-base flex expand-button" data-lang={lang}>
+                <button class="print:hidden group/more w-fit cursor-pointer items-center justify-center gap-1.5 text-xs text-skin-hue transition-all hover:text-skin-base flex expand-button" data-lang={lang}>
                   <span class="expand-text">{lang == "en" ? "Show more" : "Ver más"}</span>
-                  <Icon name="ri:arrow-up-s-line" class="w-4 h-4 group-hover/more:translate-y-0.5 duration-200 ease-out group-data-[expanded=true]:rotate-180" width={24} height={24}></Icon>
+                  <Icon name="ri:arrow-down-s-line" class="w-4 h-4 group-hover/more:translate-y-0.5 duration-200 ease-out group-data-[expanded=true]:rotate-180" width={24} height={24}></Icon>
                 </button>
 
 

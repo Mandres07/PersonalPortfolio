@@ -31,27 +31,42 @@
       ]
    },
    "images": {
-      "intro": "Photography is the art of light, and images are the contours of memory.",
+      "intro": "Step into my personal gallery, where each image tells a story, captures emotion, and blends memories with a spark of AI.",
       "list": [
          {
-            "image": "https://i0.hdslb.com/bfs/article/6720a7355fd11b9666e2716cadf04e45480025691.jpg@90q_1e_1c.webp",
-            "alt": "Sunset in Nanchang",
-            "desc": "Shot on a sunny day in Nanchang. 2024.10.05"
+            "image": "/images/mario-judith-ghibli-style.jpeg",
+            "alt": "Mario and Judith in Cartagena in ghibli drawing style",
+            "desc": "Mario and Judith in Cartagena"
          },
          {
-            "image": "https://i0.hdslb.com/bfs/article/82f680f56532d942f74d86801abf49ea480025691.jpg@90q_1e_1c.webp",
-            "alt": "My Cat",
-            "desc": "A Ragdoll cat who stayed for a year. She's a girl."
+            "image": "/images/mario-judith-animal-crossing-style.jpeg",
+            "alt": "Mario and Judith in Pueblito Paisa, Medellin. With an animal crossing drawing style",
+            "desc": "Mario and Judith in Pueblito Paisa, Medellin."
          },
          {
-            "image": "https://i0.hdslb.com/bfs/article/14e6ae3c368b0eddeeb2b5c338239486480025691.jpg@90q_1e_1c.webp",
-            "alt": "Emoji",
-            "desc": "True, dude"
+            "image": "/images/family-onepiece-style.jpeg",
+            "alt": "Mario and family in a beautiful beach at San Carlos, Panama. With a One Piece drawing style",
+            "desc": "Mario and family in a beautiful beach at San Carlos, Panama."
          },
          {
-            "image": "https://i0.hdslb.com/bfs/article/fe1737e9d7b6c2b21eedaf60b6dc9f86480025691.jpg@90q_1e_1c.webp",
-            "alt": "Cat Kernel Crashed",
-            "desc": "Cat Kernel Crashed"
+            "image": "/images/mario-family-ghibli-style.jpeg",
+            "alt": "Mario, his mom and Judith at a fancy restaurant. With a Ghibli drawing style",
+            "desc": "Mario, his mom and Judith at a fancy restaurant."
+         },
+         {
+            "image": "/images/mario-judith-figure-style.jpeg",
+            "alt": "Mario and Judith as action figures.",
+            "desc": "Mario and Judith as action figures."
+         },
+         {
+            "image": "/images/mario-kids-ghibli-style.jpeg",
+            "alt": "Mario and kids. With a Ghibli drawing style",
+            "desc": "Mario and kids."
+         },
+         {
+            "image": "/images/mario-judith-disney-style.jpeg",
+            "alt": "Mario and Judith at Cartagena's beach with a palace in the back. With a Disney drawing style",
+            "desc": "Mario and Judith at Cartagena's beach with a palace in the back."
          }
       ]
    },
@@ -668,12 +683,10 @@
    ],
    "projects": [
       {
-         "id": 1,
          "name": "Luvet PetsCare - AndysPets",
          "image": {
             "url": "/images/andyspets-welcome.jpg",
-            "position": "container",
-            "dark": "/images/andyspets-welcome.jpg"
+            "position": "container"
          },
          "isActive": true,
          "description": "A Luvet PetsCare implementation for AndysPets, a veterinary clinic in Panama.",
@@ -686,12 +699,10 @@
          "url": "https://andyspets.azurewebsites.net"
       },
       {
-         "id": 2,
          "name": "Luvet PetsCare - Veterinaria Knino",
          "image": {
-            "url": "/images/veterinaria-knino-welcome.jpg",
-            "position": "container",
-            "dark": "/images/veterinaria-knino-welcome.jpg"
+            "url": "/images/veterinaria-knino-tasks.jpg",
+            "position": "container"
          },
          "isActive": true,
          "description": "A Luvet PetsCare implementation for Veterinaria Knino, a veterinary clinic in Panama.",
@@ -704,7 +715,6 @@
          "url": "https://veterinariaknino.azurewebsites.net"
       },
       {
-         "id": 3,
          "name": "MyResolvent.com",
          "image": {
             "url": "/images/myresolvent-section.jpg",
@@ -720,20 +730,64 @@
          "url": "https://myresolvent.com"
       },
       {
-         "id": 4,
          "name": "SDS Landing Page",
          "image": {
             "url": "/images/start-myresolvent-hero.jpg",
             "position": "container"
          },
          "isActive": true,
-         "description": "Student Debt Solutions landing page. Responsive UI, features showcase.",
+         "description": "SDS landing page. Responsive UI, showing the features that the company can offer.",
          "highlights": [
             "🚀 Designed and structured with Bootstrap",
             "📲 Responsive UI, works on all devices",
             "💕 UI crafted with Next.js"
          ],
          "url": "https://start.myresolvent.com"
+      },
+      {
+         "name": "SDS Borrower Portal",
+         "image": {
+            "url": "/images/sds-borrower-portal-dashboard.jpg",
+            "position": "container"
+         },
+         "isActive": true,
+         "description": "SDS Borrower Portal, where students can apply to get loan debt benefits",
+         "highlights": [
+            "🚀 Designed and structured with Bootstrap",
+            "📲 Responsive UI, works on all devices",
+            "💕 UI crafted with .NET Core + Blazor"
+         ],
+         "url": "https://app.myresolvent.com"
+      },
+      {
+         "name": "SDS Agency Portal",
+         "image": {
+            "url": "/images/sds-agency-portal-dashboard.jpg",
+            "position": "container"
+         },
+         "isActive": true,
+         "description": "SDS Agency Portal, where agencies can manage their students profiles",
+         "highlights": [
+            "🚀 Designed and structured with Bootstrap",
+            "📲 Responsive UI, works on all devices",
+            "💕 UI crafted with .NET Core + Blazor"
+         ],
+         "url": "https://sds-agency-ui-prd.efiscal.net"
+      },
+      {
+         "name": "SDS Management Portal",
+         "image": {
+            "url": "/images/sds-management-portal-profile.jpg",
+            "position": "container"
+         },
+         "isActive": true,
+         "description": "SDS Management Portal, where SDS experts can manage their agencies accounts, view reports and configure settings.",
+         "highlights": [
+            "🚀 Designed and structured with Bootstrap",
+            "📲 Responsive UI, works on all devices",
+            "💕 UI crafted with .NET Core + Blazor"
+         ],
+         "url": "https://sds-management-ui-prd.efiscal.net"
       }
    ]
 }

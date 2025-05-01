@@ -1,739 +1,792 @@
 {
-   "analyticsCode": "",
-   "basics": {
-     "name": "Mario Andrés Morales",
-     "label": "Senior Full Stack Developer",
-     "image": "/images/ghibli-avatar.jpeg",
-     "email": "mandres0807@outlook.com",
-     "phone": "50766184828",
-     "url": "https://mandres.dev",
-     "summary": "Hola, soy Mario Andrés Morales, un desarrollador full-stack de Panamá 🇵🇦. Desarrollo aplicaciones web con .NET Core, Blazor, Node.js, Next.js y JavaScript.<br/>Fuera del código, disfruto de los deportes, las películas, la música y pasar tiempo con mis mascotas.",
-     "theme": "green",
-     "location": {
-       "address": "C. Hawai 589",
-       "city": "Panama",
-       "countryCode": "PA",
-       "region": "Panama"
-     },
-     "profiles": [
-       {
-         "network": "LinkedIn",
-         "icon": "ri:linkedin-fill",
-         "username": "mariomorales07",
-         "url": "https://www.linkedin.com/in/mariomorales07/"
-       },
-       {
-         "network": "GitHub",
-         "icon": "mdi:github",
-         "username": "Mandres07",
-         "url": "https://github.com/Mandres07"
-       }
-     ]
-   },
-   "images": {
-     "intro": "La fotografía es el arte de la luz, y las imágenes son los contornos de la memoria.",
-     "list": [
-       {
-         "image": "https://i0.hdslb.com/bfs/article/6720a7355fd11b9666e2716cadf04e45480025691.jpg@90q_1e_1c.webp",
-         "alt": "Atardecer en Nanchang",
-         "desc": "Tomada en un día soleado en Nanchang. 2024.10.05"
-       },
-       {
-         "image": "https://i0.hdslb.com/bfs/article/82f680f56532d942f74d86801abf49ea480025691.jpg@90q_1e_1c.webp",
-         "alt": "Mi gata",
-         "desc": "Una gata Ragdoll que se quedó durante un año. Es hembra."
-       },
-       {
-         "image": "https://i0.hdslb.com/bfs/article/14e6ae3c368b0eddeeb2b5c338239486480025691.jpg@90q_1e_1c.webp",
-         "alt": "Emoji",
-         "desc": "Cierto, amigo"
-       },
-       {
-         "image": "https://i0.hdslb.com/bfs/article/fe1737e9d7b6c2b21eedaf60b6dc9f86480025691.jpg@90q_1e_1c.webp",
-         "alt": "Error de núcleo del gato",
-         "desc": "Error de núcleo del gato"
-       }
-     ]
-   },
-   "education": [
-     {
-       "institution": "Universidad Tecnológica de Panamá",
-       "url": "https://utp.ac.pa",
-       "area": "Ingeniería en Sistemas y Computación",
-       "studyType": "Estudiante a tiempo completo",
-       "startDate": "2010-01-01",
-       "endDate": "2015-06-01"
-     },
-     {
-       "institution": "Colegio Nuestra Señora de Lourdes",
-       "url": "http://www.nuestrasenoradelourdes.edu.pa",
-       "area": "Bachiller en Ciencias y Letras",
-       "studyType": "Estudiante a tiempo completo",
-       "startDate": "2000-03-01",
-       "endDate": "2009-12-15"
-     }
-   ],
-   "certificates": [
-     {
-       "name": "Angular - The Complete Guide",
-       "date": "2021-10-07",
-       "url": "https://www.udemy.com/certificate/UC-0e631566-c6f9-4f14-b877-841f090761b2/",
-       "issuer": "Udemy"
-     },
-     {
-       "name": "Cypress End-to-End Testing - Getting Started",
-       "date": "2023-11-28",
-       "url": "https://www.udemy.com/certificate/UC-1a7a661f-0190-4f19-af6e-f0d8ca911fbf/",
-       "issuer": "Udemy"
-     },
-     {
-       "name": "NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)",
-       "date": "2021-01-27",
-       "url": "https://www.udemy.com/certificate/UC-c90bc2cc-2757-4e8c-a79b-648cc77a3d8b/",
-       "issuer": "Udemy"
-     },
-     {
-       "name": "React - The Complete Guide (incl Hooks, React Router, Redux)",
-       "date": "2021-03-28",
-       "url": "https://www.udemy.com/certificate/UC-7c32fb93-c8b7-4fb1-8448-f950debfebad/",
-       "issuer": "Udemy"
-     },
-     {
-       "name": "React Native - The Practical Guide 2020",
-       "date": "2020-06-09",
-       "url": "https://www.udemy.com/certificate/UC-0f0943c4-273b-45b0-9f52-e4a58ee4a3f1/",
-       "issuer": "Udemy"
-     },
-     {
-       "name": "Understanding TypeScript - 2022 Edition",
-       "date": "2022-05-29",
-       "url": "https://www.udemy.com/certificate/UC-fdedfcc2-dc70-4aa2-b85b-5c3c2ab99363/",
-       "issuer": "Udemy"
-     },
-     {
-       "name": "Ok, Umbraco",
-       "date": "2021-08-18",
-       "url": "https://www.udemy.com/certificate/UC-d757f986-c1d7-4440-9645-6a2dd858c543/",
-       "issuer": "Udemy"
-     },
-     {
-       "name": "100 Days Of Code - 2022 Web Development Bootcamp",
-       "date": "2022-09-13",
-       "url": "https://www.udemy.com/certificate/UC-40a9654f-383a-41ed-a009-195dd2cccae6/",
-       "issuer": "Udemy"
-     }
-   ],
-   "work": [
-     {
-       "name": "eFiscal Networks",
-       "position": "Lead Software Developer",
-       "location_type": "Remote",
-       "location": "PA",
-       "url": "https://www.efiscal.net",
-       "startDate": "2025-04-14",
-       "endDate": null,
-       "summary": "Desarrollador de software principal con experiencia full-stack, especializado en desarrollo frontend con Blazor, C# y .NET Core.",
-       "highlights": [
-         "Responsable del sistema de diseño de la suite SDS.",
-         "Implementé una suite de reportes con SQL Server.",
-         "Responsable de la integración del sistema de pagos Braintree de PayPal.",
-         "Mejoré la arquitectura de microservicios de la suite SDS usando MassTransit y RabbitMQ."
-       ],
-       "responsibilities": [
-         "Desarrollo backend con .NET Core y RabbitMQ",
-         "Desarrollo frontend usando Blazor, ReactJS y NextJS.",
-         "Mantenimiento y mejora de bases de código existentes.",
-         "Toma de decisiones y planificación de la UI para la suite SDS."
-       ],
-       "achievements": [
-         "Implementé un sistema de diseño confiable para la suite SDS usando Bootstrap.",
-         "Mejoré el proceso de entrega de la aplicación web implementando pipelines de CI/CD con Azure DevOps."
-       ],
-       "skills": {
-         ".Net Core": "simple-icons:dotnet",
-         "Blazor": "simple-icons:blazor",
-         "Node": "ri:nodejs-line",
-         "Express": "simple-icons:express",
-         "Next.js": "ri:nextjs-fill",
-         "React": "mdi:react",
-         "SQL": "simple-icons:mysql",
-         "Git": "mdi:git",
-         "HTML": "simple-icons:html5",
-         "CSS": "ri:css3-fill",
-         "Bootstrap": "mdi:bootstrap",
-         "RabbitMQ": "simple-icons:rabbitmq",
-         "Azure": "simple-icons:azuredevops",
-         "AWS": "simple-icons:amazonaws"
-       }
-     },
-     {
-       "name": "Devsu",
-       "position": "Senior Software Developer",
-       "location_type": "Remote",
-       "location": "PA",
-       "url": "https://devsu.com",
-       "startDate": "2021-04-08",
-       "endDate": "2025-04-11",
-       "summary": "Desarrollador full-stack responsable del desarrollo backend y frontend en proyectos internacionales, usando Node.js, Express.js, React, Next.js, .NET Core y Blazor.",
-       "highlights": [
-         "Creé un backend con NodeJS y ExpressJS desde cero para una aplicación web.",
-         "Responsable del desarrollo de la UI de una suite en .NET Core y Blazor.",
-         "Implementé una suite de reportes con SQL Server.",
-         "Responsable de la integración del sistema de pagos Braintree de PayPal."
-       ],
-       "responsibilities": [
-         "Backend development using NodeJS and ExpressJS.",
-         "Frontend development using Blazor, Angular, ReactJS and NextJS.",
-         "Mantenimiento y mejora de bases de código existentes.",
-         "Creé y mantuve varios sitios web usando NextJS y ReactJS."
-       ],
-       "achievements": [
-         "Implementé un sistema de diseño confiable para la suite SDS usando Bootstrap.",
-         "Mejoré el proceso de entrega de la aplicación web implementando pipelines de CI/CD con Azure DevOps."
-       ],
-       "skills": {
-         ".Net Core": "simple-icons:dotnet",
-         "Blazor": "simple-icons:blazor",
-         "Node": "ri:nodejs-line",
-         "Express": "simple-icons:express",
-         "Next.js": "ri:nextjs-fill",
-         "React": "mdi:react",
-         "SQL": "simple-icons:mysql",
-         "Git": "mdi:git",
-         "HTML": "simple-icons:html5",
-         "CSS": "ri:css3-fill",
-         "Bootstrap": "mdi:bootstrap",
-         "RabbitMQ": "simple-icons:rabbitmq",
-         "Azure": "simple-icons:azuredevops",
-         "AWS": "simple-icons:amazonaws"
-       }
-     },
-     {
-       "name": "Exceltec Software, S.A.",
-       "position": "Software Developer",
-       "location_type": "Remote",
-       "location": "PA",
-       "url": "https://www.exceltecgroup.com",
-       "startDate": "2019-06-01",
-       "endDate": "2020-05-01",
-       "summary": "Desarrollé soluciones frontend y backend (REST APIs) utilizando .NET y SQL Server, siguiendo metodologías ágiles (Scrum) y desplegando aplicaciones en Microsoft Azure.",
-       "highlights": [
-         "Lideré el desarrollo de una aplicación web usando .NET",
-         "Responsable de la integración de la factura electrónica con la autoridad tributaria de Costa Rica."
-       ],
-       "responsibilities": [
-         "Diseño y planificación de la arquitectura de la aplicación web."
-       ],
-       "achievements": [
-         "Mejoré el proceso de entrega de la aplicación web implementando pipelines de CI/CD con Azure DevOps."
-       ],
-       "skills": {
-         ".Net Core": "simple-icons:dotnet",
-         "Azure": "simple-icons:azuredevops",
-         "SQL": "simple-icons:mysql",
-         "Git": "mdi:git",
-         "HTML": "simple-icons:html5",
-         "CSS": "ri:css3-fill",
-         "Bootstrap": "mdi:bootstrap"
-       }
-     },
-     {
-       "name": "Intercoud",
-       "position": "CEO, Founder and Development Leader",
-       "location_type": "Remote",
-       "location": "PA",
-       "url": null,
-       "startDate": "2017-11-01",
-       "endDate": "2023-12-31",
-       "summary": "Fundé y desarrollé Luvet PetsCare, una aplicación web diseñada para ayudar a clínicas veterinarias a gestionar sus operaciones. Construí la plataforma usando ASP.NET, SQL Server y Microsoft Azure. Obtuve experiencia significativa en desarrollo de productos, despliegue en la nube y gestión empresarial mediante este emprendimiento.",
-       "highlights": [
-         "Responsable de todo el diseño, construcción, despliegue y mantenimiento de la aplicación web.",
-         "Adquirí experiencia invaluable en el campo de atención y soporte al cliente.",
-         "Aprendí sobre diseño y desarrollo de interfaces Mobile First."
-       ],
-       "responsibilities": [
-         "Diseño y planificación de la arquitectura de la aplicación web.",
-         "Mantenimiento y mejora de bases de código existentes.",
-         "Implemented several requested features according to customer needs."
-       ],
-       "achievements": [
-         "Mi primera experiencia como emprendedor.",
-         "Experiencia, experiencia y más experiencia."
-       ],
-       "skills": {
-         ".Net Core": "simple-icons:dotnet",
-         "Azure": "simple-icons:azuredevops",
-         "SQL": "simple-icons:mysql",
-         "Git": "mdi:git",
-         "HTML": "simple-icons:html5",
-         "CSS": "ri:css3-fill",
-         "Bootstrap": "mdi:bootstrap",
-         "Android": "simple-icons:android"
-       }
-     },
-     {
-       "name": "Hypernova Labs",
-       "position": "Junior Software Developer",
-       "location_type": "Office",
-       "location": "PA",
-       "url": "https://www.hypernovalabs.com",
-       "startDate": "2015-09-01",
-       "endDate": "2016-01-31",
-       "summary": "Desarrollé aplicaciones móviles con Java y Android Studio, y aplicaciones web (frontend y backend) con .NET, SQL Server y Microsoft Azure.",
-       "highlights": [
-         "Siempre puntual, con trabajo eficiente."
-       ],
-       "responsibilities": [
-         "Responsable de la base de código de la aplicación Android para Agua Cristalina.",
-         "Implementé varias páginas para la aplicación web usando .NET."
-       ],
-       "achievements": [
-         "Mi primera experiencia laboral, aprendí sobre desarrollo Android y web.",
-         "Aprendí sobre SQL Server y creación de consultas paginadas."
-       ],
-       "skills": {
-         ".Net Core": "simple-icons:dotnet",
-         "Azure": "simple-icons:azuredevops",
-         "SQL": "simple-icons:mysql",
-         "Git": "mdi:git",
-         "HTML": "simple-icons:html5",
-         "CSS": "ri:css3-fill",
-         "Bootstrap": "mdi:bootstrap",
-         "Android": "simple-icons:android"
-       }
-     }
-   ],
-   "skills": [
-     {
-       "name": "HTML",
-       "icon": "simple-icons:html5",
-       "level": "Expert",
-       "keywords": [
-         "Web Development",
-         "Frontend"
-       ]
-     },
-     {
-       "name": "CSS",
-       "icon": "ri:css3-fill",
-       "level": "Expert",
-       "keywords": [
-         "Web Development",
-         "Frontend",
-         "Responsive Design"
-       ]
-     },
-     {
-       "name": "C#",
-       "icon": "simple-icons:csharp",
-       "level": "Expert",
-       "keywords": [
-         "Web Development",
-         "Frontend",
-         "Backend",
-         "Fullstack"
-       ]
-     },
-     {
-       "name": "JavaScript",
-       "icon": "simple-icons:javascript",
-       "level": "Expert",
-       "keywords": [
-         "Web Development",
-         "Frontend",
-         "Backend",
-         "Fullstack"
-       ]
-     },
-     {
-       "name": "TypeScript",
-       "icon": "simple-icons:typescript",
-       "level": "Expert",
-       "keywords": [
-         "Web Development",
-         "Frontend",
-         "Backend",
-         "Fullstack"
-       ]
-     },
-     {
-       "name": "Tailwind",
-       "icon": "mdi:tailwind",
-       "level": "Intermediate",
-       "keywords": [
-         "Web Development",
-         "Frontend",
-         "CSS Framework",
-         "Responsive Design"
-       ]
-     },
-     {
-       "name": "Bootstrap",
-       "icon": "mdi:bootstrap",
-       "level": "Expert",
-       "keywords": [
-         "Web Development",
-         "Frontend",
-         "CSS Framework",
-         "Responsive Design"
-       ]
-     },
-     {
-       "name": ".NET Core",
-       "icon": "simple-icons:dotnet",
-       "level": "Expert",
-       "keywords": [
-         "Web Development",
-         "Frontend",
-         "Backend",
-         "Fullstack"
-       ]
-     },
-     {
-       "name": "Node",
-       "icon": "ri:nodejs-line",
-       "level": "Expert",
-       "keywords": [
-         "Web Development",
-         "Backend",
-         "JavaScript",
-         "Server"
-       ]
-     },
-     {
-       "name": "ExpressJS",
-       "icon": "simple-icons:express",
-       "level": "Expert",
-       "keywords": [
-         "Web Development",
-         "Backend",
-         "Server",
-         "Fullstack"
-       ]
-     },
-     {
-       "name": "Next.js",
-       "icon": "ri:nextjs-line",
-       "level": "Expert",
-       "keywords": [
-         "Web Development",
-         "Frontend",
-         "React Framework",
-         "SSR",
-         "Static Generation"
-       ]
-     },
-     {
-       "name": "React",
-       "icon": "mdi:react",
-       "level": "Expert",
-       "keywords": [
-         "Web Development",
-         "Frontend",
-         "JavaScript Library",
-         "UI"
-       ]
-     },
-     {
-       "name": "Blazor",
-       "icon": "simple-icons:blazor",
-       "level": "Expert",
-       "keywords": [
-         "Web Development",
-         "Frontend",
-         "C#",
-         "UI"
-       ]
-     },
-     {
-       "name": "Angular",
-       "icon": "simple-icons:angular",
-       "level": "Expert",
-       "keywords": [
-         "Web Development",
-         "Frontend",
-         "JavaScript Library",
-         "UI"
-       ]
-     },
-     {
-       "name": "MySql",
-       "icon": "simple-icons:mysql",
-       "level": "Expert",
-       "keywords": [
-         "Databases",
-         "SQL",
-         "Data Storage",
-         "Backend"
-       ]
-     },
-     {
-       "name": "MSSQL",
-       "icon": "simple-icons:microsoftsqlserver",
-       "level": "Expert",
-       "keywords": [
-         "Databases",
-         "SQL",
-         "Data Storage",
-         "Backend"
-       ]
-     },
-     {
-       "name": "MongoDB",
-       "icon": "simple-icons:mongodb",
-       "level": "Expert",
-       "keywords": [
-         "Databases",
-         "File",
-         "Data Storage",
-         "Backend"
-       ]
-     },
-     {
-       "name": "Azure",
-       "icon": "simple-icons:azuredevops",
-       "level": "Intermediate",
-       "keywords": [
-         "Cloud computing",
-         "Cloud Storage",
-         "Data Storage",
-         "Management"
-       ]
-     },
-     {
-       "name": "AWS",
-       "icon": "simple-icons:amazonaws",
-       "level": "Intermediate",
-       "keywords": [
-         "Cloud computing",
-         "Cloud Storage",
-         "Data Storage",
-         "Management"
-       ]
-     },
-     {
-       "name": "Git",
-       "icon": "mdi:git",
-       "level": "Expert",
-       "keywords": [
-         "Version Control",
-         "Collaboration",
-         "Source Code"
-       ]
-     },
-     {
-       "name": "GitHub",
-       "icon": "mdi:github",
-       "level": "Expert",
-       "keywords": [
-         "Version Control",
-         "Collaboration",
-         "Source Code",
-         "Git"
-       ]
-     },
-     {
-       "name": "Docker",
-       "icon": "mdi:docker",
-       "level": "Beginner",
-       "keywords": [
-         "Virtual Environments",
-         "Backend"
-       ]
-     },
-     {
-       "name": "Vite",
-       "icon": "simple-icons:vite",
-       "level": "Beginner",
-       "keywords": [
-         "Web Development",
-         "Frontend",
-         "Build Tool"
-       ]
-     },
-     {
-       "name": "WordPress",
-       "icon": "ri:wordpress-fill",
-       "level": "Intermediate",
-       "keywords": [
-         "PHP",
-         "Fullstack",
-         "Frontend"
-       ]
-     },
-     {
-       "name": "Astro",
-       "icon": "simple-icons:astro",
-       "level": "Intermediate",
-       "keywords": [
-         "Web Development",
-         "Frontend",
-         "SSR",
-         "Static Generation"
-       ]
-     },
-     {
-       "name": "Vercel",
-       "icon": "simple-icons:vercel",
-       "level": "Beginner",
-       "keywords": [
-         "Serverless",
-         "Static Site Hosting"
-       ]
-     },
-     {
-       "name": "Netlify",
-       "icon": "simple-icons:netlify",
-       "level": "Beginner",
-       "keywords": [
-         "Serverless",
-         "Static Site Hosting"
-       ]
-     },
-     {
-       "name": "Android",
-       "icon": "simple-icons:android",
-       "level": "Beginner",
-       "keywords": [
-         "Mobile Development"
-       ]
-     }
-   ],
-   "languages": [
-     {
-       "language": "Español",
-       "fluency": "Hablante nativo"
-     },
-     {
-       "language": "Inglés",
-       "fluency": "Fluido"
-     }
-   ],
-   "interests": [
-     {
-       "name": "Tecnología",
-       "keywords": [
-         "AI",
-         "Responsive Design",
-         "Web Development",
-         "Programming"
-       ]
-     },
-     {
-       "name": "Música",
-       "keywords": [
-         "Música",
-         "Guitar",
-         "Piano",
-         "Singing",
-         "Accordion",
-         "Entertainment",
-         "Relaxing"
-       ]
-     },
-     {
-       "name": "Deportes",
-       "keywords": [
-         "Soccer",
-         "Weightlifting",
-         "F1",
-         "Running",
-         "Boxing"
-       ]
-     },
-     {
-       "name": "Películas y Series",
-       "keywords": [
-         "Movies",
-         "Cinema",
-         "TV Shows",
-         "Entertainment",
-         "Series"
-       ]
-     },
-     {
-       "name": "Mascotas",
-       "keywords": [
-         "Dogs",
-         "Beagle",
-         "Pitbull"
-       ]
-     }
-   ],
-   "references": [
-     {
-       "name": "MiraHikari",
-       "reference": "Referencia…"
-     }
-   ],
-   "projects": [
-     {
-       "id": 1,
-       "name": "Luvet PetsCare - AndysPets",
-       "image": {
-         "url": "/images/andyspets-welcome.jpg",
-         "position": "container",
-         "dark": "/images/andyspets-welcome.jpg"
-       },
-       "isActive": true,
-       "description": "Una implementación de Luvet PetsCare para AndysPets, una clínica veterinaria en Panamá.",
-       "highlights": [
-         "🎯 Usando Luvet PetsCare por más de 5 años",
-         "✨ UI responsiva, funciona en todos los dispositivos",
-         "🐶 Más de 3500 mascotas registradas, y contando",
-         "🚀 Construido con Microsoft SQL Server, Azure y ASP.NET."
-       ],
-       "url": "https://andyspets.azurewebsites.net"
-     },
-     {
-       "id": 2,
-       "name": "Luvet PetsCare - Veterinaria Knino",
-       "image": {
-         "url": "/images/veterinaria-knino-welcome.jpg",
-         "position": "container",
-         "dark": "/images/veterinaria-knino-welcome.jpg"
-       },
-       "isActive": true,
-       "description": "Una implementación de Luvet PetsCare para Veterinaria Knino, una clínica veterinaria en Panamá.",
-       "highlights": [
-         "🎯 Usando Luvet PetsCare por más de 6 años",
-         "✨ UI responsiva, funciona en todos los dispositivos",
-         "🐶 More than 9000 pets registered, and counting",
-         "🚀 Construido con Microsoft SQL Server, Azure y ASP.NET."
-       ],
-       "url": "https://veterinariaknino.azurewebsites.net"
-     },
-     {
-       "id": 3,
-       "name": "MyResolvent.com",
-       "image": {
-         "url": "/images/myresolvent-section.jpg",
-         "position": "container"
-       },
-       "isActive": true,
-       "description": "Un sitio web responsivo para el equipo de MyResolvent, mostrando las características y beneficios de la suite Student Debt Solutions.",
-       "highlights": [
-         "🚀 Diseñado y estructurado con Bootstrap",
-         "📲 UI responsiva, funciona en todos los dispositivos",
-         "💕 UI diseñada con Next.js"
-       ],
-       "url": "https://myresolvent.com"
-     },
-     {
-       "id": 4,
-       "name": "SDS Landing Page",
-       "image": {
-         "url": "/images/start-myresolvent-hero.jpg",
-         "position": "container"
-       },
-       "isActive": true,
-       "description": "Página de aterrizaje de Student Debt Solutions. UI responsiva y muestra de funcionalidades.",
-       "highlights": [
-         "🚀 Diseñado y estructurado con Bootstrap",
-         "📲 UI responsiva, funciona en todos los dispositivos",
-         "💕 UI diseñada con Next.js"
-       ],
-       "url": "https://start.myresolvent.com"
-     }
-   ]
- }
+  "analyticsCode": "",
+  "basics": {
+    "name": "Mario Andrés Morales",
+    "label": "Senior Full Stack Developer",
+    "image": "/images/ghibli-avatar.jpeg",
+    "email": "mandres0807@outlook.com",
+    "phone": "50766184828",
+    "url": "https://mandres.dev",
+    "summary": "Hola, soy Mario Andrés Morales, un desarrollador full-stack de Panamá 🇵🇦. Desarrollo aplicaciones web con .NET Core, Blazor, Node.js, Next.js y JavaScript.<br/>Fuera del código, disfruto de los deportes, las películas, la música y pasar tiempo con mis mascotas.",
+    "theme": "green",
+    "location": {
+      "address": "C. Hawai 589",
+      "city": "Panama",
+      "countryCode": "PA",
+      "region": "Panama"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "icon": "ri:linkedin-fill",
+        "username": "mariomorales07",
+        "url": "https://www.linkedin.com/in/mariomorales07/"
+      },
+      {
+        "network": "GitHub",
+        "icon": "mdi:github",
+        "username": "Mandres07",
+        "url": "https://github.com/Mandres07"
+      }
+    ]
+  },
+  "images": {
+    "intro": "Cada imagen cuenta una historia, captura momentos especiales y revive emociones. Bienvenido a mi galería personal con un toque de IA.",
+    "list": [
+      {
+        "image": "/images/mario-judith-ghibli-style.jpeg",
+        "alt": "Mario y Judith en Cartagena con un estilo de dibujo Ghibli",
+        "desc": "Mario y Judith en Cartagena"
+      },
+      {
+        "image": "/images/mario-judith-animal-crossing-style.jpeg",
+        "alt": "Mario y Judith en el Pueblito Paisa, Medellín. Con un estilo de dibujo tipo Animal Crossing",
+        "desc": "Mario y Judith en el Pueblito Paisa, Medellín"
+      },
+      {
+        "image": "/images/family-onepiece-style.jpeg",
+        "alt": "Mario y su familia en una hermosa playa en San Carlos, Panamá. Con un estilo de dibujo de One Piece",
+        "desc": "Mario y su familia en una hermosa playa en San Carlos, Panamá"
+      },
+      {
+        "image": "/images/mario-family-ghibli-style.jpeg",
+        "alt": "Mario, su mamá y Judith en un restaurante elegante. Con un estilo de dibujo Ghibli",
+        "desc": "Mario, su mamá y Judith en un restaurante elegante"
+      },
+      {
+        "image": "/images/mario-judith-figure-style.jpeg",
+        "alt": "Mario y Judith como figuras de acción",
+        "desc": "Mario y Judith como figuras de acción"
+      },
+      {
+        "image": "/images/mario-kids-ghibli-style.jpeg",
+        "alt": "Mario y los niños. Con un estilo de dibujo Ghibli",
+        "desc": "Mario y los niños"
+      },
+      {
+        "image": "/images/mario-judith-disney-style.jpeg",
+        "alt": "Mario y Judith en la playa de Cartagena con un palacio al fondo. Con un estilo de dibujo Disney",
+        "desc": "Mario y Judith en la playa de Cartagena con un palacio al fondo"
+      }
+    ]
+  },
+  "education": [
+    {
+      "institution": "Universidad Tecnológica de Panamá",
+      "url": "https://utp.ac.pa",
+      "area": "Ingeniería en Sistemas y Computación",
+      "studyType": "Estudiante a tiempo completo",
+      "startDate": "2010-01-01",
+      "endDate": "2015-06-01"
+    },
+    {
+      "institution": "Colegio Nuestra Señora de Lourdes",
+      "url": "http://www.nuestrasenoradelourdes.edu.pa",
+      "area": "Bachiller en Ciencias y Letras",
+      "studyType": "Estudiante a tiempo completo",
+      "startDate": "2000-03-01",
+      "endDate": "2009-12-15"
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Angular - The Complete Guide",
+      "date": "2021-10-07",
+      "url": "https://www.udemy.com/certificate/UC-0e631566-c6f9-4f14-b877-841f090761b2/",
+      "issuer": "Udemy"
+    },
+    {
+      "name": "Cypress End-to-End Testing - Getting Started",
+      "date": "2023-11-28",
+      "url": "https://www.udemy.com/certificate/UC-1a7a661f-0190-4f19-af6e-f0d8ca911fbf/",
+      "issuer": "Udemy"
+    },
+    {
+      "name": "NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)",
+      "date": "2021-01-27",
+      "url": "https://www.udemy.com/certificate/UC-c90bc2cc-2757-4e8c-a79b-648cc77a3d8b/",
+      "issuer": "Udemy"
+    },
+    {
+      "name": "React - The Complete Guide (incl Hooks, React Router, Redux)",
+      "date": "2021-03-28",
+      "url": "https://www.udemy.com/certificate/UC-7c32fb93-c8b7-4fb1-8448-f950debfebad/",
+      "issuer": "Udemy"
+    },
+    {
+      "name": "React Native - The Practical Guide 2020",
+      "date": "2020-06-09",
+      "url": "https://www.udemy.com/certificate/UC-0f0943c4-273b-45b0-9f52-e4a58ee4a3f1/",
+      "issuer": "Udemy"
+    },
+    {
+      "name": "Understanding TypeScript - 2022 Edition",
+      "date": "2022-05-29",
+      "url": "https://www.udemy.com/certificate/UC-fdedfcc2-dc70-4aa2-b85b-5c3c2ab99363/",
+      "issuer": "Udemy"
+    },
+    {
+      "name": "Ok, Umbraco",
+      "date": "2021-08-18",
+      "url": "https://www.udemy.com/certificate/UC-d757f986-c1d7-4440-9645-6a2dd858c543/",
+      "issuer": "Udemy"
+    },
+    {
+      "name": "100 Days Of Code - 2022 Web Development Bootcamp",
+      "date": "2022-09-13",
+      "url": "https://www.udemy.com/certificate/UC-40a9654f-383a-41ed-a009-195dd2cccae6/",
+      "issuer": "Udemy"
+    }
+  ],
+  "work": [
+    {
+      "name": "eFiscal Networks",
+      "position": "Lead Software Developer",
+      "location_type": "Remote",
+      "location": "PA",
+      "url": "https://www.efiscal.net",
+      "startDate": "2025-04-14",
+      "endDate": null,
+      "summary": "Desarrollador de software principal con experiencia full-stack, especializado en desarrollo frontend con Blazor, C# y .NET Core.",
+      "highlights": [
+        "Responsable del sistema de diseño de la suite SDS.",
+        "Implementé una suite de reportes con SQL Server.",
+        "Responsable de la integración del sistema de pagos Braintree de PayPal.",
+        "Mejoré la arquitectura de microservicios de la suite SDS usando MassTransit y RabbitMQ."
+      ],
+      "responsibilities": [
+        "Desarrollo backend con .NET Core y RabbitMQ",
+        "Desarrollo frontend usando Blazor, ReactJS y NextJS.",
+        "Mantenimiento y mejora de bases de código existentes.",
+        "Toma de decisiones y planificación de la UI para la suite SDS."
+      ],
+      "achievements": [
+        "Implementé un sistema de diseño confiable para la suite SDS usando Bootstrap.",
+        "Mejoré el proceso de entrega de la aplicación web implementando pipelines de CI/CD con Azure DevOps."
+      ],
+      "skills": {
+        ".Net Core": "simple-icons:dotnet",
+        "Blazor": "simple-icons:blazor",
+        "Node": "ri:nodejs-line",
+        "Express": "simple-icons:express",
+        "Next.js": "ri:nextjs-fill",
+        "React": "mdi:react",
+        "SQL": "simple-icons:mysql",
+        "Git": "mdi:git",
+        "HTML": "simple-icons:html5",
+        "CSS": "ri:css3-fill",
+        "Bootstrap": "mdi:bootstrap",
+        "RabbitMQ": "simple-icons:rabbitmq",
+        "Azure": "simple-icons:azuredevops",
+        "AWS": "simple-icons:amazonaws"
+      }
+    },
+    {
+      "name": "Devsu",
+      "position": "Senior Software Developer",
+      "location_type": "Remote",
+      "location": "PA",
+      "url": "https://devsu.com",
+      "startDate": "2021-04-08",
+      "endDate": "2025-04-11",
+      "summary": "Desarrollador full-stack responsable del desarrollo backend y frontend en proyectos internacionales, usando Node.js, Express.js, React, Next.js, .NET Core y Blazor.",
+      "highlights": [
+        "Creé un backend con NodeJS y ExpressJS desde cero para una aplicación web.",
+        "Responsable del desarrollo de la UI de una suite en .NET Core y Blazor.",
+        "Implementé una suite de reportes con SQL Server.",
+        "Responsable de la integración del sistema de pagos Braintree de PayPal."
+      ],
+      "responsibilities": [
+        "Backend development using NodeJS and ExpressJS.",
+        "Frontend development using Blazor, Angular, ReactJS and NextJS.",
+        "Mantenimiento y mejora de bases de código existentes.",
+        "Creé y mantuve varios sitios web usando NextJS y ReactJS."
+      ],
+      "achievements": [
+        "Implementé un sistema de diseño confiable para la suite SDS usando Bootstrap.",
+        "Mejoré el proceso de entrega de la aplicación web implementando pipelines de CI/CD con Azure DevOps."
+      ],
+      "skills": {
+        ".Net Core": "simple-icons:dotnet",
+        "Blazor": "simple-icons:blazor",
+        "Node": "ri:nodejs-line",
+        "Express": "simple-icons:express",
+        "Next.js": "ri:nextjs-fill",
+        "React": "mdi:react",
+        "SQL": "simple-icons:mysql",
+        "Git": "mdi:git",
+        "HTML": "simple-icons:html5",
+        "CSS": "ri:css3-fill",
+        "Bootstrap": "mdi:bootstrap",
+        "RabbitMQ": "simple-icons:rabbitmq",
+        "Azure": "simple-icons:azuredevops",
+        "AWS": "simple-icons:amazonaws"
+      }
+    },
+    {
+      "name": "Exceltec Software, S.A.",
+      "position": "Software Developer",
+      "location_type": "Remote",
+      "location": "PA",
+      "url": "https://www.exceltecgroup.com",
+      "startDate": "2019-06-01",
+      "endDate": "2020-05-01",
+      "summary": "Desarrollé soluciones frontend y backend (REST APIs) utilizando .NET y SQL Server, siguiendo metodologías ágiles (Scrum) y desplegando aplicaciones en Microsoft Azure.",
+      "highlights": [
+        "Lideré el desarrollo de una aplicación web usando .NET",
+        "Responsable de la integración de la factura electrónica con la autoridad tributaria de Costa Rica."
+      ],
+      "responsibilities": [
+        "Diseño y planificación de la arquitectura de la aplicación web."
+      ],
+      "achievements": [
+        "Mejoré el proceso de entrega de la aplicación web implementando pipelines de CI/CD con Azure DevOps."
+      ],
+      "skills": {
+        ".Net Core": "simple-icons:dotnet",
+        "Azure": "simple-icons:azuredevops",
+        "SQL": "simple-icons:mysql",
+        "Git": "mdi:git",
+        "HTML": "simple-icons:html5",
+        "CSS": "ri:css3-fill",
+        "Bootstrap": "mdi:bootstrap"
+      }
+    },
+    {
+      "name": "Intercoud",
+      "position": "CEO, Founder and Development Leader",
+      "location_type": "Remote",
+      "location": "PA",
+      "url": null,
+      "startDate": "2017-11-01",
+      "endDate": "2023-12-31",
+      "summary": "Fundé y desarrollé Luvet PetsCare, una aplicación web diseñada para ayudar a clínicas veterinarias a gestionar sus operaciones. Construí la plataforma usando ASP.NET, SQL Server y Microsoft Azure. Obtuve experiencia significativa en desarrollo de productos, despliegue en la nube y gestión empresarial mediante este emprendimiento.",
+      "highlights": [
+        "Responsable de todo el diseño, construcción, despliegue y mantenimiento de la aplicación web.",
+        "Adquirí experiencia invaluable en el campo de atención y soporte al cliente.",
+        "Aprendí sobre diseño y desarrollo de interfaces Mobile First."
+      ],
+      "responsibilities": [
+        "Diseño y planificación de la arquitectura de la aplicación web.",
+        "Mantenimiento y mejora de bases de código existentes.",
+        "Implemented several requested features according to customer needs."
+      ],
+      "achievements": [
+        "Mi primera experiencia como emprendedor.",
+        "Experiencia, experiencia y más experiencia."
+      ],
+      "skills": {
+        ".Net Core": "simple-icons:dotnet",
+        "Azure": "simple-icons:azuredevops",
+        "SQL": "simple-icons:mysql",
+        "Git": "mdi:git",
+        "HTML": "simple-icons:html5",
+        "CSS": "ri:css3-fill",
+        "Bootstrap": "mdi:bootstrap",
+        "Android": "simple-icons:android"
+      }
+    },
+    {
+      "name": "Hypernova Labs",
+      "position": "Junior Software Developer",
+      "location_type": "Office",
+      "location": "PA",
+      "url": "https://www.hypernovalabs.com",
+      "startDate": "2015-09-01",
+      "endDate": "2016-01-31",
+      "summary": "Desarrollé aplicaciones móviles con Java y Android Studio, y aplicaciones web (frontend y backend) con .NET, SQL Server y Microsoft Azure.",
+      "highlights": [
+        "Siempre puntual, con trabajo eficiente."
+      ],
+      "responsibilities": [
+        "Responsable de la base de código de la aplicación Android para Agua Cristalina.",
+        "Implementé varias páginas para la aplicación web usando .NET."
+      ],
+      "achievements": [
+        "Mi primera experiencia laboral, aprendí sobre desarrollo Android y web.",
+        "Aprendí sobre SQL Server y creación de consultas paginadas."
+      ],
+      "skills": {
+        ".Net Core": "simple-icons:dotnet",
+        "Azure": "simple-icons:azuredevops",
+        "SQL": "simple-icons:mysql",
+        "Git": "mdi:git",
+        "HTML": "simple-icons:html5",
+        "CSS": "ri:css3-fill",
+        "Bootstrap": "mdi:bootstrap",
+        "Android": "simple-icons:android"
+      }
+    }
+  ],
+  "skills": [
+    {
+      "name": "HTML",
+      "icon": "simple-icons:html5",
+      "level": "Expert",
+      "keywords": [
+        "Web Development",
+        "Frontend"
+      ]
+    },
+    {
+      "name": "CSS",
+      "icon": "ri:css3-fill",
+      "level": "Expert",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Responsive Design"
+      ]
+    },
+    {
+      "name": "C#",
+      "icon": "simple-icons:csharp",
+      "level": "Expert",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Backend",
+        "Fullstack"
+      ]
+    },
+    {
+      "name": "JavaScript",
+      "icon": "simple-icons:javascript",
+      "level": "Expert",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Backend",
+        "Fullstack"
+      ]
+    },
+    {
+      "name": "TypeScript",
+      "icon": "simple-icons:typescript",
+      "level": "Expert",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Backend",
+        "Fullstack"
+      ]
+    },
+    {
+      "name": "Tailwind",
+      "icon": "mdi:tailwind",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "CSS Framework",
+        "Responsive Design"
+      ]
+    },
+    {
+      "name": "Bootstrap",
+      "icon": "mdi:bootstrap",
+      "level": "Expert",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "CSS Framework",
+        "Responsive Design"
+      ]
+    },
+    {
+      "name": ".NET Core",
+      "icon": "simple-icons:dotnet",
+      "level": "Expert",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Backend",
+        "Fullstack"
+      ]
+    },
+    {
+      "name": "Node",
+      "icon": "ri:nodejs-line",
+      "level": "Expert",
+      "keywords": [
+        "Web Development",
+        "Backend",
+        "JavaScript",
+        "Server"
+      ]
+    },
+    {
+      "name": "ExpressJS",
+      "icon": "simple-icons:express",
+      "level": "Expert",
+      "keywords": [
+        "Web Development",
+        "Backend",
+        "Server",
+        "Fullstack"
+      ]
+    },
+    {
+      "name": "Next.js",
+      "icon": "ri:nextjs-line",
+      "level": "Expert",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "React Framework",
+        "SSR",
+        "Static Generation"
+      ]
+    },
+    {
+      "name": "React",
+      "icon": "mdi:react",
+      "level": "Expert",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "JavaScript Library",
+        "UI"
+      ]
+    },
+    {
+      "name": "Blazor",
+      "icon": "simple-icons:blazor",
+      "level": "Expert",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "C#",
+        "UI"
+      ]
+    },
+    {
+      "name": "Angular",
+      "icon": "simple-icons:angular",
+      "level": "Expert",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "JavaScript Library",
+        "UI"
+      ]
+    },
+    {
+      "name": "MySql",
+      "icon": "simple-icons:mysql",
+      "level": "Expert",
+      "keywords": [
+        "Databases",
+        "SQL",
+        "Data Storage",
+        "Backend"
+      ]
+    },
+    {
+      "name": "MSSQL",
+      "icon": "simple-icons:microsoftsqlserver",
+      "level": "Expert",
+      "keywords": [
+        "Databases",
+        "SQL",
+        "Data Storage",
+        "Backend"
+      ]
+    },
+    {
+      "name": "MongoDB",
+      "icon": "simple-icons:mongodb",
+      "level": "Expert",
+      "keywords": [
+        "Databases",
+        "File",
+        "Data Storage",
+        "Backend"
+      ]
+    },
+    {
+      "name": "Azure",
+      "icon": "simple-icons:azuredevops",
+      "level": "Intermediate",
+      "keywords": [
+        "Cloud computing",
+        "Cloud Storage",
+        "Data Storage",
+        "Management"
+      ]
+    },
+    {
+      "name": "AWS",
+      "icon": "simple-icons:amazonaws",
+      "level": "Intermediate",
+      "keywords": [
+        "Cloud computing",
+        "Cloud Storage",
+        "Data Storage",
+        "Management"
+      ]
+    },
+    {
+      "name": "Git",
+      "icon": "mdi:git",
+      "level": "Expert",
+      "keywords": [
+        "Version Control",
+        "Collaboration",
+        "Source Code"
+      ]
+    },
+    {
+      "name": "GitHub",
+      "icon": "mdi:github",
+      "level": "Expert",
+      "keywords": [
+        "Version Control",
+        "Collaboration",
+        "Source Code",
+        "Git"
+      ]
+    },
+    {
+      "name": "Docker",
+      "icon": "mdi:docker",
+      "level": "Beginner",
+      "keywords": [
+        "Virtual Environments",
+        "Backend"
+      ]
+    },
+    {
+      "name": "Vite",
+      "icon": "simple-icons:vite",
+      "level": "Beginner",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Build Tool"
+      ]
+    },
+    {
+      "name": "WordPress",
+      "icon": "ri:wordpress-fill",
+      "level": "Intermediate",
+      "keywords": [
+        "PHP",
+        "Fullstack",
+        "Frontend"
+      ]
+    },
+    {
+      "name": "Astro",
+      "icon": "simple-icons:astro",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "SSR",
+        "Static Generation"
+      ]
+    },
+    {
+      "name": "Vercel",
+      "icon": "simple-icons:vercel",
+      "level": "Beginner",
+      "keywords": [
+        "Serverless",
+        "Static Site Hosting"
+      ]
+    },
+    {
+      "name": "Netlify",
+      "icon": "simple-icons:netlify",
+      "level": "Beginner",
+      "keywords": [
+        "Serverless",
+        "Static Site Hosting"
+      ]
+    },
+    {
+      "name": "Android",
+      "icon": "simple-icons:android",
+      "level": "Beginner",
+      "keywords": [
+        "Mobile Development"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Español",
+      "fluency": "Hablante nativo"
+    },
+    {
+      "language": "Inglés",
+      "fluency": "Fluido"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Tecnología",
+      "keywords": [
+        "AI",
+        "Responsive Design",
+        "Web Development",
+        "Programming"
+      ]
+    },
+    {
+      "name": "Música",
+      "keywords": [
+        "Música",
+        "Guitar",
+        "Piano",
+        "Singing",
+        "Accordion",
+        "Entertainment",
+        "Relaxing"
+      ]
+    },
+    {
+      "name": "Deportes",
+      "keywords": [
+        "Soccer",
+        "Weightlifting",
+        "F1",
+        "Running",
+        "Boxing"
+      ]
+    },
+    {
+      "name": "Películas y Series",
+      "keywords": [
+        "Movies",
+        "Cinema",
+        "TV Shows",
+        "Entertainment",
+        "Series"
+      ]
+    },
+    {
+      "name": "Mascotas",
+      "keywords": [
+        "Dogs",
+        "Beagle",
+        "Pitbull"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "name": "MiraHikari",
+      "reference": "Referencia…"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Luvet PetsCare - AndysPets",
+      "image": {
+        "url": "/images/andyspets-welcome.jpg",
+        "position": "container"
+      },
+      "isActive": true,
+      "description": "Una implementación de Luvet PetsCare para AndysPets, una clínica veterinaria en Panamá.",
+      "highlights": [
+        "🎯 Usando Luvet PetsCare por más de 5 años",
+        "✨ UI responsiva, funciona en todos los dispositivos",
+        "🐶 Más de 3500 mascotas registradas, y contando",
+        "🚀 Construido con Microsoft SQL Server, Azure y ASP.NET."
+      ],
+      "url": "https://andyspets.azurewebsites.net"
+    },
+    {
+      "name": "Luvet PetsCare - Veterinaria Knino",
+      "image": {
+        "url": "/images/veterinaria-knino-tasks.jpg",
+        "position": "container"
+      },
+      "isActive": true,
+      "description": "Una implementación de Luvet PetsCare para Veterinaria Knino, una clínica veterinaria en Panamá.",
+      "highlights": [
+        "🎯 Usando Luvet PetsCare por más de 6 años",
+        "✨ UI responsiva, funciona en todos los dispositivos",
+        "🐶 More than 9000 pets registered, and counting",
+        "🚀 Construido con Microsoft SQL Server, Azure y ASP.NET."
+      ],
+      "url": "https://veterinariaknino.azurewebsites.net"
+    },
+    {
+      "name": "MyResolvent.com",
+      "image": {
+        "url": "/images/myresolvent-section.jpg",
+        "position": "container"
+      },
+      "isActive": true,
+      "description": "Un sitio web adaptable para el equipo de MyResolvent, mostrando las características y beneficios de la suite Student Debt Solutions.",
+      "highlights": [
+        "🚀 Diseñado y estructurado con Bootstrap",
+        "📲 UI responsiva, funciona en todos los dispositivos",
+        "💕 UI diseñada con Next.js"
+      ],
+      "url": "https://myresolvent.com"
+    },
+    {
+      "name": "SDS Landing Page",
+      "image": {
+        "url": "/images/start-myresolvent-hero.jpg",
+        "position": "container"
+      },
+      "isActive": true,
+      "description": "Sitio web de Student Debt Solutions. UI adaptable que muestra las funcionalidades que ofrece la empresa.",
+      "highlights": [
+        "🚀 Diseñado y estructurado con Bootstrap",
+        "📲 UI responsiva, funciona en todos los dispositivos",
+        "💕 UI diseñada con Next.js"
+      ],
+      "url": "https://start.myresolvent.com"
+    },
+    {
+      "name": "SDS Borrower Portal",
+      "image": {
+        "url": "/images/sds-borrower-portal-dashboard.jpg",
+        "position": "container"
+      },
+      "isActive": true,
+      "description": "SDS Borrower Portal, donde los estudiantes pueden aplicar a los planes que ofrece el gobierno de USA para mejorar las condiciones de sus préstamos.",
+      "highlights": [
+        "📲 Interfaz de usuario adatable a cualquier tamaño de pantalla",
+        "🚀 Sistema diseñado con Bootstrap",
+        "💕 Interfaz de usuario creada con .NET Core + Blazor"
+      ],
+      "url": "https://app.myresolvent.com"
+    },
+    {
+      "name": "SDS Agency Portal",
+      "image": {
+        "url": "/images/sds-agency-portal-dashboard.jpg",
+        "position": "container"
+      },
+      "isActive": true,
+      "description": "SDS Agency Portal, donde las agencias pueden administrar a sus estudiantes con préstamos.",
+      "highlights": [
+        "📲 Interfaz de usuario adatable a cualquier tamaño de pantalla",
+        "🚀 Sistema diseñado con Bootstrap",
+        "💕 Interfaz de usuario creada con .NET Core + Blazor"
+      ],
+      "url": "https://sds-agency-ui-prd.efiscal.net"
+    },
+    {
+      "name": "SDS Management Portal",
+      "image": {
+        "url": "/images/sds-management-portal-profile.jpg",
+        "position": "container"
+      },
+      "isActive": true,
+      "description": "SDS Management Portal, donde los expertos de SDS pueden administrar las cuentas de las agencias, ver reportes y configuraciones generales.",
+      "highlights": [
+        "🚀 Sistema diseñado con Bootstrap",
+        "💕 Interfaz de usuario creada con .NET Core + Blazor"
+      ],
+      "url": "https://sds-management-ui-prd.efiscal.net"
+    }
+  ]
+}
