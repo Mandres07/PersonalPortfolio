@@ -30,7 +30,7 @@ const { name, label } = basics;
     class="container relative grid max-w-7xl grid-cols-1 gap-4 p-8 lg:grid-cols-5 lg:gap-12 lg:p-16 lg:pb-10 xl:gap-24 print:max-w-none print:grid-cols-1 print:gap-6"
   >
     <aside
-      class="slide-enter lg:h-screen space-y-10 ease-in lg:sticky lg:top-16 lg:col-span-2 print:col-span-1 print:grid print:grid-cols-2 print:gap-5 print:space-y-0"
+      class="slide-enter space-y-10 ease-in lg:sticky lg:top-16 lg:col-span-2 lg:h-screen print:col-span-1 print:grid print:grid-cols-2 print:gap-5 print:space-y-0"
     >
       <Hero
         name={basics.name}
@@ -45,7 +45,7 @@ const { name, label } = basics;
       <ThemeSwitch lang="es" />
     </aside>
     <div
-      class="slide-enter-content space-y-10 lg:space-y-6 lg:col-span-3 print:col-span-1 print:grid print:grid-cols-4 print:gap-2 print:space-y-0"
+      class="slide-enter-content space-y-10 lg:col-span-3 lg:space-y-6 print:col-span-1 print:grid print:grid-cols-4 print:gap-2 print:space-y-0"
     >
       <Navigation lang="es" />
       <Experience lang="es" className="print:col-span-3" work={CV.work} />
