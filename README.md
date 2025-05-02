@@ -17,7 +17,7 @@ A clean, modern, and responsive developer portfolio to showcase my skills, proje
 
 ## 📸 Live
 
-![Live](https://mandres.pages.dev)
+[**https://mandres.dev**](https://mandres.dev)
 
 ---
 
