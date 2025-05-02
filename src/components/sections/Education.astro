@@ -1,25 +1,11 @@
 ---
 import Section from "../Section.astro";
+import { type EducationEntry, type Certificate } from "@/types";
 
-interface Certificate {
-  name: string;
-  date: string;
-  url: string;
-  issuer: string;
-}
-
-interface Institution {
-  institution: string;
-  url: string;
-  area: string;
-  studyType: string;
-  startDate: string;
-  endDate: string;
-}
 interface Props {
   className: string;
   certificates: Certificate[];
-  education: Institution[];
+  education: EducationEntry[];
   lang: string;
 }
 const { className, certificates, education, lang } = Astro.props;

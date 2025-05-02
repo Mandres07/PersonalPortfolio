@@ -1,13 +1,8 @@
 ---
 import Section from "../Section.astro";
 import { Icon } from "astro-icon/components";
+import { type Skill } from "@/types";
 
-interface Skill {
-  name: string;
-  icon: string;
-  level: string;
-  keywords: string[];
-}
 interface Props {
   className: string;
   skills: Skill[];

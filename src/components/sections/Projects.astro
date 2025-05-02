@@ -2,26 +2,11 @@
 import Section from "../Section.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
-
-interface ProjectImage {
-  url: string;
-  position: string;
-  dark?: string;
-}
-
-interface ProjectEntry {
-  name: string;
-  image: ProjectImage;
-  isActive: boolean;
-  description: string;
-  highlights: string[];
-  url: string;
-  github?: string;
-}
+import { type Project } from "@/types";
 
 interface Props {
   className: string;
-  projects: ProjectEntry[];
+  projects: Project[];
   lang: string;
 }
 const { className, projects, lang } = Astro.props;

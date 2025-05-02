@@ -1,28 +1,14 @@
 ---
 import Section from '../Section.astro'
 import { Icon } from 'astro-icon/components'
+import { type Work } from "@/types";
 
-interface WorkEntry {
-  name: string;
-  position: string;
-  location_type: 'Remote' | 'Office' | string;
-  location: string;
-  url: string | null;
-  startDate: string; 
-  endDate: string | null;
-  summary: string;
-  highlights: string[];
-  responsibilities: string[];
-  achievements: string[];
-  skills: {
-    [key: string]: any;
-  };
-}
 interface Props {
   className: string;
-  work: WorkEntry[];
+  work: Work[];
   lang: string;
 }
+
 const { className, work, lang } = Astro.props;
 ---
 

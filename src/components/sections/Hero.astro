@@ -2,29 +2,14 @@
 import Section from "@/components/Section.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
-
-interface Profile {
-  network: string;
-  icon: string;
-  url: string;
-  username: string;
-}
+import { type Basics } from "@/types";
 
 interface Props {
-  name: string;
-  label: string;
-  image: string;
-  location: {
-    city: string;
-    region: string;
-    address: string;
-  };
-  profiles: Profile[];
-  email: string;
-  phone?: string;
+  basics: Basics;
 }
 
-const { name, label, image, location, profiles, email, phone } = Astro.props;
+const { basics } = Astro.props;
+const { name, label, image, location, profiles, email, phone } = basics;
 const { city, region, address } = location;
 ---
 

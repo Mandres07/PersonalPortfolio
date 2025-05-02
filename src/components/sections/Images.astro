@@ -1,19 +1,11 @@
 ---
 import { Image } from "astro:assets";
 import Section from "../Section.astro";
+import { type ImageList } from "@/types";
 
-interface ImageEntry {
-  image: string;
-  alt: string;
-  desc: string;
-}
-interface ImagesData {
-  intro: string;
-  list: ImageEntry[];
-}
 interface Props {
   className: string;
-  images: ImagesData;
+  images: ImageList;
   lang: string;
 }
 const { images, className, lang } = Astro.props;
