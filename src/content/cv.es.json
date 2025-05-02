@@ -678,7 +678,8 @@
         "🐶 Más de 3500 mascotas registradas, y contando",
         "🚀 Construido con Microsoft SQL Server, Azure y ASP.NET."
       ],
-      "url": "https://andyspets.azurewebsites.net"
+      "url": "https://andyspets.azurewebsites.net",
+      "github": null
     },
     {
       "name": "Luvet PetsCare - Veterinaria Knino",
@@ -694,7 +695,8 @@
         "🐶 More than 9000 pets registered, and counting",
         "🚀 Construido con Microsoft SQL Server, Azure y ASP.NET."
       ],
-      "url": "https://veterinariaknino.azurewebsites.net"
+      "url": "https://veterinariaknino.azurewebsites.net",
+      "github": null
     },
     {
       "name": "MyResolvent.com",
@@ -709,7 +711,8 @@
         "📲 UI responsiva, funciona en todos los dispositivos",
         "💕 UI diseñada con Next.js"
       ],
-      "url": "https://myresolvent.com"
+      "url": "https://myresolvent.com",
+      "github": null
     },
     {
       "name": "SDS Landing Page",
@@ -724,7 +727,8 @@
         "📲 UI responsiva, funciona en todos los dispositivos",
         "💕 UI diseñada con Next.js"
       ],
-      "url": "https://start.myresolvent.com"
+      "url": "https://start.myresolvent.com",
+      "github": null
     },
     {
       "name": "SDS Borrower Portal",
@@ -739,7 +743,8 @@
         "🚀 Sistema diseñado con Bootstrap",
         "💕 Interfaz de usuario creada con .NET Core + Blazor"
       ],
-      "url": "https://app.myresolvent.com"
+      "url": "https://app.myresolvent.com",
+      "github": null
     },
     {
       "name": "SDS Agency Portal",
@@ -754,7 +759,8 @@
         "🚀 Sistema diseñado con Bootstrap",
         "💕 Interfaz de usuario creada con .NET Core + Blazor"
       ],
-      "url": "https://sds-agency-ui-prd.efiscal.net"
+      "url": "https://sds-agency-ui-prd.efiscal.net",
+      "github": null
     },
     {
       "name": "SDS Management Portal",
@@ -768,7 +774,8 @@
         "🚀 Sistema diseñado con Bootstrap",
         "💕 Interfaz de usuario creada con .NET Core + Blazor"
       ],
-      "url": "https://sds-management-ui-prd.efiscal.net"
+      "url": "https://sds-management-ui-prd.efiscal.net",
+      "github": null
     }
   ]
 }

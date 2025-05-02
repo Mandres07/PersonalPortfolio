@@ -3,7 +3,6 @@ export type SocialIcon = Record<string, string | any>;
 export interface ProjectImage {
     url: string;
     position: string;
-    dark: string | null;
 }
 
 export interface Project {
