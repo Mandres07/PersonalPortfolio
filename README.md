@@ -1,14 +1,25 @@
-## Print-friendly portfolio CV
+# 🌐 Personal Portfolio
 
-![preview](https://github.com/user-attachments/assets/44c47034-06e4-412a-b9dd-014593b32215)
+A clean, modern, and responsive developer portfolio to showcase my skills, projects, and experience. Built with performance and accessibility in mind, and designed for both personal branding and SEO.
 
-## 📄 About
+> 🚀 Inspired by [MiraHikari/portfolio](https://github.com/MiraHikari/portfolio) — adapted and extended to match my vision and tech preferences.
 
-This project is refactored from the original [**dev-portfolio**](https://github.com/Smilesharks/dev-portfolio) project, thanks for his work.
+---
 
-I use iconify instead of SVG icons for better dev experience.
+## 👣 Changes Implemented
 
-Thanks for antfu's cool animations.
+- Added more color options to the theme selector
+- Added a language selector to choose between English and Spanish
+- Change the layout to have a static side (aside left) and scrollable side on large screens. On smaller screens then it only has one column all scrollable
+- Implemented a Navigation bar that is sticky to the top in large screens
+- Added Camingo Code custom font as monospace
+- Small UI tweaks here and there.
+
+## 📸 Live
+
+![Live](https://mandres.pages.dev)
+
+---
 
 ## 🛠️ Stack
 
@@ -19,34 +30,26 @@ Thanks for antfu's cool animations.
 - [**FancyBox**](https://fancyapps.com/fancybox/3/) - Image viewer.
 - [**Ninja Keys**](https://github.com/ssleptsov/ninja-keys) - Dropdown menu with keyboard shortcuts made in pure JavaScript.
 
+---
+
 ## 🚀 Getting Started
 
-### 0. One-click to deploy on Vercel
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/MiraHikari/portfolio&project-name=portfolio&repository-name=portfolio)
+### Prerequisites
 
-Modify the `cv.json` file to create your own printable Portfolio/CV.
+- Node.js ^18.x
+- npm or pnpm
 
-### 1. Use this Repo as an Astro Project Template
-
-- I use [pnpm](https://pnpm.io/installation) as my package manager.
-
-# Initialize the project
-```bash
-pnpm create astro@latest --template MiraHikari/portfolio
-```
-
-### 1-1. Clone the repo
-If you don't want to use the template command, you can clone this repo and install the dependencies.
+### 1. Installation
 
 ```bash
-git clone https://github.com/MiraHikari/portfolio.git
-cd portfolio
+git clone https://github.com/Mandres07/PersonalPortfolio.git
 pnpm install
 ```
 
 ### 2. Add Your Content:
 
-Edit the `cv.json` file to create your own printable Portfolio/CV.
+Edit the `content/cv.en.json` file to create your own Portfolio/CV data.
+You can also edit its Spanish version at `content/cv.es.json`
 
 ### 3. Launch the Development Server:
 
@@ -57,7 +60,9 @@ pnpm dev
 1. Open [**http://localhost:4321**](http://localhost:4321/) in your browser to view the result 🚀
 
 ### 4. Customisable colours:
-Change the data-theme of `cv.json` and choose one of the colour themes defined in theme.css, red, blue, green, cyber, pink and default, with its variants in dark mode, or create your own.
+Change the data-theme of `cv.json` and choose one of the colour themes defined in theme.css.
+
+---
 
 ## 🧞 Commands
 
@@ -68,9 +73,48 @@ Change the data-theme of `cv.json` and choose one of the colour themes defined i
 | ⚙️  | `preview`       | Local preview at `localhost:4321`                                       |
 | 📦  | `deploy:vercel`         | Deploy on Vercel.                           |
 | 📦 | `deploy:cloudflare`       | Deploy on Cloudflare, please run `wrangler login` first.                                           |                                |
+---
+
+## 📁 Project Structure
+
+```
+public/
+├── files/
+├── fonts/
+├── images/
+└── sitemap.xml
+src/
+├── components/
+├── content/
+├── layouts/
+├── pages/
+├── globals.css
+└── types.d.ts
+```
+---
+
+## 🛠️ Built With
+
+- 🚀 Astro
+- ✨ TailwindCSS
+- 🛠️ TypeScript
+- 🛠️ JavaScript
+- ☁️ Cloudflare Pages
+
+---
 
 ## 📝 License
 
 This project is [MIT](./LICENSE) licensed.
 
 CV JSON schema from [**jsonresume.org**](https://jsonresume.org/schema/)
+
+This project is based on software by **MiraHikari**, licensed under the [MIT License](./LICENSE).  
+Modifications made by **Mario Andrés Morales © 2025**.
+
+---
+
+## 📫 Contact
+
+Maintained by [@Mandres07](https://github.com/Mandres07)  
+For questions, feel free to open an issue or start a discussion.
