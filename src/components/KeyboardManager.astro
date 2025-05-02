@@ -51,7 +51,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
 
 <footer
   id="normal-footer"
-  class="flex flex-col gap-2 font-mono theme-blackwhite:text-skin-inverted print:hidden"
+  class="flex flex-col gap-2 font-mono theme-blackwhite:text-skin-inverted"
 >
   <div>
     {lang == "en" ? "Press" : "Presiona"}
@@ -65,7 +65,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
     }
   </div>
 </footer>
-<div class="footer-button print:hidden">
+<div class="footer-button">
   <Icon name="ri:command-fill" width={20} height={20} class="text-skin-hue" />
 </div>
 

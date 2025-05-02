@@ -588,24 +588,6 @@
       ]
     },
     {
-      "name": "Vercel",
-      "icon": "simple-icons:vercel",
-      "level": "Beginner",
-      "keywords": [
-        "Serverless",
-        "Static Site Hosting"
-      ]
-    },
-    {
-      "name": "Netlify",
-      "icon": "simple-icons:netlify",
-      "level": "Beginner",
-      "keywords": [
-        "Serverless",
-        "Static Site Hosting"
-      ]
-    },
-    {
       "name": "Android",
       "icon": "simple-icons:android",
       "level": "Beginner",

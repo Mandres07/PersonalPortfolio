@@ -10,7 +10,7 @@ const { summary, lang } = Astro.props;
 ---
 
 <Section title={lang == "en" ? "About" : "Sobre Mi"} className="gap-0">
-   <p class="font-sans opacity-60 print:font-sans">
+   <p class="font-sans opacity-60">
       <span set:html={summary} />
    </p>
 </Section>

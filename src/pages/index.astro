@@ -27,10 +27,10 @@ const { name, label } = basics;
   analyticsCode={CV.analyticsCode}
 >
   <div
-    class="container relative grid max-w-7xl grid-cols-1 gap-4 p-8 md:gap-12 md:p-16 md:pb-10 lg:grid-cols-5 xl:gap-24 print:max-w-none print:grid-cols-1 print:gap-6"
+    class="container relative grid max-w-7xl grid-cols-1 gap-4 p-8 md:gap-12 md:p-16 md:pb-10 lg:grid-cols-5 xl:gap-24"
   >
     <aside
-      class="slide-enter h-screen space-y-10 ease-in md:sticky md:top-16 lg:col-span-2 print:col-span-1 print:grid print:grid-cols-2 print:gap-5 print:space-y-0"
+      class="slide-enter lg:h-screen space-y-10 ease-in lg:sticky lg:top-16 lg:col-span-2"
     >
       <Hero
         name={basics.name}
@@ -45,11 +45,11 @@ const { name, label } = basics;
       <ThemeSwitch lang="en" />
     </aside>
     <div
-      class="slide-enter-content space-y-6 lg:col-span-3 print:col-span-1 print:grid print:grid-cols-4 print:gap-2 print:space-y-0"
+      class="slide-enter-content space-y-6 lg:col-span-3"
     >
       <Navigation lang="en" />
-      <Experience lang="en" className="print:col-span-3" work={CV.work} />
-      <Projects lang="en" className="print:hidden" projects={CV.projects} />
+      <Experience lang="en" className="" work={CV.work} />
+      <Projects lang="en" className="" projects={CV.projects} />
       {
         CV?.education && (
           <Education
@@ -62,10 +62,10 @@ const { name, label } = basics;
       }
       {
         CV?.images && (
-          <Images lang="en" className="print:hidden" images={CV.images} />
+          <Images lang="en" className="" images={CV.images} />
         )
       }
-      <Skills lang="en" className="print:hidden" skills={CV.skills} />
+      <Skills lang="en" className="" skills={CV.skills} />
     </div>
   </div>
   <Footer lang="en" />

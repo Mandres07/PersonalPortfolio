@@ -32,7 +32,7 @@ const { className, projects, lang } = Astro.props;
   title={lang == "en" ? "Projects" : "Proyectos"}
   id="work"
 >
-  <div class="grid grid-cols-1 gap-3 md:grid-cols-2 print:flex print:flex-col">
+  <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
     {
       projects.map(
         ({ url, description, highlights, name, isActive, github, image }) => {

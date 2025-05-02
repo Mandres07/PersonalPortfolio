@@ -5,13 +5,13 @@ const { className, title, id } = Astro.props;
 <section
    id={id}
    class:list={[
-      "main-section flex scroll-mt-20 flex-col gap-4 print:gap-0",
+      "main-section flex scroll-mt-20 flex-col gap-4",
       className,
    ]}
 >
    {
       title && (
-         <h3 class="relative flex w-full items-center gap-3 mb-2 font-mono font-bold text-3xl print:gap-1 print:pb-0 print:text-xl">
+         <h3 class="relative flex w-full items-center gap-3 mb-2 font-mono font-bold text-3xl">
             {title}
          </h3>
       )
