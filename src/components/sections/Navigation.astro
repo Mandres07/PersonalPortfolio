@@ -46,6 +46,7 @@ const { lang } = Astro.props;
    document.addEventListener("DOMContentLoaded", () => {
       const sections = document.querySelectorAll(".main-section");
       const navItems = document.querySelectorAll(".nav-item");
+      const isMobile = window.innerWidth <= 768;
 
       const observer = new IntersectionObserver(
          (entries) => {
@@ -54,7 +55,7 @@ const { lang } = Astro.props;
                const navItem = document.querySelector(
                   `.nav-item[data-section="${id}"]`,
                );
-               if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
+               if (entry.isIntersecting && entry.intersectionRatio >= (isMobile ? 0.1 : 0.3)) {
                   navItems.forEach((item) =>
                      item.classList.remove(
                         "bg-skin-button-accent/20",
@@ -69,7 +70,7 @@ const { lang } = Astro.props;
             });
          },
          {
-            threshold: 0.3,
+            threshold: isMobile ? 0.1 : 0.3
          },
       );
       sections.forEach((section) => observer.observe(section));

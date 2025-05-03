@@ -36,7 +36,7 @@ const { title, lang, image, summary, url, theme, analyticsCode } = Astro.props;
       <meta property="twitter:url" content={url} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={summary} />
-      <meta name="twitter:image" content="" />
+      <meta name="twitter:image" content={image} />
       {analyticsCode && <script is:inline src={analyticsCode} />}
    </head>
    <body data-theme={theme} class="relative bg-skin-fill font-sans">

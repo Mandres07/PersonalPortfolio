@@ -109,7 +109,19 @@ const { lang } = Astro.props;
   }
 
   function updateLanguage(value: string) {
-    localStorage.setItem("language", value);
+    const currentLanguageSelected = localStorage.getItem("language");
+    const currentPath = window.location.pathname;
+    const isCurrentlySpanish = currentPath.startsWith("/es");
+    const isTargetSpanish = value === "es";
+
+    if (
+      currentLanguageSelected !== value ||
+      (isTargetSpanish && !isCurrentlySpanish) ||
+      (isCurrentlySpanish && !isTargetSpanish)
+    ) {
+      localStorage.setItem("language", value);
+      redirectByLanguage(value);
+    }
   }
 
   function updateTheme() {
@@ -151,8 +163,6 @@ const { lang } = Astro.props;
     localStorage.getItem("language") ||
     (browserLanguage.startsWith("es") ? "es" : "en");
 
-  updateLanguage(language);
-
   const languageSelect = document.getElementById(
     "languageSelect"
   ) as HTMLSelectElement;
@@ -162,9 +172,10 @@ const { lang } = Astro.props;
     languageSelect.addEventListener("change", (e) => {
       const selectedLanguage = (e.target as HTMLSelectElement).value;
       updateLanguage(selectedLanguage);
-      redirectByLanguage(selectedLanguage);
     });
   }
+
+  updateLanguage(language);
 
   // Initialize theme based on user preference or system setting
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
