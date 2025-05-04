@@ -321,7 +321,7 @@
    "skills": [
       {
          "name": "HTML",
-         "icon": "simple-icons:html5",
+         "icon": "ri:html5-fill",
          "level": "Expert",
          "keywords": [
             "Web Development",
@@ -351,7 +351,7 @@
       },
       {
          "name": "JavaScript",
-         "icon": "simple-icons:javascript",
+         "icon": "mdi:language-javascript",
          "level": "Expert",
          "keywords": [
             "Web Development",
@@ -362,7 +362,7 @@
       },
       {
          "name": "TypeScript",
-         "icon": "simple-icons:typescript",
+         "icon": "mdi:language-typescript",
          "level": "Expert",
          "keywords": [
             "Web Development",
@@ -384,7 +384,7 @@
       },
       {
          "name": "Bootstrap",
-         "icon": "mdi:bootstrap",
+         "icon": "ri:bootstrap-fill",
          "level": "Expert",
          "keywords": [
             "Web Development",
@@ -406,7 +406,7 @@
       },
       {
          "name": "Node",
-         "icon": "ri:nodejs-line",
+         "icon": "ri:nodejs-fill",
          "level": "Expert",
          "keywords": [
             "Web Development",
@@ -428,7 +428,7 @@
       },
       {
          "name": "Next.js",
-         "icon": "ri:nextjs-line",
+         "icon": "ri:nextjs-fill",
          "level": "Expert",
          "keywords": [
             "Web Development",
@@ -462,7 +462,7 @@
       },
       {
          "name": "Angular",
-         "icon": "simple-icons:angular",
+         "icon": "ri:angularjs-fill",
          "level": "Expert",
          "keywords": [
             "Web Development",
@@ -505,8 +505,32 @@
          ]
       },
       {
+         "name": "SQLite",
+         "icon": "simple-icons:sqlite",
+         "level": "Intermediate",
+         "keywords": [
+           "Databases",
+           "SQL",
+           "Data Storage",
+           "Backend",
+           "Frontend"
+         ]
+       },
+       {
+         "name": "Firebase",
+         "icon": "simple-icons:firebase",
+         "level": "Expert",
+         "keywords": [
+           "Databases",
+           "SQL",
+           "Data Storage",
+           "Backend",
+           "Frontend"
+         ]
+       },
+      {
          "name": "Azure",
-         "icon": "simple-icons:azuredevops",
+         "icon": "mdi:microsoft-azure",
          "level": "Intermediate",
          "keywords": [
             "Cloud computing",
@@ -527,8 +551,28 @@
          ]
       },
       {
+         "name": "Visual Studio",
+         "icon": "mdi:microsoft-visual-studio",
+         "level": "Expert",
+         "keywords": [
+            "Software development",
+            "IDE",
+            "Text Editor"
+         ]
+      },
+      {
+         "name": "VS Code",
+         "icon": "mdi:microsoft-visual-studio-code",
+         "level": "Expert",
+         "keywords": [
+            "Software development",
+            "IDE",
+            "Text Editor"
+         ]
+      },
+      {
          "name": "Git",
-         "icon": "mdi:git",
+         "icon": "simple-icons:git",
          "level": "Expert",
          "keywords": [
             "Version Control",
@@ -538,7 +582,7 @@
       },
       {
          "name": "GitHub",
-         "icon": "mdi:github",
+         "icon": "ri:github-fill",
          "level": "Expert",
          "keywords": [
             "Version Control",
@@ -548,8 +592,19 @@
          ]
       },
       {
+         "name": "Azure DevOps",
+         "icon": "simple-icons:azuredevops",
+         "level": "Expert",
+         "keywords": [
+            "Cloud computing",
+            "Cloud Storage",
+            "File Versioning",
+            "Management"
+         ]
+      },
+      {
          "name": "Docker",
-         "icon": "mdi:docker",
+         "icon": "simple-icons:docker",
          "level": "Beginner",
          "keywords": [
             "Virtual Environments",
