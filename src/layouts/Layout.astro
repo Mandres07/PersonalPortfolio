@@ -4,13 +4,13 @@ import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import "../globals.css";
 
 interface Props {
-   title: string;
-   lang: string;
-   image: string;
-   summary: string;
-   url: string;
-   theme: string;
-   analyticsCode?: string;
+  title: string;
+  lang: string;
+  image: string;
+  summary: string;
+  url: string;
+  theme: string;
+  analyticsCode?: string;
 }
 
 const { title, lang, image, summary, url, theme, analyticsCode } = Astro.props;
@@ -18,102 +18,106 @@ const { title, lang, image, summary, url, theme, analyticsCode } = Astro.props;
 
 <!doctype html>
 <html lang={lang}>
-   <head>
-      <meta charset="UTF-8" />
-      <title>{title}</title>
-      <meta name="description" content={summary} />
-      <meta name="viewport" content="width=device-width" />
-      <link rel="icon" href="/images/favicon.ico" />
-      <link rel="preload" as="image" href={image} />
-      <meta property="og:url" content={url} />
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={summary} />
-      <meta property="og:image" content="" />
-      <meta name="referrer" content="no-referrer" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta property="twitter:domain" content={url.split("//")[1] ?? ""} />
-      <meta property="twitter:url" content={url} />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={summary} />
-      <meta name="twitter:image" content={image} />
-      {analyticsCode && <script is:inline src={analyticsCode} />}
-   </head>
-   <body data-theme={theme} class="relative bg-skin-fill font-sans">
-      <ArtPlums />
-      <main
-         class="grid h-screen grid-cols-1 grid-rows-[1fr_auto_auto_auto_auto]"
-      >
-         <slot />
-      </main>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+    <meta name="description" content={summary} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="preload" as="image" href={image} />
+    <meta property="og:url" content={url} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={summary} />
+    <meta property="og:image" content="" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content={url.split("//")[1] ?? ""} />
+    <meta property="twitter:url" content={url} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={summary} />
+    <meta name="twitter:image" content={image} />
+    {analyticsCode && <script is:inline src={analyticsCode} />}
+  </head>
+  <body data-theme={theme} class="relative bg-skin-fill font-sans">
+    <ArtPlums />
+    <main class="grid h-screen grid-cols-1 grid-rows-[1fr_auto_auto_auto_auto]">
+      <slot />
+    </main>
 
-      <style>
-         html {
-            scroll-behavior: smooth;
-         }
-         body,
-         figure {
-            margin: 0;
-            padding: 0;
-         }
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body,
+      figure {
+        margin: 0;
+        padding: 0;
+      }
 
-         a {
-            text-decoration: none;
-         }
+      a {
+        text-decoration: none;
+      }
 
-         ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-         }
-         *,
-         *::before,
-         *::after {
-            box-sizing: border-box;
-         }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
 
-         h1,
-         h2,
-         h3,
-         h4 {
-            @apply font-sans text-skin-base;
-            margin: 0;
-         }
+      h1,
+      h2,
+      h3,
+      h4 {
+        @apply font-sans text-skin-base;
+        margin: 0;
+      }
 
-         p {
-            @apply text-sm text-skin-muted;
-            line-height: 1.5;
-            text-wrap: pretty;
-         }
+      p {
+        @apply text-sm text-skin-muted;
+        line-height: 1.5;
+        text-wrap: pretty;
+      }
 
-         .print {
-            display: none !important;
-         }
+      .print {
+        display: none !important;
+      }
 
-         .dev * {
-            @apply border border-red-500/50 bg-red-500/5;
-         }
-         #hotkeypad [data-backdrop] {
-            @apply !bg-zinc-800 !opacity-80;
-         }
+      .dev * {
+        @apply border border-red-500/50 bg-red-500/5;
+      }
 
-         ::-webkit-scrollbar {
-            width: 2px;
-         }
+      #hotkeypad [data-backdrop] {
+        opacity: 0.8 !important;
+        transition: opacity 0.3s ease;
+      }
 
-         @media print {
-            .print {
-               display: block !important;
-            }
+      #hotkeypad [data-container] {
+        @apply shadow-sm;
+      }
 
-            astro-dev-toolbar {
-               display: none !important;
-            }
+      ::-webkit-scrollbar {
+        width: 2px;
+      }
 
-            article {
-               break-inside: avoid;
-            }
-         }
-      </style>
-   </body>
+      @media print {
+        .print {
+          display: block !important;
+        }
+
+        astro-dev-toolbar {
+          display: none !important;
+        }
+
+        article {
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </body>
 </html>

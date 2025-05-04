@@ -58,7 +58,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
     }
   </div>
 </footer>
-<div class="footer-button">
+<div class="footer-button z-20">
   <Icon name="ri:command-fill" width={20} height={20} class="text-skin-hue" />
 </div>
 
@@ -110,7 +110,9 @@ const profilesInfo = profiles.map(({ network, url }) => {
       hotkey: "ctrl+P",
       section: `${lang == "en" ? "Actions" : "Acciones"}`,
       handler: () => {
-        window.open("/files/CV-Mario-Morales.pdf", "_blank");
+        if (lang == "en")
+          window.open("/files/CV-Mario-Morales-ENG.pdf", "_blank");
+        else window.open("/files/CV-Mario-Morales.pdf", "_blank");
       },
     },
     ...data,
@@ -130,6 +132,18 @@ const profilesInfo = profiles.map(({ network, url }) => {
         metaKey: false,
       });
       document.dispatchEvent(event);
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const backdrop = document.querySelector(
+      "#hotkeypad [data-backdrop]"
+    ) as HTMLDivElement;
+    window.addEventListener("hotkeypad:open", () => {
+      backdrop.style.opacity = "0.8";
+    });
+    window.addEventListener("hotkeypad:close", () => {
+      backdrop.style.opacity = "0";
     });
   });
 </script>
@@ -195,7 +209,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
   }
   #hotkeypad {
     --hotkeypad-bg-kbd: rgb(var(--muted));
-    --hotkeypad-bg-backdrop: rgb(var(--color-fill));
+    --hotkeypad-bg-backdrop: rgb(var(--muted));
     --hotkeypad-bg-container: rgb(var(--color-fill));
     --hotkeypad-bg-item-hover: rgba(var(--color-text), 20%);
     --hotkeypad-border-container: rgb(var(--muted));
@@ -203,7 +217,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
     --hotkeypad-fg-muted: rgb(var(--muted));
     @media (prefers-color-scheme: dark) {
       --hotkeypad-bg-kbd: rgb(var(--muted));
-      --hotkeypad-bg-backdrop: rgb(var(--color-fill));
+      --hotkeypad-bg-backdrop: rgb(var(--muted));
       --hotkeypad-bg-container: rgb(var(--color-fill));
       --hotkeypad-bg-item-hover: rgba(var(--color), 10%);
       --hotkeypad-border-container: rgb(var(--muted));
