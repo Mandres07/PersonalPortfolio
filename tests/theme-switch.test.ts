@@ -212,13 +212,10 @@ describe("theme-switch", () => {
       callback();
       return { ready: Promise.resolve() };
     });
-    (
-      document as Document & {
-        startViewTransition?: (
-          callback: () => void | Promise<void>,
-        ) => unknown;
-      }
-    ).startViewTransition = startViewTransition;
+    Object.defineProperty(document, "startViewTransition", {
+      configurable: true,
+      value: startViewTransition,
+    });
 
     initializeThemeSwitch({ document, window });
 
