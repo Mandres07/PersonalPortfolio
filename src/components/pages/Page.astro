@@ -11,6 +11,7 @@ import ThemeSwitch from "@/components/ThemeSwitch.astro";
 import Education from "@/components/sections/Education.astro";
 import Images from "@/components/sections/Images.astro";
 import Navigation from "@/components/sections/Navigation.astro";
+import { buildPageUrls } from "@/lib/page";
 import { type CV } from "@/types";
 
 interface Props {
@@ -21,14 +22,18 @@ interface Props {
 const { CV, lang } = Astro.props;
 const basics = CV.basics;
 const { name, label } = basics;
+const { siteUrl, currentUrl, alternateUrls } = buildPageUrls(basics.url, lang);
 ---
 
 <Layout
   title={`${name}'s Portfolio - ${label}`}
+  personName={name}
   lang={lang}
   image={basics.image}
   summary={basics.summary}
-  url={basics.url}
+  url={currentUrl}
+  siteUrl={siteUrl}
+  alternateUrls={alternateUrls}
   theme={basics.theme}
   analyticsCode={CV.analyticsCode}
 >
@@ -38,7 +43,7 @@ const { name, label } = basics;
     <aside
       class="slide-enter space-y-10 ease-in lg:sticky lg:top-16 lg:col-span-2 lg:h-screen"
     >
-      <Hero basics={basics} />
+      <Hero basics={basics} lang={lang} />
       <About summary={basics.summary} lang={lang} />
       <ThemeSwitch lang={lang} />
     </aside>

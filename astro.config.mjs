@@ -6,6 +6,7 @@ import playformCompress from "@playform/compress";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://mandres.dev",
   integrations: [
     tailwind(),
     astroIcon({

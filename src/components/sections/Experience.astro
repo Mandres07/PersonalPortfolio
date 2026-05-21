@@ -1,6 +1,7 @@
 ---
 import Section from '../Section.astro'
 import { Icon } from 'astro-icon/components'
+import { getYearFromIsoDate } from "@/lib/date";
 import { type Work } from "@/types";
 
 interface Props {
@@ -14,23 +15,32 @@ const { className, work, lang } = Astro.props;
 
 <Section className={className} title={lang == "en" ? "Experience": "Experiencia"} id="experience">
   <ul class="flex flex-col">
-    {work.map(({ name, startDate, endDate, position, summary, responsibilities, achievements, url, skills, location, location_type }) => {
-      const startYear = new Date(startDate).getFullYear()
-      const endYear = endDate != null ? new Date(endDate).getFullYear() : lang == "en" ?"Present": "Presente"
+    {work.map(({ name, startDate, endDate, position, summary, responsibilities, achievements, url, skills, location, location_type }, index) => {
+      const startYear = getYearFromIsoDate(startDate)
+      const endYear = endDate != null ? getYearFromIsoDate(endDate) : lang == "en" ?"Present": "Presente"
+      const detailsId = `experience-details-${index}`;
 
       return (
         <li class="relative">
           <div data-expanded="false" class="group relative grid pb-1 transition-all sm:grid-cols-10 sm:gap-8 md:gap-6 lg:hover:!opacity-100 expand-container">
             <header class="relative mt-1 text-xs font-semibold font-mono sm:col-span-2 lg:mx-1">
-              <time datetime={startDate} data-title={startDate}>{startYear}</time> - <time datetime={endDate} data-title={endDate}>{endYear}</time>
+              <time datetime={startDate} data-title={startDate}>{startYear}</time> - {endDate ? <time datetime={endDate} data-title={endDate}>{endYear}</time> : <span>{endYear}</span>}
             </header>
             <div class="relative flex flex-col pb-6 before:-ml-6 sm:col-span-8 before:w-px before:absolute before:bg-skin-muted before:h-full before:mt-2">
             <div class="absolute w-2 h-2 bg-skin-muted rounded-full mt-2 -translate-x-[1.71rem] ring ring-skin-fill"></div>
               <h3>
-                <div class="inline-flex items-center text-lg leading-tight group/link focus-visible:text-amber-500" aria-label="{position} - {company}">
+                <div class="inline-flex items-center text-lg leading-tight group/link focus-visible:text-amber-500">
                   <span>{position} <span>@</span>
                   {url ? (
-                    <a class="text-skin-hue" href={url} title={`Ver ${name}`} target="_blank">{name}</a>
+                    <a
+                      class="text-skin-hue"
+                      href={url}
+                      title={lang == "en" ? `Visit ${name}` : `Ver ${name}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {name}
+                    </a>
                   ) : (
                     <span>{name}</span>
                   )}
@@ -54,9 +64,7 @@ const { className, work, lang } = Astro.props;
                     <h4>{lang == "en" ? "Summary" : "Descripción"}:</h4>
                     <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
                       {Array.isArray(summary) ? (
-                        summary.map(item => (
-                          {item}
-                        ))
+                        summary.map(item => <li>{item}</li>)
                       ) : (
                         <li>{summary}</li>
                       )}
@@ -65,7 +73,10 @@ const { className, work, lang } = Astro.props;
                 )}
 
                 {(responsibilities || achievements) &&  (
-                <div class="after:from-skin-hue dark:after:to-skin-hue/0 flex relative flex-col gap-4 after:bg-gradient-to-t after:absolute after:bottom-0 after:w-full after:h-12 after:content-[''] h-16 group-data-[expanded=true]:after:hidden group-data-[expanded=true]:h-auto overflow-hidden duration-200 ease-out">
+                <div
+                  id={detailsId}
+                  class="after:from-skin-hue dark:after:to-skin-hue/0 flex relative flex-col gap-4 after:bg-gradient-to-t after:absolute after:bottom-0 after:w-full after:h-12 after:content-[''] h-16 group-data-[expanded=true]:after:hidden group-data-[expanded=true]:h-auto overflow-hidden duration-200 ease-out"
+                >
                 {responsibilities && (
                   <div class="flex flex-col gap-1">
                     <h4>{lang == "en" ? "Responsibilities" : "Responsabilidades"}:</h4>
@@ -89,16 +100,22 @@ const { className, work, lang } = Astro.props;
                 )}
                 </div>
 
-                <button class="group/more w-fit cursor-pointer items-center justify-center gap-1.5 text-xs text-skin-hue transition-all hover:text-skin-base flex expand-button" data-lang={lang}>
+                <button
+                  type="button"
+                  class="group/more flex w-fit cursor-pointer items-center justify-center gap-1.5 text-xs text-skin-hue transition-all hover:text-skin-base expand-button"
+                  data-lang={lang}
+                  aria-expanded="false"
+                  aria-controls={detailsId}
+                >
                   <span class="expand-text">{lang == "en" ? "Show more" : "Ver más"}</span>
-                  <Icon name="ri:arrow-down-s-line" class="w-4 h-4 group-hover/more:translate-y-0.5 duration-200 ease-out group-data-[expanded=true]:rotate-180" width={24} height={24}></Icon>
+                  <Icon name="ri:arrow-down-s-line" class="w-4 h-4 group-hover/more:translate-y-0.5 duration-200 ease-out group-data-[expanded=true]:rotate-180" width={24} height={24} aria-hidden="true"></Icon>
                 </button>
 
 
-                <ul class="flex font-mono flex-wrap gap-2" aria-label="Technologies used">
+                <ul class="flex font-mono flex-wrap gap-2" aria-label={lang == "en" ? "Technologies used" : "Tecnologias usadas"}>
                   {skills && Object.entries(skills).map(([label, icon]) =>  (
                       <li class="bg-skin-button-accent/20 border-skin-hue/20 text-skin-hue flex gap-1 items-center border-solid border rounded-md px-2 py-0.5 text-xs backdrop-blur-sm">
-                        {icon && <Icon name={icon} width={16} height={16} />} <span>{label}</span>
+                        {icon && <Icon name={icon} width={16} height={16} aria-hidden="true" />} <span>{label}</span>
                       </li>
                     ))
     }
@@ -113,19 +130,9 @@ const { className, work, lang } = Astro.props;
   </ul>
 </Section>
 <script>
-  const expandButton = document.querySelectorAll('.expand-button');
-  
-  expandButton.forEach(button => {
-    button.addEventListener('click', () => {
-      const lang = button.getAttribute('data-lang');
-      const showLessText = lang === 'en' ? 'Show less' : 'Ver menos';
-      const showMoreText = lang === 'en' ? 'Show more' : 'Ver más';
-      const container = button.closest<HTMLElement>('.expand-container')!;
-      container.dataset.expanded = container.dataset.expanded === 'true' ? 'false' : 'true';
-      const expandText = button.querySelector('.expand-text')!;
-      expandText.innerHTML = container.dataset.expanded === 'true' ? showLessText : showMoreText;
-    });
-  });
+  import { bindExperienceExpanders } from "@/lib/experience";
+
+  bindExperienceExpanders();
 </script>
 
 <style>

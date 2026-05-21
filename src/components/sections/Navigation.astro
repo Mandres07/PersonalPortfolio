@@ -7,6 +7,7 @@ const { lang } = Astro.props;
 ---
 
 <nav
+  aria-label={lang == "es" ? "Navegacion por secciones" : "Section navigation"}
   class="sticky top-0 z-10 w-full bg-skin-fill/90 py-3 font-mono md:block lg:w-full"
 >
   <ul class="flex items-center justify-between">
@@ -14,7 +15,9 @@ const { lang } = Astro.props;
       data-section="experience"
       class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
     >
-      <a href="#experience"
+      <a
+        href="#experience"
+        aria-label={lang == "es" ? "Ir a Experiencia" : "Go to Experience"}
         >🧑🏽‍💻 <span class="hidden md:inline"
           >{lang == "es" ? "Experiencia" : "Experience"}</span
         ></a
@@ -24,7 +27,9 @@ const { lang } = Astro.props;
       data-section="work"
       class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
     >
-      <a href="#work"
+      <a
+        href="#work"
+        aria-label={lang == "es" ? "Ir a Proyectos" : "Go to Projects"}
         >🛠️ <span class="hidden md:inline"
           >{lang == "es" ? "Proyectos" : "Projects"}</span
         ></a
@@ -34,7 +39,9 @@ const { lang } = Astro.props;
       data-section="education"
       class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
     >
-      <a href="#education"
+      <a
+        href="#education"
+        aria-label={lang == "es" ? "Ir a Educacion" : "Go to Education"}
         >🎓 <span class="hidden md:inline"
           >{lang == "es" ? "Educación" : "Education"}</span
         ></a
@@ -44,7 +51,9 @@ const { lang } = Astro.props;
       data-section="images"
       class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
     >
-      <a href="#images"
+      <a
+        href="#images"
+        aria-label={lang == "es" ? "Ir a Imagenes" : "Go to Images"}
         >🏞️ <span class="hidden md:inline"
           >{lang == "es" ? "Imágenes" : "Images"}</span
         ></a
@@ -54,7 +63,9 @@ const { lang } = Astro.props;
       data-section="skills"
       class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
     >
-      <a href="#skills"
+      <a
+        href="#skills"
+        aria-label={lang == "es" ? "Ir a Habilidades" : "Go to Skills"}
         >⚡️ <span class="hidden md:inline"
           >{lang == "es" ? "Skills" : "Skills"}</span
         ></a
@@ -64,33 +75,9 @@ const { lang } = Astro.props;
 </nav>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll(".main-section");
-    const navItems = document.querySelectorAll(".nav-item");
-    const isMobile = window.innerWidth <= 768;
+  import { initializeSectionNavigation } from "@/lib/navigation";
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const id = entry.target.getAttribute("id");
-          const navItem = document.querySelector(
-            `.nav-item[data-section="${id}"]`
-          );
-          if (
-            entry.isIntersecting &&
-            entry.intersectionRatio >= (isMobile ? 0.1 : 0.3)
-          ) {
-            navItems.forEach((item) =>
-              item.classList.remove("bg-skin-button-accent/20", "text-skin-hue")
-            );
-            navItem?.classList.add("bg-skin-button-accent/20", "text-skin-hue");
-          }
-        });
-      },
-      {
-        threshold: isMobile ? 0.1 : 0.3,
-      }
-    );
-    sections.forEach((section) => observer.observe(section));
+  document.addEventListener("DOMContentLoaded", () => {
+    initializeSectionNavigation(document, window);
   });
 </script>

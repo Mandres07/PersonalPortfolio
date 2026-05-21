@@ -24,6 +24,7 @@ const { images, className, lang } = Astro.props;
             data-fancybox="gallery"
             data-caption={desc}
             class="block aspect-square"
+            aria-label={desc}
           >
             <Image
               src={image}

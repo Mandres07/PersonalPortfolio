@@ -1,19 +1,46 @@
 ---
 import ArtPlums from "@/components/ArtPlums.astro";
+import { buildLayoutMetadata } from "@/lib/layout";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import "../globals.css";
 
 interface Props {
   title: string;
+  personName: string;
   lang: string;
   image: string;
   summary: string;
   url: string;
+  siteUrl: string;
+  alternateUrls: {
+    en: string;
+    es: string;
+  };
   theme: string;
   analyticsCode?: string;
 }
 
-const { title, lang, image, summary, url, theme, analyticsCode } = Astro.props;
+const {
+  title,
+  personName,
+  lang,
+  image,
+  summary,
+  url,
+  siteUrl,
+  alternateUrls,
+  theme,
+  analyticsCode,
+} = Astro.props;
+const { absoluteImage, plainSummary, twitterDomain, personSchema } =
+  buildLayoutMetadata({
+    personName,
+    lang,
+    image,
+    summary,
+    url,
+    siteUrl,
+  });
 ---
 
 <!doctype html>
@@ -21,28 +48,37 @@ const { title, lang, image, summary, url, theme, analyticsCode } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <title>{title}</title>
-    <meta name="description" content={summary} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={plainSummary} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index,follow" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="canonical" href={url} />
+    <link rel="alternate" href={alternateUrls.en} hreflang="en" />
+    <link rel="alternate" href={alternateUrls.es} hreflang="es" />
+    <link rel="alternate" href={alternateUrls.en} hreflang="x-default" />
     <link rel="preload" as="image" href={image} />
     <meta property="og:url" content={url} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={summary} />
-    <meta property="og:image" content="" />
+    <meta property="og:description" content={plainSummary} />
+    <meta property="og:image" content={absoluteImage} />
     <meta name="referrer" content="no-referrer" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:domain" content={url.split("//")[1] ?? ""} />
-    <meta property="twitter:url" content={url} />
+    <meta name="twitter:domain" content={twitterDomain} />
+    <meta name="twitter:url" content={url} />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={summary} />
-    <meta name="twitter:image" content={image} />
+    <meta name="twitter:description" content={plainSummary} />
+    <meta name="twitter:image" content={absoluteImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
     {analyticsCode && <script is:inline src={analyticsCode} />}
   </head>
   <body data-theme={theme} class="relative bg-skin-fill font-sans">
     <ArtPlums />
-    <main class="grid h-screen grid-cols-1 grid-rows-[1fr_auto_auto_auto_auto]">
+    <a href="#main-content" class="skip-link">
+      {lang === "es" ? "Saltar al contenido principal" : "Skip to main content"}
+    </a>
+    <main id="main-content" class="grid h-screen grid-cols-1 grid-rows-[1fr_auto_auto_auto_auto]">
       <slot />
     </main>
 
@@ -64,6 +100,24 @@ const { title, lang, image, summary, url, theme, analyticsCode } = Astro.props;
         list-style: none;
         margin: 0;
         padding: 0;
+      }
+
+      .skip-link {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        z-index: 50;
+        transform: translateY(-200%);
+        border: 1px solid rgb(var(--color-hue));
+        border-radius: 0.375rem;
+        background: rgb(var(--color-fill));
+        color: rgb(var(--color-text-base));
+        padding: 0.5rem 0.75rem;
+        transition: transform 0.2s ease;
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
       }
       *,
       *::before,

@@ -6,9 +6,10 @@ import { type Basics } from "@/types";
 
 interface Props {
   basics: Basics;
+  lang: string;
 }
 
-const { basics } = Astro.props;
+const { basics, lang } = Astro.props;
 const { name, label, image, location, profiles, email, phone } = basics;
 const { city, region, address } = location;
 ---
@@ -32,11 +33,10 @@ const { city, region, address } = location;
             <li>
               <a
                 href={`mailto:${email}`}
-                title={`Send email to me`}
-                target="_blank"
-                rel="noopener noreferrer"
+                title={lang == "en" ? "Send email to me" : "Enviarme un correo"}
+                aria-label={lang == "en" ? "Send email" : "Enviar correo"}
               >
-                <Icon name="mdi:email" width={20} height={20} />
+                <Icon name="mdi:email" width={20} height={20} aria-hidden="true" />
               </a>
             </li>
           )
@@ -46,11 +46,12 @@ const { city, region, address } = location;
             <li>
               <a
                 href={`https://wa.me/${phone}`}
-                title={`Send me a message`}
+                title={lang == "en" ? "Send me a message" : "Enviarme un mensaje"}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={lang == "en" ? "Send WhatsApp message" : "Enviar mensaje por WhatsApp"}
               >
-                <Icon name="ri:whatsapp-fill" width={20} height={20} />
+                <Icon name="ri:whatsapp-fill" width={20} height={20} aria-hidden="true" />
               </a>
             </li>
           )
@@ -61,21 +62,26 @@ const { city, region, address } = location;
               <li>
                 <a
                   href={url}
-                  title={`Visit ${name} profile on ${network}`}
+                  title={`${lang == "en" ? "Visit profile on" : "Visitar perfil en"} ${network}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`${lang == "en" ? "Visit profile on" : "Visitar perfil en"} ${network}`}
                 >
-                  <Icon name={icon} width={20} height={20} />
+                  <Icon name={icon} width={20} height={20} aria-hidden="true" />
                 </a>
               </li>
             );
           })
         }
-        <div
-          class="footer-button group flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border border-solid border-skin-hue bg-transparent text-skin-hue transition-all duration-200 ease-linear hover:bg-skin-button-accent hover:text-skin-inverted max-sm:hidden [&>span]:hover:text-skin-inverted"
-        >
-          <Icon name="ri:command-fill" class="h-5 w-5" />
-        </div>
+        <li>
+          <button
+            type="button"
+            class="footer-button group flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border border-solid border-skin-hue bg-transparent text-skin-hue transition-all duration-200 ease-linear hover:bg-skin-button-accent hover:text-skin-inverted max-sm:hidden [&>span]:hover:text-skin-inverted"
+            aria-label={lang == "en" ? "Open command palette" : "Abrir paleta de comandos"}
+          >
+            <Icon name="ri:command-fill" class="h-5 w-5" aria-hidden="true" />
+          </button>
+        </li>
       </ul>
     </div>
     <div class="flex items-end justify-start gap-2">
@@ -166,31 +172,3 @@ const { city, region, address } = location;
     }
   }
 </style>
-
-<script>
-  const select = document.getElementById("themeSwitch") as HTMLSelectElement;
-  const theme = localStorage.getItem("theme");
-  const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-
-  if (theme !== null) {
-    select.value = theme;
-  } else {
-    select.value = systemTheme;
-  }
-
-  function updateTheme(value: string) {
-    const theme = value === "system" ? systemTheme : value;
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(theme);
-    localStorage.setItem("theme", value);
-  }
-
-  updateTheme(select.value);
-
-  select.addEventListener("change", (event: Event) => {
-    const select = event.target as HTMLSelectElement;
-    updateTheme(select.value);
-  });
-</script>
