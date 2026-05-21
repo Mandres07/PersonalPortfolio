@@ -214,7 +214,9 @@ describe("theme-switch", () => {
     });
     (
       document as Document & {
-        startViewTransition?: typeof startViewTransition;
+        startViewTransition?: (
+          callback: () => void | Promise<void>,
+        ) => unknown;
       }
     ).startViewTransition = startViewTransition;
 
