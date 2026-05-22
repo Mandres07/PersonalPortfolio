@@ -165,6 +165,12 @@
         "Mejoré el proceso de entrega de la aplicación web implementando pipelines de CI/CD con Azure DevOps."
       ],
       "skills": {
+        "Codex": "simple-icons:openai",
+        "OpenAI GPT": "simple-icons:openai",
+        "Gemini": "simple-icons:googlegemini",
+        "GitHub Copilot": "simple-icons:githubcopilot",
+        "Ollama": "simple-icons:ollama",
+        "Claude": "simple-icons:claude",
         ".Net Core": "simple-icons:dotnet",
         "Blazor": "simple-icons:blazor",
         "Node": "ri:nodejs-line",
@@ -319,6 +325,72 @@
     }
   ],
   "skills": [
+    {
+      "name": "Codex",
+      "icon": "simple-icons:openai",
+      "level": "Intermedio",
+      "keywords": [
+        "Desarrollo asistido por IA",
+        "Herramientas para desarrolladores",
+        "LLMs",
+        "Productividad"
+      ]
+    },
+    {
+      "name": "OpenAI GPT",
+      "icon": "simple-icons:openai",
+      "level": "Intermedio",
+      "keywords": [
+        "Inteligencia artificial",
+        "LLMs",
+        "Ingenieria de prompts",
+        "Automatizacion"
+      ]
+    },
+    {
+      "name": "Gemini",
+      "icon": "simple-icons:googlegemini",
+      "level": "Intermedio",
+      "keywords": [
+        "Inteligencia artificial",
+        "LLMs",
+        "Ingenieria de prompts",
+        "Automatizacion"
+      ]
+    },
+    {
+      "name": "GitHub Copilot",
+      "icon": "simple-icons:githubcopilot",
+      "level": "Intermedio",
+      "keywords": [
+        "Desarrollo asistido por IA",
+        "Herramientas para desarrolladores",
+        "Autocompletado de codigo",
+        "Productividad"
+      ]
+    },
+    {
+      "name": "Ollama",
+      "icon": "simple-icons:ollama",
+      "level": "Intermedio",
+      "keywords": [
+        "Inteligencia artificial",
+        "LLMs",
+        "Modelos locales",
+        "Automatizacion"
+      ]
+    },
+    {
+      "name": "Claude",
+      "icon": "simple-icons:claude",
+      "level": "Intermedio",
+      "keywords": [
+        "Inteligencia artificial",
+        "LLMs",
+        "Ingenieria de prompts",
+        "Automatizacion"
+      ]
+    },
     {
       "name": "HTML",
       "icon": "ri:html5-fill",

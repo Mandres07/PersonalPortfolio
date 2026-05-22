@@ -165,6 +165,12 @@
             "Enhanced the delivery process of the web application by implementing CI/CD pipelines using Azure DevOps."
          ],
          "skills": {
+            "Codex": "simple-icons:openai",
+            "OpenAI GPT": "simple-icons:openai",
+            "Gemini": "simple-icons:googlegemini",
+            "GitHub Copilot": "simple-icons:githubcopilot",
+            "Ollama": "simple-icons:ollama",
+            "Claude": "simple-icons:claude",
             ".Net Core": "simple-icons:dotnet",
             "Blazor": "simple-icons:blazor",
             "Node": "ri:nodejs-line",
@@ -319,6 +325,72 @@
       }
    ],
    "skills": [
+      {
+         "name": "Codex",
+         "icon": "simple-icons:openai",
+         "level": "Intermediate",
+         "keywords": [
+            "AI Assisted Development",
+            "Developer Tools",
+            "LLMs",
+            "Productivity"
+         ]
+      },
+      {
+         "name": "OpenAI GPT",
+         "icon": "simple-icons:openai",
+         "level": "Intermediate",
+         "keywords": [
+            "Artificial Intelligence",
+            "LLMs",
+            "Prompt Engineering",
+            "Automation"
+         ]
+      },
+      {
+         "name": "Gemini",
+         "icon": "simple-icons:googlegemini",
+         "level": "Intermediate",
+         "keywords": [
+            "Artificial Intelligence",
+            "LLMs",
+            "Prompt Engineering",
+            "Automation"
+         ]
+      },
+      {
+         "name": "GitHub Copilot",
+         "icon": "simple-icons:githubcopilot",
+         "level": "Intermediate",
+         "keywords": [
+            "AI Assisted Development",
+            "Developer Tools",
+            "Code Completion",
+            "Productivity"
+         ]
+      },
+      {
+         "name": "Ollama",
+         "icon": "simple-icons:ollama",
+         "level": "Intermediate",
+         "keywords": [
+            "Artificial Intelligence",
+            "LLMs",
+            "Local Models",
+            "Automation"
+         ]
+      },
+      {
+         "name": "Claude",
+         "icon": "simple-icons:claude",
+         "level": "Intermediate",
+         "keywords": [
+            "Artificial Intelligence",
+            "LLMs",
+            "Prompt Engineering",
+            "Automation"
+         ]
+      },
       {
          "name": "HTML",
          "icon": "ri:html5-fill",
