@@ -31,7 +31,7 @@ const profilesInfo = buildProfilesInfo(profiles, lang);
 </footer>
 <button
   type="button"
-  class="footer-button z-20"
+  class="footer-button z-20 border border-skin-muted/60 bg-skin-fill text-skin-hue transition-colors duration-200 ease-linear theme-blackwhite:border-skin-muted"
   aria-label={lang == "en" ? "Open command palette" : "Abrir paleta de comandos"}
 >
   <Icon
@@ -89,15 +89,6 @@ const profilesInfo = buildProfilesInfo(profiles, lang);
 </script>
 
 <style>
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
   @media (min-width: 601px) {
     .footer-button {
       display: none;
@@ -111,8 +102,6 @@ const profilesInfo = buildProfilesInfo(profiles, lang);
 
     .footer-button {
       appearance: none;
-      background: #fff;
-      border: 1px solid #eee;
       border-radius: 50%;
       bottom: 10px;
       display: flex;
@@ -127,7 +116,7 @@ const profilesInfo = buildProfilesInfo(profiles, lang);
     }
   }
 
-  footer {
+  #normal-footer {
     @apply bg-skin-button-accent;
     position: fixed;
     bottom: 0px;
@@ -135,13 +124,10 @@ const profilesInfo = buildProfilesInfo(profiles, lang);
     padding-block: 8px;
     text-align: center;
     font-size: 0.85rem;
-
-    view-timeline-name: --revealing;
-    view-timeline-axis: block;
-
-    animation: linear 0.3s fadeIn;
-    animation-timeline: --revealing;
-    animation-range: entry 100% cover 10%;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease;
   }
   kbd {
     @apply bg-skin-muted;
