@@ -792,18 +792,35 @@
   ],
   "projects": [
     {
+      "name": "FinalScore.win",
+      "image": {
+        "url": "/images/finalscore-login.webp",
+        "position": "container"
+      },
+      "isActive": true,
+      "description": "Una app de pronósticos de fútbol con torneos privados y ranking en vivo.",
+      "highlights": [
+        "⚽ Torneos privados entre amigos",
+        "📊 Pronósticos, rankings y marcador exacto",
+        "🔐 Inicio con correo y Google",
+        "🚀 Next.js, React, Tailwind, MongoDB"
+      ],
+      "url": "https://finalscore.win",
+      "github": null
+    },
+    {
       "name": "Luvet PetsCare - AndysPets",
       "image": {
         "url": "/images/andyspets-welcome.webp",
         "position": "container"
       },
       "isActive": true,
-      "description": "Una implementación de Luvet PetsCare para AndysPets, una clínica veterinaria en Panamá.",
+      "description": "Luvet PetsCare para una clínica veterinaria en Panamá.",
       "highlights": [
-        "🎯 Usando Luvet PetsCare por más de 5 años",
-        "✨ UI responsiva, funciona en todos los dispositivos",
-        "🐶 Más de 3500 mascotas registradas, y contando",
-        "🚀 Construido con Microsoft SQL Server, Azure y ASP.NET."
+        "🎯 En uso por más de 5 años",
+        "✨ UI responsiva en todos los dispositivos",
+        "🐶 Más de 3500 mascotas registradas",
+        "🚀 SQL Server, Azure y ASP.NET"
       ],
       "url": "https://andyspets.azurewebsites.net",
       "github": null
@@ -815,12 +832,12 @@
         "position": "container"
       },
       "isActive": true,
-      "description": "Una implementación de Luvet PetsCare para Veterinaria Knino, una clínica veterinaria en Panamá.",
+      "description": "Luvet PetsCare para una clínica veterinaria en Panamá.",
       "highlights": [
-        "🎯 Usando Luvet PetsCare por más de 6 años",
-        "✨ UI responsiva, funciona en todos los dispositivos",
-        "🐶 More than 9000 pets registered, and counting",
-        "🚀 Construido con Microsoft SQL Server, Azure y ASP.NET."
+        "🎯 En uso por más de 6 años",
+        "✨ UI responsiva en todos los dispositivos",
+        "🐶 Más de 9000 mascotas registradas",
+        "🚀 SQL Server, Azure y ASP.NET"
       ],
       "url": "https://veterinariaknino.azurewebsites.net",
       "github": null
@@ -832,11 +849,11 @@
         "position": "container"
       },
       "isActive": true,
-      "description": "Un sitio web adaptable para el equipo de MyResolvent, mostrando las características y beneficios de la suite Student Debt Solutions.",
+      "description": "Un sitio responsivo para el equipo y la suite de MyResolvent.",
       "highlights": [
-        "🚀 Diseñado y estructurado con Bootstrap",
-        "📲 UI responsiva, funciona en todos los dispositivos",
-        "💕 UI diseñada con Next.js"
+        "🚀 Hecho con Bootstrap",
+        "📲 UI responsiva en todos los dispositivos",
+        "💕 Hecho con Next.js"
       ],
       "url": "https://myresolvent.com",
       "github": null
@@ -848,11 +865,11 @@
         "position": "container"
       },
       "isActive": true,
-      "description": "Sitio web de Student Debt Solutions. UI adaptable que muestra las funcionalidades que ofrece la empresa.",
+      "description": "Una landing page responsiva para Student Debt Solutions.",
       "highlights": [
-        "🚀 Diseñado y estructurado con Bootstrap",
-        "📲 UI responsiva, funciona en todos los dispositivos",
-        "💕 UI diseñada con Next.js"
+        "🚀 Hecho con Bootstrap",
+        "📲 UI responsiva en todos los dispositivos",
+        "💕 Hecho con Next.js"
       ],
       "url": "https://start.myresolvent.com",
       "github": null
@@ -864,11 +881,11 @@
         "position": "container"
       },
       "isActive": true,
-      "description": "SDS Borrower Portal, donde los estudiantes pueden aplicar a los planes que ofrece el gobierno de USA para mejorar las condiciones de sus préstamos.",
+      "description": "Un portal donde estudiantes aplican a beneficios para sus préstamos.",
       "highlights": [
-        "📲 Interfaz de usuario adatable a cualquier tamaño de pantalla",
-        "🚀 Sistema diseñado con Bootstrap",
-        "💕 Interfaz de usuario creada con .NET Core + Blazor"
+        "📲 UI adaptable a cualquier pantalla",
+        "🚀 Hecho con Bootstrap",
+        "💕 Hecho con .NET Core + Blazor"
       ],
       "url": "https://app.myresolvent.com",
       "github": null
@@ -880,11 +897,11 @@
         "position": "container"
       },
       "isActive": true,
-      "description": "SDS Agency Portal, donde las agencias pueden administrar a sus estudiantes con préstamos.",
+      "description": "Un portal para que las agencias administren estudiantes.",
       "highlights": [
-        "📲 Interfaz de usuario adatable a cualquier tamaño de pantalla",
-        "🚀 Sistema diseñado con Bootstrap",
-        "💕 Interfaz de usuario creada con .NET Core + Blazor"
+        "📲 UI adaptable a cualquier pantalla",
+        "🚀 Hecho con Bootstrap",
+        "💕 Hecho con .NET Core + Blazor"
       ],
       "url": "https://sds-agency-ui-prd.efiscal.net",
       "github": null
@@ -896,10 +913,10 @@
         "position": "container"
       },
       "isActive": true,
-      "description": "SDS Management Portal, donde los expertos de SDS pueden administrar las cuentas de las agencias, ver reportes y configuraciones generales.",
+      "description": "Un portal para cuentas de agencias, reportes y ajustes.",
       "highlights": [
-        "🚀 Sistema diseñado con Bootstrap",
-        "💕 Interfaz de usuario creada con .NET Core + Blazor"
+        "🚀 Hecho con Bootstrap",
+        "💕 Hecho con .NET Core + Blazor"
       ],
       "url": "https://sds-management-ui-prd.efiscal.net",
       "github": null

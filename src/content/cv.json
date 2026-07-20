@@ -581,25 +581,25 @@
          "icon": "simple-icons:sqlite",
          "level": "Intermediate",
          "keywords": [
-           "Databases",
-           "SQL",
-           "Data Storage",
-           "Backend",
-           "Frontend"
+            "Databases",
+            "SQL",
+            "Data Storage",
+            "Backend",
+            "Frontend"
          ]
-       },
-       {
+      },
+      {
          "name": "Firebase",
          "icon": "simple-icons:firebase",
          "level": "Expert",
          "keywords": [
-           "Databases",
-           "SQL",
-           "Data Storage",
-           "Backend",
-           "Frontend"
+            "Databases",
+            "SQL",
+            "Data Storage",
+            "Backend",
+            "Frontend"
          ]
-       },
+      },
       {
          "name": "Azure",
          "icon": "mdi:microsoft-azure",
@@ -792,18 +792,35 @@
    ],
    "projects": [
       {
+         "name": "FinalScore.win",
+         "image": {
+            "url": "/images/finalscore-login.webp",
+            "position": "container"
+         },
+         "isActive": true,
+         "description": "A football predictions app for private tournaments and live rankings.",
+         "highlights": [
+            "⚽ Private tournaments for friends",
+            "📊 Predictions, rankings, and exact scores",
+            "🔐 Email and Google sign-in",
+            "🚀 Next.js, React, Tailwind, MongoDB"
+         ],
+         "url": "https://finalscore.win",
+         "github": null
+      },
+      {
          "name": "Luvet PetsCare - AndysPets",
          "image": {
             "url": "/images/andyspets-welcome.webp",
             "position": "container"
          },
          "isActive": true,
-         "description": "A Luvet PetsCare implementation for AndysPets, a veterinary clinic in Panama.",
+         "description": "Luvet PetsCare for a veterinary clinic in Panama.",
          "highlights": [
-            "🎯 Using Luvet PetsCare for +5 years",
-            "✨ Responisve UI, works on all devices",
-            "🐶 More than 3500 pets registered, and counting",
-            "🚀 Built with Microsoft SQL Server, Azure and ASP.NET."
+            "🎯 In use for 5+ years",
+            "✨ Responsive on all devices",
+            "🐶 3500+ pets registered",
+            "🚀 SQL Server, Azure, ASP.NET"
          ],
          "url": "https://andyspets.azurewebsites.net",
          "github": null
@@ -815,12 +832,12 @@
             "position": "container"
          },
          "isActive": true,
-         "description": "A Luvet PetsCare implementation for Veterinaria Knino, a veterinary clinic in Panama.",
+         "description": "Luvet PetsCare for a veterinary clinic in Panama.",
          "highlights": [
-            "🎯 Using Luvet PetsCare for +6 years",
-            "✨ Responisve UI, works on all devices",
-            "🐶 More than 9000 pets registered, and counting",
-            "🚀 Built with Microsoft SQL Server, Azure and ASP.NET."
+            "🎯 In use for 6+ years",
+            "✨ Responsive on all devices",
+            "🐶 9000+ pets registered",
+            "🚀 SQL Server, Azure, ASP.NET"
          ],
          "url": "https://veterinariaknino.azurewebsites.net",
          "github": null
@@ -832,11 +849,11 @@
             "position": "container"
          },
          "isActive": true,
-         "description": "A responsive website for the MyResolvent team, showcasing the features and benefits of the Student Debt Solutions suite.",
+         "description": "A responsive site for the MyResolvent team and product suite.",
          "highlights": [
-            "🚀 Designed and structured with Bootstrap",
-            "📲 Responsive UI, works on all devices",
-            "💕 UI crafted with Next.js"
+            "🚀 Built with Bootstrap",
+            "📲 Responsive on all devices",
+            "💕 Made with Next.js"
          ],
          "url": "https://myresolvent.com",
          "github": null
@@ -848,11 +865,11 @@
             "position": "container"
          },
          "isActive": true,
-         "description": "SDS landing page. Responsive UI, showing the features that the company can offer.",
+         "description": "A responsive landing page for Student Debt Solutions.",
          "highlights": [
-            "🚀 Designed and structured with Bootstrap",
-            "📲 Responsive UI, works on all devices",
-            "💕 UI crafted with Next.js"
+            "🚀 Built with Bootstrap",
+            "📲 Responsive on all devices",
+            "💕 Made with Next.js"
          ],
          "url": "https://start.myresolvent.com",
          "github": null
@@ -864,11 +881,11 @@
             "position": "container"
          },
          "isActive": true,
-         "description": "SDS Borrower Portal, where students can apply to get loan debt benefits",
+         "description": "A portal where students apply for loan debt benefits.",
          "highlights": [
-            "🚀 Designed and structured with Bootstrap",
-            "📲 Responsive UI, works on all devices",
-            "💕 UI crafted with .NET Core + Blazor"
+            "🚀 Built with Bootstrap",
+            "📲 Responsive on all devices",
+            "💕 Made with .NET Core + Blazor"
          ],
          "url": "https://app.myresolvent.com",
          "github": null
@@ -880,11 +897,11 @@
             "position": "container"
          },
          "isActive": true,
-         "description": "SDS Agency Portal, where agencies can manage their students profiles",
+         "description": "A portal for agencies to manage student profiles.",
          "highlights": [
-            "🚀 Designed and structured with Bootstrap",
-            "📲 Responsive UI, works on all devices",
-            "💕 UI crafted with .NET Core + Blazor"
+            "🚀 Built with Bootstrap",
+            "📲 Responsive on all devices",
+            "💕 Made with .NET Core + Blazor"
          ],
          "url": "https://sds-agency-ui-prd.efiscal.net",
          "github": null
@@ -896,11 +913,11 @@
             "position": "container"
          },
          "isActive": true,
-         "description": "SDS Management Portal, where SDS experts can manage their agencies accounts, view reports and configure settings.",
+         "description": "A portal for managing agency accounts, reports, and settings.",
          "highlights": [
-            "🚀 Designed and structured with Bootstrap",
-            "📲 Responsive UI, works on all devices",
-            "💕 UI crafted with .NET Core + Blazor"
+            "🚀 Built with Bootstrap",
+            "📲 Responsive on all devices",
+            "💕 Made with .NET Core + Blazor"
          ],
          "url": "https://sds-management-ui-prd.efiscal.net",
          "github": null
