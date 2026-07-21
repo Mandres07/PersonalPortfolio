@@ -17,6 +17,10 @@ const translations = {
       label: "Section navigation",
       goTo: (label: string) => `Go to ${label}`,
     },
+    commandSections: {
+      actions: "Actions",
+      social: "Social",
+    },
     theme: {
       color: "Color theme",
       language: "Language",
@@ -79,6 +83,10 @@ const translations = {
     navigation: {
       label: "Navegación por secciones",
       goTo: (label: string) => `Ir a ${label}`,
+    },
+    commandSections: {
+      actions: "Acciones",
+      social: "Social",
     },
     theme: {
       color: "Tema de color",

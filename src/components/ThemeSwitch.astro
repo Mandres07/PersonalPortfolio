@@ -99,7 +99,8 @@ const selectedTheme = COLOR_THEMES.includes(defaultTheme as ColorTheme)
 <script>
   import { initializeThemeSwitch } from "@/lib/theme-switch";
 
-  initializeThemeSwitch({ document, window });
+  const destroyThemeSwitch = initializeThemeSwitch({ document, window });
+  window.addEventListener("pagehide", destroyThemeSwitch, { once: true });
 </script>
 
 <style>
