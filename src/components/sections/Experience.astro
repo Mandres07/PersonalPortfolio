@@ -1,142 +1,167 @@
 ---
-import Section from '../Section.astro'
-import { Icon } from 'astro-icon/components'
+import Section from "../Section.astro";
+import { Icon } from "astro-icon/components";
+import { getTranslations } from "@/i18n";
 import { getYearFromIsoDate } from "@/lib/date";
-import { type Work } from "@/types";
+import type { Locale, Work } from "@/types";
 
 interface Props {
-  className: string;
   work: Work[];
-  lang: string;
+  locale: Locale;
 }
 
-const { className, work, lang } = Astro.props;
+const { work, locale } = Astro.props;
+const t = getTranslations(locale);
 ---
 
-<Section className={className} title={lang == "en" ? "Experience": "Experiencia"} id="experience">
-  <ul class="flex flex-col">
-    {work.map(({ name, startDate, endDate, position, summary, responsibilities, achievements, url, skills, location, location_type }, index) => {
-      const startYear = getYearFromIsoDate(startDate)
-      const endYear = endDate != null ? getYearFromIsoDate(endDate) : lang == "en" ?"Present": "Presente"
-      const detailsId = `experience-details-${index}`;
+<Section title={t.sections.experience} id="experience">
+  <ol class="flex flex-col">
+    {
+      work.map(
+        ({
+          id,
+          name,
+          startDate,
+          endDate,
+          position,
+          summary,
+          responsibilities,
+          achievements,
+          url,
+          skills,
+          location,
+          location_type: locationType,
+        }) => {
+          const startYear = getYearFromIsoDate(startDate);
+          const endYear = endDate
+            ? getYearFromIsoDate(endDate)
+            : t.experience.present;
+          const summaryItems = Array.isArray(summary) ? summary : [summary];
+          const hasDetails =
+            responsibilities.length > 0 || achievements.length > 0;
 
-      return (
-        <li class="relative">
-          <div data-expanded="false" class="group relative grid pb-1 transition-all sm:grid-cols-10 sm:gap-8 md:gap-6 lg:hover:!opacity-100 expand-container">
-            <header class="relative mt-1 text-xs font-semibold font-mono sm:col-span-2 lg:mx-1">
-              <time datetime={startDate} data-title={startDate}>{startYear}</time> - {endDate ? <time datetime={endDate} data-title={endDate}>{endYear}</time> : <span>{endYear}</span>}
-            </header>
-            <div class="relative flex flex-col pb-6 before:-ml-6 sm:col-span-8 before:w-px before:absolute before:bg-skin-muted before:h-full before:mt-2">
-            <div class="absolute w-2 h-2 bg-skin-muted rounded-full mt-2 -translate-x-[1.71rem] ring ring-skin-fill"></div>
-              <h3>
-                <div class="inline-flex items-center text-lg leading-tight group/link focus-visible:text-amber-500">
-                  <span>{position} <span>@</span>
-                  {url ? (
-                    <a
-                      class="text-skin-hue"
-                      href={url}
-                      title={lang == "en" ? `Visit ${name}` : `Ver ${name}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {name}
-                    </a>
+          return (
+            <li class="relative" id={`experience-${id}`}>
+              <article class="group relative grid pb-1 sm:grid-cols-10 sm:gap-8 md:gap-6">
+                <p class="relative mt-1 font-mono text-xs font-semibold sm:col-span-2 lg:mx-1">
+                  <time datetime={startDate}>{startYear}</time> –{" "}
+                  {endDate ? (
+                    <time datetime={endDate}>{endYear}</time>
                   ) : (
-                    <span>{name}</span>
+                    <span>{endYear}</span>
                   )}
-                  {url &&
-                    <span class="inline-block text-skin-hue">
-                      <Icon name="ri:arrow-up-line" class="inline-block w-4 h-4 ml-1 transition-transform translate-y-px shrink-0 group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none rotate-45" aria-hidden="true">
-                      </Icon>
-                    </span>
-                  }
-                  </span>
-                </div>
-              </h3>
-              {(location || location_type) && (
-                <div class="text-xs text-skin-muted">
-                  {location} {location && location_type && '-'} {location_type}
-                </div>
-              )}
-              <div class="mt-4 flex flex-col gap-4 text-sm">
-                {summary && (
-                  <div class="flex flex-col gap-1">
-                    <h4>{lang == "en" ? "Summary" : "Descripción"}:</h4>
-                    <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
-                      {Array.isArray(summary) ? (
-                        summary.map(item => <li>{item}</li>)
-                      ) : (
-                        <li>{summary}</li>
-                      )}
-                    </ul>
+                </p>
+
+                <div class="before:bg-skin-muted relative flex flex-col pb-6 before:absolute before:mt-2 before:-ml-6 before:h-full before:w-px sm:col-span-8">
+                  <span
+                    aria-hidden="true"
+                    class="bg-skin-muted ring-skin-fill absolute mt-2 h-2 w-2 -translate-x-[1.71rem] rounded-full ring"
+                  />
+                  <h3 class="text-lg leading-tight">
+                    <span>{position} @ </span>
+                    {url ? (
+                      <a
+                        class="group/link text-skin-hue inline-flex items-center hover:underline"
+                        href={url}
+                        title={t.actions.visit(name)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {name}
+                        <Icon
+                          name="ri:arrow-up-line"
+                          class="ml-1 h-4 w-4 rotate-45 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 motion-reduce:transition-none"
+                          aria-hidden="true"
+                        />
+                      </a>
+                    ) : (
+                      <span>{name}</span>
+                    )}
+                  </h3>
+
+                  {(location || locationType) && (
+                    <p class="text-skin-muted text-xs">
+                      {[location, locationType].filter(Boolean).join(" — ")}
+                    </p>
+                  )}
+
+                  <div class="mt-4 flex flex-col gap-4 text-sm">
+                    {summaryItems.length > 0 && (
+                      <div class="flex flex-col gap-1">
+                        <h4>{t.experience.summary}</h4>
+                        <ul class="text-skin-muted ml-4 flex list-disc flex-col gap-2">
+                          {summaryItems.map((item) => (
+                            <li>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {hasDetails && (
+                      <details class="group/details border-skin-muted/60 rounded-md border p-3">
+                        <summary class="text-skin-hue marker:text-skin-hue cursor-pointer font-medium">
+                          {t.actions.details}
+                        </summary>
+                        <div class="mt-4 flex flex-col gap-4">
+                          {responsibilities.length > 0 && (
+                            <div class="flex flex-col gap-1">
+                              <h4>{t.experience.responsibilities}</h4>
+                              <ul class="text-skin-muted ml-4 flex list-disc flex-col gap-2">
+                                {responsibilities.map((item) => (
+                                  <li>{item}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                          {achievements.length > 0 && (
+                            <div class="flex flex-col gap-1">
+                              <h4>{t.experience.achievements}</h4>
+                              <ul class="text-skin-muted ml-4 flex list-disc flex-col gap-2">
+                                {achievements.map((item) => (
+                                  <li>{item}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
+                      </details>
+                    )}
+
+                    {Object.keys(skills).length > 0 && (
+                      <ul
+                        class="flex flex-wrap gap-2 font-mono"
+                        aria-label={t.experience.technologies}
+                      >
+                        {Object.entries(skills).map(([label, icon]) => (
+                          <li class="border-skin-muted/60 bg-skin-button-muted/70 text-skin-base flex items-center gap-1 rounded-md border border-solid px-2 py-0.5 text-xs backdrop-blur-sm">
+                            {icon && (
+                              <Icon
+                                name={icon}
+                                width={16}
+                                height={16}
+                                aria-hidden="true"
+                              />
+                            )}
+                            <span>{label}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
-                )}
-
-                {(responsibilities || achievements) &&  (
-                <div
-                  id={detailsId}
-                  class="after:from-skin-hue dark:after:to-skin-hue/0 flex relative flex-col gap-4 after:bg-gradient-to-t after:absolute after:bottom-0 after:w-full after:h-12 after:content-[''] h-16 group-data-[expanded=true]:after:hidden group-data-[expanded=true]:h-auto overflow-hidden duration-200 ease-out"
-                >
-                {responsibilities && (
-                  <div class="flex flex-col gap-1">
-                    <h4>{lang == "en" ? "Responsibilities" : "Responsabilidades"}:</h4>
-                    <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
-                      {responsibilities.map(responsibility => (
-                        <li>{responsibility}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {achievements && (
-                  <div class="flex flex-col gap-1">
-                    <h4>{lang == "en" ? "Achievements" : "Logros"}:</h4>
-                    <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
-                      {achievements.map(achievement => (
-                        <li>{achievement}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
                 </div>
-
-                <button
-                  type="button"
-                  class="group/more flex w-fit cursor-pointer items-center justify-center gap-1.5 text-xs text-skin-hue transition-all hover:text-skin-base expand-button"
-                  data-lang={lang}
-                  aria-expanded="false"
-                  aria-controls={detailsId}
-                >
-                  <span class="expand-text">{lang == "en" ? "Show more" : "Ver más"}</span>
-                  <Icon name="ri:arrow-down-s-line" class="w-4 h-4 group-hover/more:translate-y-0.5 duration-200 ease-out group-data-[expanded=true]:rotate-180" width={24} height={24} aria-hidden="true"></Icon>
-                </button>
-
-
-                <ul class="flex font-mono flex-wrap gap-2" aria-label={lang == "en" ? "Technologies used" : "Tecnologias usadas"}>
-                  {skills && Object.entries(skills).map(([label, icon]) =>  (
-                      <li class="bg-skin-button-accent/20 border-skin-hue/20 text-skin-hue flex gap-1 items-center border-solid border rounded-md px-2 py-0.5 text-xs backdrop-blur-sm">
-                        {icon && <Icon name={icon} width={16} height={16} aria-hidden="true" />} <span>{label}</span>
-                      </li>
-                    ))
-    }
-                </ul>
-)}
-              </div>
-            </div>
-        </div>
-        </li>
+              </article>
+            </li>
+          );
+        },
       )
-    })}
-  </ul>
+    }
+  </ol>
 </Section>
-<script>
-  import { bindExperienceExpanders } from "@/lib/experience";
-
-  bindExperienceExpanders();
-</script>
 
 <style>
+  @reference "../../globals.css";
+
   li::marker {
-    @apply text-skin-hue
+    @apply text-skin-hue;
   }
 </style>

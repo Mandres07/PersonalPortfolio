@@ -11,73 +11,79 @@ import ThemeSwitch from "@/components/ThemeSwitch.astro";
 import Education from "@/components/sections/Education.astro";
 import Images from "@/components/sections/Images.astro";
 import Navigation from "@/components/sections/Navigation.astro";
-import { buildPageUrls } from "@/lib/page";
-import { type CV } from "@/types";
+import { type CV, type Locale, type SectionId } from "@/types";
 
 interface Props {
   CV: CV;
-  lang: string;
+  locale: Locale;
 }
 
-const { CV, lang } = Astro.props;
+const { CV, locale } = Astro.props;
 const basics = CV.basics;
-const { name, label } = basics;
-const { siteUrl, currentUrl, alternateUrls } = buildPageUrls(basics.url, lang);
+const availableSections: SectionId[] = [
+  ...(CV.work.length ? (["experience"] as const) : []),
+  ...(CV.projects.length ? (["work"] as const) : []),
+  ...(CV.education.length || CV.certificates.length
+    ? (["education"] as const)
+    : []),
+  ...(CV.images.list.length ? (["images"] as const) : []),
+  ...(CV.skills.length ? (["skills"] as const) : []),
+];
 ---
 
 <Layout
-  title={`${name}'s Portfolio - ${label}`}
-  personName={name}
-  lang={lang}
+  personName={basics.name}
+  jobTitle={basics.label}
+  locale={locale}
   image={basics.image}
   summary={basics.summary}
-  url={currentUrl}
-  siteUrl={siteUrl}
-  alternateUrls={alternateUrls}
+  profiles={basics.profiles}
   theme={basics.theme}
-  analyticsCode={CV.analyticsCode}
 >
   <div
-    class="container relative grid max-w-7xl grid-cols-1 gap-4 p-8 md:gap-12 md:p-16 md:pb-10 lg:grid-cols-5 xl:gap-24"
+    class="relative container grid max-w-7xl grid-cols-1 gap-4 p-8 md:gap-12 md:p-16 md:pb-10 lg:grid-cols-5 xl:gap-24"
   >
     <aside
-      class="slide-enter space-y-10 ease-in lg:sticky lg:top-16 lg:col-span-2 lg:h-screen"
+      class="slide-enter space-y-10 ease-in lg:sticky lg:top-16 lg:col-span-2 lg:self-start"
     >
-      <Hero basics={basics} lang={lang} />
-      <About summary={basics.summary} lang={lang} />
-      <ThemeSwitch lang={lang} />
+      <Hero basics={basics} locale={locale} />
+      <About summary={basics.summary} locale={locale} />
+      <ThemeSwitch locale={locale} defaultTheme={basics.theme} />
     </aside>
     <div class="slide-enter-content space-y-6 lg:col-span-3">
-      <Navigation lang={lang} />
-      <Experience lang={lang} className="" work={CV.work} />
-      <Projects lang={lang} className="" projects={CV.projects} />
+      <Navigation locale={locale} sections={availableSections} />
+      {CV.work.length > 0 && <Experience locale={locale} work={CV.work} />}
       {
-        CV?.education && (
+        CV.projects.length > 0 && (
+          <Projects locale={locale} projects={CV.projects} />
+        )
+      }
+      {
+        (CV.education.length > 0 || CV.certificates.length > 0) && (
           <Education
-            lang={lang}
-            className="order-first"
+            locale={locale}
             certificates={CV.certificates}
             education={CV.education}
           />
         )
       }
-      {CV?.images && <Images lang={lang} className="" images={CV.images} />}
-      <Skills lang={lang} className="" skills={CV.skills} />
+      {
+        CV.images.list.length > 0 && (
+          <Images locale={locale} images={CV.images} />
+        )
+      }
+      {CV.skills.length > 0 && <Skills locale={locale} skills={CV.skills} />}
     </div>
   </div>
-  <Footer lang={lang} />
-  <KeyboardManager lang={lang} profiles={basics.profiles} />
-</Layout>
+  <Footer locale={locale} />
+  <KeyboardManager locale={locale} profiles={basics.profiles} />
+  <script>
+    import { initializeGallery } from "@/lib/gallery";
 
-<style>
-  .scrollbar-thin::-webkit-scrollbar {
-    height: 8px;
-  }
-  .scrollbar-thumb-gray-400::-webkit-scrollbar-thumb {
-    background-color: #a0aec0;
-    border-radius: 4px;
-  }
-</style>
+    const destroyGallery = initializeGallery(document);
+    window.addEventListener("pagehide", destroyGallery, { once: true });
+  </script>
+</Layout>
 
 <style is:global>
   * {
@@ -134,48 +140,6 @@ const { siteUrl, currentUrl, alternateUrls } = buildPageUrls(basics.url, lang);
     }
     .slide-enter-content > *:nth-child(6) {
       --enter-stage: 6 !important;
-    }
-    .slide-enter-content > *:nth-child(7) {
-      --enter-stage: 7 !important;
-    }
-    .slide-enter-content > *:nth-child(8) {
-      --enter-stage: 8 !important;
-    }
-    .slide-enter-content > *:nth-child(9) {
-      --enter-stage: 9 !important;
-    }
-    .slide-enter-content > *:nth-child(10) {
-      --enter-stage: 10 !important;
-    }
-    .slide-enter-content > *:nth-child(11) {
-      --enter-stage: 11 !important;
-    }
-    .slide-enter-content > *:nth-child(12) {
-      --enter-stage: 12 !important;
-    }
-    .slide-enter-content > *:nth-child(13) {
-      --enter-stage: 13 !important;
-    }
-    .slide-enter-content > *:nth-child(14) {
-      --enter-stage: 14 !important;
-    }
-    .slide-enter-content > *:nth-child(15) {
-      --enter-stage: 15 !important;
-    }
-    .slide-enter-content > *:nth-child(16) {
-      --enter-stage: 16 !important;
-    }
-    .slide-enter-content > *:nth-child(17) {
-      --enter-stage: 17 !important;
-    }
-    .slide-enter-content > *:nth-child(18) {
-      --enter-stage: 18 !important;
-    }
-    .slide-enter-content > *:nth-child(19) {
-      --enter-stage: 19 !important;
-    }
-    .slide-enter-content > *:nth-child(20) {
-      --enter-stage: 20 !important;
     }
   }
 </style>

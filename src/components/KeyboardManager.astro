@@ -1,94 +1,136 @@
 ---
-import "hotkeypad/reset.css";
 import "hotkeypad/index.css";
-import { buildProfilesInfo } from "@/lib/keyboard-manager";
-import { type Profile } from "@/types";
 import { Icon } from "astro-icon/components";
+import { getTranslations } from "@/i18n";
+import type { Locale, Profile } from "@/types";
 
 interface Props {
   profiles: Profile[];
-  lang: string;
+  locale: Locale;
 }
-const { lang, profiles } = Astro.props;
-const profilesInfo = buildProfilesInfo(profiles, lang);
+
+const { locale, profiles } = Astro.props;
+const t = getTranslations(locale);
 ---
 
-<footer
+<div
   id="normal-footer"
-  class="flex flex-col gap-2 font-mono theme-blackwhite:text-skin-inverted"
+  class="theme-blackwhite:text-skin-inverted flex flex-col gap-2 font-mono"
 >
-  <div>
-    {lang == "en" ? "Press" : "Presiona"}
-    <kbd class="theme-blackwhite:text-skin-base">Cmd</kbd> + <kbd
-      class="theme-blackwhite:text-skin-base">K</kbd
-    >
-    {
-      lang == "en"
-        ? "to open the command palette."
-        : "para abrir la paleta de comandos."
-    }
-  </div>
-</footer>
+  <p>
+    {t.actions.paletteLead}{" "}
+    <kbd>Ctrl</kbd>/<kbd>Command</kbd> + <kbd>K</kbd>
+    {" "}{t.actions.paletteTrail}
+  </p>
+</div>
 <button
   type="button"
-  class="footer-button z-20 border border-skin-muted/60 bg-skin-fill text-skin-hue transition-colors duration-200 ease-linear theme-blackwhite:border-skin-muted"
-  aria-label={lang == "en" ? "Open command palette" : "Abrir paleta de comandos"}
+  disabled
+  data-command-palette-trigger
+  class="footer-button border-skin-muted/60 bg-skin-fill text-skin-button-accent theme-blackwhite:border-skin-muted z-20 border transition-colors duration-200 ease-linear"
+  aria-label={t.actions.openPalette}
 >
   <Icon
     name="ri:command-fill"
     width={20}
     height={20}
-    class="text-skin-hue theme-blackwhite:dark:text-skin-inverted"
+    class="text-skin-button-accent theme-blackwhite:dark:text-skin-inverted"
     aria-hidden="true"
   />
 </button>
 
 <div
   id="hotkeypad"
-  data-placeholder={lang == "en" ? "Search..." : "Buscar..."}
-  data-info={JSON.stringify(profilesInfo)}
-  data-lang={lang}
+  data-placeholder={t.actions.search}
+  data-profiles={JSON.stringify(profiles)}
+  data-locale={locale}
 >
 </div>
 
 <script>
   import {
+    buildProfilesInfo,
     createKeyboardCommands,
-    dispatchCommandPaletteShortcut,
   } from "@/lib/keyboard-manager";
+  import type { Locale, Profile } from "@/types";
   import HotKeyPad from "hotkeypad";
 
   const hotkeypad = new HotKeyPad();
-  const info = hotkeypad.instance.getAttribute("data-info") ?? "[]";
-  const lang = hotkeypad.instance.getAttribute("data-lang") ?? "en";
-  const parsedInfo = JSON.parse(info);
+  const activationKey = hotkeypad.activationKey === "Cmd" ? "Cmd" : "Ctrl";
+  const profiles = JSON.parse(
+    hotkeypad.instance.getAttribute("data-profiles") ?? "[]",
+  ) as Profile[];
+  const locale = (hotkeypad.instance.getAttribute("data-locale") ??
+    "en") as Locale;
+  const info = buildProfilesInfo(profiles, locale, activationKey);
+  const abortController = new AbortController();
+  const { signal } = abortController;
+  let returnFocus: HTMLElement | null = null;
+
   hotkeypad.setCommands(
-    createKeyboardCommands(parsedInfo, lang, (url, target) => {
-      window.open(url, target);
-    })
+    createKeyboardCommands(
+      info,
+      locale,
+      (url, target) => {
+        const opened = window.open(url, target, "noopener,noreferrer");
+        if (opened) opened.opener = null;
+      },
+      activationKey,
+    ),
   );
 
-  const footerButtons = document.querySelectorAll(".footer-button");
-  footerButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      dispatchCommandPaletteShortcut(document, KeyboardEvent);
-    });
-  });
+  document.addEventListener(
+    "click",
+    (event) => {
+      const button = (
+        event.target as Element | null
+      )?.closest<HTMLButtonElement>("[data-command-palette-trigger]");
+      if (!button) return;
+      returnFocus = button;
+      hotkeypad.open();
+    },
+    { signal },
+  );
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const backdrop = document.querySelector(
-      "#hotkeypad [data-backdrop]"
-    ) as HTMLDivElement;
-    window.addEventListener("hotkeypad:open", () => {
-      backdrop.style.opacity = "0.8";
+  document
+    .querySelectorAll<HTMLButtonElement>("[data-command-palette-trigger]")
+    .forEach((button) => {
+      button.disabled = false;
     });
-    window.addEventListener("hotkeypad:close", () => {
-      backdrop.style.opacity = "0";
-    });
+
+  hotkeypad.instance.dataset.ready = "true";
+
+  window.addEventListener(
+    "hotkeypad:open",
+    () => {
+      returnFocus ??= document.activeElement as HTMLElement | null;
+      const backdrop =
+        hotkeypad.instance.querySelector<HTMLElement>("[data-backdrop]");
+      if (backdrop) backdrop.style.opacity = "0.8";
+    },
+    { signal },
+  );
+
+  window.addEventListener(
+    "hotkeypad:close",
+    () => {
+      const backdrop =
+        hotkeypad.instance.querySelector<HTMLElement>("[data-backdrop]");
+      if (backdrop) backdrop.style.opacity = "0";
+      returnFocus?.focus();
+      returnFocus = null;
+    },
+    { signal },
+  );
+
+  window.addEventListener("pagehide", () => abortController.abort(), {
+    once: true,
   });
 </script>
 
 <style>
+  @reference "../globals.css";
+
   @media (min-width: 601px) {
     .footer-button {
       display: none;
@@ -119,7 +161,7 @@ const profilesInfo = buildProfilesInfo(profiles, lang);
   #normal-footer {
     @apply bg-skin-button-accent;
     position: fixed;
-    bottom: 0px;
+    bottom: 0;
     width: 100%;
     padding-block: 8px;
     text-align: center;
@@ -129,28 +171,27 @@ const profilesInfo = buildProfilesInfo(profiles, lang);
       color 0.2s ease,
       border-color 0.2s ease;
   }
-  kbd {
-    @apply bg-skin-muted;
-    border-radius: 4px;
-    padding: 2px 4px;
-    font-size: 12px;
+
+  #normal-footer p {
+    color: rgb(var(--color-accent-foreground));
+    margin: 0;
   }
+
+  #normal-footer kbd {
+    background: rgb(var(--muted));
+    border-radius: 4px;
+    color: rgb(var(--color-text-base));
+    font-size: 12px;
+    padding: 2px 4px;
+  }
+
   #hotkeypad {
     --hotkeypad-bg-kbd: rgb(var(--muted));
     --hotkeypad-bg-backdrop: rgb(var(--muted));
     --hotkeypad-bg-container: rgb(var(--color-fill));
-    --hotkeypad-bg-item-hover: rgba(var(--color-text), 20%);
+    --hotkeypad-bg-item-hover: rgba(var(--color), 10%);
     --hotkeypad-border-container: rgb(var(--muted));
     --hotkeypad-border-container-hover: rgb(var(--color-fill));
     --hotkeypad-fg-muted: rgb(var(--color-text-base));
-    @media (prefers-color-scheme: dark) {
-      --hotkeypad-bg-kbd: rgb(var(--muted));
-      --hotkeypad-bg-backdrop: rgb(var(--muted));
-      --hotkeypad-bg-container: rgb(var(--color-fill));
-      --hotkeypad-bg-item-hover: rgba(var(--color), 10%);
-      --hotkeypad-border-container: rgb(var(--muted));
-      --hotkeypad-border-container-hover: rgb(var(--color-fill));
-      --hotkeypad-fg-muted: rgb(var(--color-text-base));
-    }
   }
 </style>

@@ -1,11 +1,19 @@
 ---
 import { Icon } from "astro-icon/components";
+import { getTranslations } from "@/i18n";
+import { COLOR_THEMES, type ColorTheme } from "@/lib/theme-switch";
+import type { Locale } from "@/types";
 
 interface Props {
-  lang: string;
+  locale: Locale;
+  defaultTheme: string;
 }
 
-const { lang } = Astro.props;
+const { locale, defaultTheme } = Astro.props;
+const t = getTranslations(locale);
+const selectedTheme = COLOR_THEMES.includes(defaultTheme as ColorTheme)
+  ? (defaultTheme as ColorTheme)
+  : "green";
 ---
 
 <div class="inline-flex items-center">
@@ -16,66 +24,89 @@ const { lang } = Astro.props;
       type="button"
       id="themeSwitch"
       class="cursor-pointer"
-      aria-label={lang == "en" ? "Toggle dark mode" : "Alternar modo oscuro"}
+      data-switch-dark={t.theme.switchToDark}
+      data-switch-light={t.theme.switchToLight}
+      aria-label={t.theme.switchToDark}
       aria-pressed="false"
     >
-      <i
-        class="flex items-center gap-1 text-sm font-medium leading-6 text-skin-base transition-transform ease-in-out group-hover/theme:rotate-45"
+      <span
+        class="text-skin-base flex items-center gap-1 text-sm leading-6 font-medium transition-transform ease-in-out group-hover/theme:rotate-45"
       >
         <Icon
           name="ri:moon-fill"
           class="hidden dark:block"
           width={20}
           height={20}
+          aria-hidden="true"
         />
-        <Icon name="ri:sun-fill" class="dark:hidden" width={20} height={20} />
-      </i>
+        <Icon
+          name="ri:sun-fill"
+          class="dark:hidden"
+          width={20}
+          height={20}
+          aria-hidden="true"
+        />
+      </span>
     </button>
-    <label class="sr-only" for="themeSelect">
-      {lang == "en" ? "Color theme" : "Tema de color"}
-    </label>
-    <select
-      id="themeSelect"
-      class="block w-full rounded-md border-0 bg-transparent py-1.5 pl-3 pr-10 font-mono text-skin-base ring-1 ring-inset ring-skin-muted focus:ring-2 focus:ring-skin-hue sm:text-sm sm:leading-6"
-      aria-label={lang == "en" ? "Color theme" : "Tema de color"}
-    >
-      <option value="red">{lang == "en" ? "Red" : "Rojo"}</option>
-      <option value="blue">{lang == "en" ? "Blue" : "Azul"}</option>
-      <option value="yellow">{lang == "en" ? "Yellow" : "Amarillo"}</option>
-      <option value="purple">{lang == "en" ? "Purple" : "Púrpura"}</option>
-      <option value="green">{lang == "en" ? "Green" : "Verde"}</option>
-      <option value="orange">{lang == "en" ? "Orange" : "Naranja"}</option>
-      <option value="pink">{lang == "en" ? "Pink" : "Rosado"}</option>
-      <option value="aqua">{lang == "en" ? "Aqua" : "Aqua"}</option>
-      <option value="sepia">{lang == "en" ? "Sepia" : "Sepia"}</option>
-      <option value="blackwhite">{lang == "en" ? "Mono" : "Mono"}</option>
-    </select>
 
-    <label class="sr-only" for="languageSelect">
-      {lang == "en" ? "Language" : "Idioma"}
-    </label>
-    <select
-      id="languageSelect"
-      class="block rounded-md border-0 bg-transparent py-1.5 pl-3 pr-10 font-mono text-skin-base ring-1 ring-inset ring-skin-muted focus:ring-2 focus:ring-skin-hue sm:text-sm sm:leading-6"
-      aria-label={lang == "en" ? "Language" : "Idioma"}
-    >
-      <option value="en">🇺🇸 {lang == "en" ? "English" : "Inglés"}</option>
-      <option value="es">🇪🇸 {lang == "en" ? "Spanish" : "Español"}</option>
-    </select>
+    <label class="sr-only" for="themeSelect">{t.theme.color}</label>
+    <div class="relative flex">
+      <select
+        id="themeSelect"
+        class="text-skin-base ring-skin-muted focus:ring-skin-hue block w-full appearance-none rounded-md border-0 bg-transparent py-1.5 pr-10 pl-3 font-mono ring-1 ring-inset focus:ring-2 focus-visible:outline-none sm:text-sm sm:leading-6"
+      >
+        {
+          COLOR_THEMES.map((theme) => (
+            <option value={theme} selected={theme === selectedTheme}>
+              {t.theme.names[theme]}
+            </option>
+          ))
+        }
+      </select>
+      <Icon
+        name="ri:arrow-down-s-line"
+        class="text-skin-base pointer-events-none absolute top-1/2 right-3 -translate-y-1/2"
+        width={16}
+        height={16}
+        aria-hidden="true"
+      />
+    </div>
+
+    <label class="sr-only" for="languageSelect">{t.theme.language}</label>
+    <div class="relative flex">
+      <select
+        id="languageSelect"
+        class="text-skin-base ring-skin-muted focus:ring-skin-hue block appearance-none rounded-md border-0 bg-transparent py-1.5 pr-10 pl-3 font-mono ring-1 ring-inset focus:ring-2 focus-visible:outline-none sm:text-sm sm:leading-6"
+      >
+        <option value="en" selected={locale === "en"}
+          >🇺🇸 {t.theme.languages.en}</option
+        >
+        <option value="es" selected={locale === "es"}
+          >🇪🇸 {t.theme.languages.es}</option
+        >
+      </select>
+      <Icon
+        name="ri:arrow-down-s-line"
+        class="text-skin-base pointer-events-none absolute top-1/2 right-3 -translate-y-1/2"
+        width={16}
+        height={16}
+        aria-hidden="true"
+      />
+    </div>
   </div>
 </div>
-
-<style>
-  :global(.dark) {
-    color-scheme: dark;
-  }
-</style>
 
 <script>
   import { initializeThemeSwitch } from "@/lib/theme-switch";
 
   initializeThemeSwitch({ document, window });
 </script>
+
+<style>
+  :global(.dark) {
+    color-scheme: dark;
+  }
+</style>
 
 <style is:global>
   ::view-transition-old(root),

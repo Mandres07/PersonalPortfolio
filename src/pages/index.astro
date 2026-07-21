@@ -1,6 +1,12 @@
 ---
-import Page from "@/components/pages/Page.astro"
-import CV from "@cv";
+import Page from "@/components/pages/Page.astro";
+import { getEntry } from "astro:content";
+
+const entry = await getEntry("cv", "cv");
+
+if (!entry) {
+  throw new Error("English CV content was not found.");
+}
 ---
 
-<Page CV={CV} lang="en" />
+<Page CV={entry.data} locale="en" />

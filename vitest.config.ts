@@ -2,9 +2,8 @@
 import { getViteConfig } from "astro/config";
 
 export default getViteConfig({
-  // Astro supports passing Vitest config here, even though Astro 5's type
-  // declarations do not yet expose the `test` field on this helper.
-  // @ts-expect-error Vitest config is supported by getViteConfig at runtime.
+  // Astro's Vite helper forwards Vitest configuration at runtime.
+  // @ts-expect-error `test` is intentionally supplied for Vitest.
   test: {
     globals: true,
     include: ["tests/**/*.test.ts"],
@@ -32,8 +31,7 @@ export default getViteConfig({
       ],
       exclude: [
         "src/env.d.ts",
-        "src/cv.d.ts",
-        "src/types.d.ts",
+        "src/content.config.ts",
         "src/content/**",
         "src/pages/**",
       ],

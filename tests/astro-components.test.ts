@@ -11,98 +11,78 @@ import Navigation from "@/components/sections/Navigation.astro";
 import Projects from "@/components/sections/Projects.astro";
 import Skills from "@/components/sections/Skills.astro";
 import ThemeSwitch from "@/components/ThemeSwitch.astro";
-import CV from "@cv";
+import CVData from "@/content/cv.json";
+import type { CV } from "@/types";
+
+const CV = CVData as unknown as CV;
 
 describe("Astro content components", () => {
-  test("About renders localized title and summary html", async () => {
+  test("About renders structured localized paragraphs", async () => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(About, {
-      props: {
-        lang: "es",
-        summary: "Hola<br/>Mundo",
-      },
+      props: { locale: "es", summary: ["Hola", "Mundo"] },
     });
 
-    expect(result).toContain("Sobre Mi");
-    expect(result).toContain("Hola");
-    expect(result).toContain("Mundo");
+    expect(result).toContain("Sobre mí");
+    expect(result).toContain("<p>Hola</p>");
+    expect(result).toContain("<p>Mundo</p>");
   });
 
-  test("Footer renders localized copy", async () => {
+  test.each([
+    ["en", "Working remotely"],
+    ["es", "En remoto"],
+  ] as const)("Footer renders %s copy", async (locale, expected) => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(Footer, {
-      props: { lang: "en" },
+      props: { locale },
     });
 
-    expect(result).toContain("Working remotely");
-    expect(result).toContain("Built with Astro + Tailwind CSS.");
+    expect(result).toContain(expected);
+    expect(result).toContain(String(new Date().getFullYear()));
   });
 
-  test("Footer renders spanish copy", async () => {
-    const container = await AstroContainer.create();
-    const result = await container.renderToString(Footer, {
-      props: { lang: "es" },
-    });
-
-    expect(result).toContain("En Remoto");
-    expect(result).toContain("Creado con Astro + Tailwind CSS.");
-  });
-
-  test("Navigation renders section links and labels", async () => {
+  test("Navigation renders only supplied sections", async () => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(Navigation, {
-      props: { lang: "en" },
+      props: { locale: "en", sections: ["experience", "skills"] },
     });
 
     expect(result).toContain('aria-label="Section navigation"');
     expect(result).toContain('href="#experience"');
-    expect(result).toContain("Experience");
-    expect(result).toContain("Projects");
-    expect(result).toContain("Skills");
+    expect(result).toContain('href="#skills"');
+    expect(result).not.toContain('href="#images"');
   });
 
-  test("Navigation renders spanish labels", async () => {
+  test("Navigation localizes Spanish labels", async () => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(Navigation, {
-      props: { lang: "es" },
+      props: { locale: "es", sections: ["experience", "work", "images"] },
     });
 
-    expect(result).toContain('aria-label="Navegacion por secciones"');
+    expect(result).toContain("Navegación por secciones");
     expect(result).toContain("Experiencia");
     expect(result).toContain("Proyectos");
-    expect(result).toContain("Imágenes");
+    expect(result).toContain("Galería");
   });
 
-  test("ThemeSwitch renders theme and language controls", async () => {
+  test("ThemeSwitch renders localized labelled controls", async () => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(ThemeSwitch, {
-      props: { lang: "en" },
+      props: { locale: "es", defaultTheme: "green" },
     });
 
     expect(result).toContain('id="themeSwitch"');
-    expect(result).toContain('id="themeSelect"');
-    expect(result).toContain('id="languageSelect"');
-    expect(result).toContain("Toggle dark mode");
-    expect(result).toContain("Color theme");
-  });
-
-  test("ThemeSwitch renders spanish control labels", async () => {
-    const container = await AstroContainer.create();
-    const result = await container.renderToString(ThemeSwitch, {
-      props: { lang: "es" },
-    });
-
-    expect(result).toContain("Alternar modo oscuro");
+    expect(result).toContain("Cambiar a modo oscuro");
     expect(result).toContain("Tema de color");
     expect(result).toContain("Idioma");
-    expect(result).toContain("Español");
+    expect(result).toContain('value="green" selected');
   });
 
-  test("KeyboardManager renders hotkeypad metadata and localized labels", async () => {
+  test("KeyboardManager renders localized palette metadata", async () => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(KeyboardManager, {
       props: {
-        lang: "en",
+        locale: "en",
         profiles: [
           {
             network: "GitHub",
@@ -114,61 +94,44 @@ describe("Astro content components", () => {
       },
     });
 
-    expect(result).toContain("Press");
+    expect(result).toContain(">Ctrl</kbd>");
+    expect(result).toContain(">Command</kbd>");
     expect(result).toContain("Open command palette");
     expect(result).toContain('id="hotkeypad"');
-    expect(result).toContain("Search...");
-    expect(result).toContain("Visit GitHub");
+    expect(result).toContain('data-locale="en"');
+    expect(result).toContain("GitHub");
   });
 
-  test("Hero renders contact links and profile actions", async () => {
+  test("Hero renders a semantic header with contact actions", async () => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(Hero, {
       props: {
-        lang: "en",
+        locale: "en",
         basics: {
+          ...CV.basics,
           name: "Mario",
           label: "Developer",
-          image: "/images/ghibli-avatar.webp",
           email: "mario@example.com",
-          phone: "50766184828",
-          url: "https://mandres.dev",
-          summary: "Summary",
-          theme: "green",
-          location: {
-            address: "Calle Lugano 305",
-            city: "San Miguelito",
-            countryCode: "PA",
-            region: "Panama",
-          },
-          profiles: [
-            {
-              network: "GitHub",
-              icon: "mdi:github",
-              username: "Mandres07",
-              url: "https://github.com/Mandres07",
-            },
-          ],
         },
       },
     });
 
-    expect(result).toContain("Mario");
-    expect(result).toContain("Developer");
+    expect(result).toContain("<header");
+    expect(result).toContain("<h1");
+    expect(result).toContain("<address");
     expect(result).toContain("mailto:mario@example.com");
-    expect(result).toContain("https://wa.me/50766184828");
-    expect(result).toContain("Visit profile on GitHub");
-    expect(result).toContain("Open command palette");
+    expect(result).toContain('loading="eager"');
+    expect(result).toContain('fetchpriority="high"');
   });
 
-  test("Education renders entries and certificate section", async () => {
+  test("Education renders entries, dates, and certificates", async () => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(Education, {
       props: {
-        className: "order-first",
-        lang: "en",
+        locale: "en",
         education: [
           {
+            id: "utp",
             institution: "Universidad Tecnologica de Panama",
             url: "https://utp.ac.pa",
             area: "Engineering",
@@ -179,6 +142,7 @@ describe("Astro content components", () => {
         ],
         certificates: [
           {
+            id: "astro-course",
             name: "Astro Course",
             date: "2024-02-10",
             issuer: "Udemy",
@@ -188,47 +152,43 @@ describe("Astro content components", () => {
       },
     });
 
-    expect(result).toContain("Education");
-    expect(result).toContain("Universidad Tecnologica de Panama");
     expect(result).toContain("2010 - 2015");
     expect(result).toContain("Certificates");
-    expect(result).toContain("Astro Course");
+    expect(result).toContain('datetime="2024-02-10"');
   });
 
-  test("Education renders spanish fallback text and optional branches", async () => {
+  test("Education supports current studies and no certificates", async () => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(Education, {
       props: {
-        className: "",
-        lang: "es",
+        locale: "es",
         education: [
           {
+            id: "school",
             institution: "Colegio",
             url: "",
             area: "Bachiller",
             studyType: "Tiempo completo",
             startDate: "2000-03-01",
-            endDate: null as unknown as string,
+            endDate: null,
           },
         ],
         certificates: [],
       },
     });
 
-    expect(result).toContain("Educación");
-    expect(result).toContain("Colegio");
     expect(result).toContain("Actual");
     expect(result).not.toContain("Certificados");
   });
 
-  test("Experience renders summary, toggle button, and technologies", async () => {
+  test("Experience uses native disclosure for optional details", async () => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(Experience, {
       props: {
-        className: "",
-        lang: "en",
+        locale: "en",
         work: [
           {
+            id: "efiscal",
             name: "eFiscal Networks",
             position: "Lead Software Developer",
             location_type: "Remote",
@@ -240,32 +200,26 @@ describe("Astro content components", () => {
             highlights: [],
             responsibilities: ["Own frontend delivery"],
             achievements: ["Introduced testing"],
-            skills: {
-              React: "mdi:react",
-              TypeScript: "simple-icons:typescript",
-            },
+            skills: { React: "mdi:react" },
           },
         ],
       },
     });
 
-    expect(result).toContain("Experience");
-    expect(result).toContain("Lead Software Developer");
-    expect(result).toContain("Summary");
-    expect(result).toContain("Show more");
-    expect(result).toContain('aria-expanded="false"');
+    expect(result).toContain("<details");
+    expect(result).toContain("<summary");
+    expect(result).toContain("Responsibilities and achievements");
     expect(result).toContain("Technologies used");
-    expect(result).toContain("TypeScript");
   });
 
-  test("Experience renders spanish and no-link branches", async () => {
+  test("Experience omits disclosure when no details exist", async () => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(Experience, {
       props: {
-        className: "",
-        lang: "es",
+        locale: "es",
         work: [
           {
+            id: "example",
             name: "Intercloud",
             position: "Developer",
             location_type: "",
@@ -283,63 +237,48 @@ describe("Astro content components", () => {
       },
     });
 
-    expect(result).toContain("Experiencia");
-    expect(result).toContain("Ver más");
     expect(result).toContain("Descripción");
-    expect(result).toContain("2020");
-    expect(result).toContain("2021");
+    expect(result).not.toContain("<details");
   });
 
-  test("Projects renders active, inactive, and GitHub branches", async () => {
+  test("Projects renders links and dimensionally accurate screenshots", async () => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(Projects, {
       props: {
-        className: "",
-        lang: "en",
+        locale: "en",
         projects: [
           {
+            id: "portal",
             name: "Portal",
             image: {
               url: "/images/sds-management-portal-profile.webp",
               position: "container",
+              width: 2880,
+              height: 1800,
             },
             isActive: true,
             description: "Management portal",
-            highlights: ["Reporting", "Authentication"],
+            highlights: ["Reporting"],
             url: "https://example.com",
             github: "https://github.com/example/repo",
-          },
-          {
-            name: "Internal Tool",
-            image: {
-              url: "/images/andyspets-welcome.webp",
-              position: "cover",
-            },
-            isActive: false,
-            description: "Internal only",
-            highlights: [],
-            url: "https://internal.example.com",
-            github: null,
           },
         ],
       },
     });
 
-    expect(result).toContain("Projects");
     expect(result).toContain("Visit Portal");
     expect(result).toContain("View Portal repository on GitHub");
-    expect(result).toContain("Open project screenshot for Portal");
-    expect(result).toContain("Internal Tool");
+    expect(result).toContain('width="2880"');
+    expect(result).toContain('height="1800"');
   });
 
-  test("Images renders intro and gallery items", async () => {
+  test("Images and Skills render localized content", async () => {
     const container = await AstroContainer.create();
-    const result = await container.renderToString(Images, {
+    const images = await container.renderToString(Images, {
       props: {
-        className: "",
-        lang: "es",
+        locale: "es",
         images: {
-          intro: "Galeria personal",
+          intro: "Galería personal",
           list: [
             {
               image: "/images/mario-judith-ghibli-style.webp",
@@ -350,71 +289,25 @@ describe("Astro content components", () => {
         },
       },
     });
-
-    expect(result).toContain("Galería");
-    expect(result).toContain("Galeria personal");
-    expect(result).toContain('data-fancybox="gallery"');
-    expect(result).toContain('aria-label="Cartagena"');
-  });
-
-  test("Skills renders badges with labels", async () => {
-    const container = await AstroContainer.create();
-    const result = await container.renderToString(Skills, {
+    const skills = await container.renderToString(Skills, {
       props: {
-        className: "",
-        lang: "en",
+        locale: "es",
         skills: [
-          {
-            name: "TypeScript",
-            icon: "simple-icons:typescript",
-            level: "Advanced",
-            keywords: ["ts"],
-          },
-          {
-            name: "Astro",
-            icon: "simple-icons:astro",
-            level: "Advanced",
-            keywords: ["astro"],
-          },
+          { name: "Testing", icon: "", level: "Intermedio", keywords: [] },
         ],
       },
     });
 
-    expect(result).toContain("Skills");
-    expect(result).toContain("TypeScript");
-    expect(result).toContain("Astro");
-    expect(result).toContain('title="Advanced"');
+    expect(images).toContain('data-fancybox="gallery"');
+    expect(images).toContain('aria-label="Cartagena"');
+    expect(skills).toContain("Habilidades");
+    expect(skills).toContain('title="Intermedio"');
   });
 
-  test("Skills renders spanish heading and branch without icon", async () => {
-    const container = await AstroContainer.create();
-    const result = await container.renderToString(Skills, {
-      props: {
-        className: "",
-        lang: "es",
-        skills: [
-          {
-            name: "Testing",
-            icon: "",
-            level: "Intermedio",
-            keywords: [],
-          },
-        ],
-      },
-    });
-
-    expect(result).toContain("Habilidades");
-    expect(result).toContain("Testing");
-    expect(result).toContain('title="Intermedio"');
-  });
-
-  test("Page renders the full portfolio composition", async () => {
+  test("Page renders the complete portfolio composition", async () => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(Page, {
-      props: {
-        CV,
-        lang: "en",
-      },
+      props: { CV, locale: "en" },
     });
 
     expect(result).toContain("Mario Andrés Morales");
@@ -422,7 +315,6 @@ describe("Astro content components", () => {
     expect(result).toContain("Experience");
     expect(result).toContain("Projects");
     expect(result).toContain("Image Gallery");
-    expect(result).toContain("Skills");
-    expect(result).toContain("Press");
+    expect(result).toContain(">Command</kbd>");
   });
 });

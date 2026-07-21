@@ -1,158 +1,157 @@
 ---
-// Designed by Antfu.
+// Decorative generative artwork adapted from Antfu's plum animation.
 ---
 
 <div
-  class="pointer-events-none fixed bottom-0 left-0 right-0 top-0"
+  class="art-plums pointer-events-none fixed inset-0"
+  aria-hidden="true"
   style="mask-image: radial-gradient(circle, transparent, black); -webkit-mask-image: radial-gradient(circle, transparent, black);"
 >
   <canvas id="artPlumCanvas" width="400" height="400"></canvas>
 </div>
 
 <script>
-  const r180 = Math.PI;
-  const r90 = Math.PI / 2;
-  const r15 = Math.PI / 12;
-  const color = "#88888825";
+  const canvas = document.getElementById(
+    "artPlumCanvas",
+  ) as HTMLCanvasElement | null;
 
-  const MIN_BRANCH = 30;
-  const len = 6;
+  if (canvas) {
+    const context = canvas.getContext("2d");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const abortController = new AbortController();
+    const { signal } = abortController;
+    const branchAngle = Math.PI / 12;
+    const minimumBranch = 30;
+    const branchLength = 6;
+    const size = { width: window.innerWidth, height: window.innerHeight };
+    let animationFrame: number | null = null;
+    let resizeTimer: number | null = null;
+    let steps: Array<() => void> = [];
 
-  const randomMiddle = (): number => Math.random() * 0.6 + 0.2;
+    const randomMiddle = () => Math.random() * 0.6 + 0.2;
 
-  interface CanvasSize {
-    width: number;
-    height: number;
-  }
+    const resizeCanvas = () => {
+      if (!context) return;
+      const dpr = window.devicePixelRatio || 1;
+      size.width = window.innerWidth;
+      size.height = window.innerHeight;
+      canvas.style.width = `${size.width}px`;
+      canvas.style.height = `${size.height}px`;
+      canvas.width = Math.round(size.width * dpr);
+      canvas.height = Math.round(size.height * dpr);
+      context.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
 
-  interface Counter {
-    value: number;
-  }
+    interface Counter {
+      value: number;
+    }
 
-  const initCanvas = (
-    canvas: HTMLCanvasElement,
-    width: number = 400,
-    height: number = 400,
-    _dpi?: number,
-  ) => {
-    const ctx = canvas.getContext("2d");
-    if (!ctx) throw new Error("Unable to get canvas context");
+    const step = (
+      x: number,
+      y: number,
+      radians: number,
+      counter: Counter = { value: 0 },
+    ): void => {
+      if (!context) return;
+      const length = Math.random() * branchLength;
+      counter.value += 1;
+      const nextX = x + length * Math.cos(radians);
+      const nextY = y + length * Math.sin(radians);
 
-    const dpr = window.devicePixelRatio || 1;
+      context.beginPath();
+      context.moveTo(x, y);
+      context.lineTo(nextX, nextY);
+      context.stroke();
 
-    const bsr =
-      //@ts-ignore
-      ctx.webkitBackingStorePixelRatio ||
-      //@ts-ignore
-      ctx.mozBackingStorePixelRatio ||
-      //@ts-ignore
-      ctx.msBackingStorePixelRatio ||
-      //@ts-ignore
-      ctx.oBackingStorePixelRatio ||
-      //@ts-ignore
-      ctx.backingStorePixelRatio ||
-      1;
-    const dpi = _dpi || dpr / bsr;
+      if (
+        nextX < -100 ||
+        nextX > size.width + 100 ||
+        nextY < -100 ||
+        nextY > size.height + 100
+      ) {
+        return;
+      }
 
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-    canvas.width = dpi * width;
-    canvas.height = dpi * height;
-    ctx.scale(dpi, dpi);
+      // Keep one shared counter per originating branch. This preserves the
+      // original sparse plum shape and prevents every child from spawning a
+      // dense independent tree.
+      const branchRate = counter.value <= minimumBranch ? 0.8 : 0.5;
+      if (Math.random() < branchRate) {
+        steps.push(() =>
+          step(nextX, nextY, radians + Math.random() * branchAngle, counter),
+        );
+      }
+      if (Math.random() < branchRate) {
+        steps.push(() =>
+          step(nextX, nextY, radians - Math.random() * branchAngle, counter),
+        );
+      }
+    };
 
-    return { ctx, dpi };
-  };
+    const frame = () => {
+      const currentSteps = steps;
+      steps = [];
 
-  const polar2cart = (
-    x: number = 0,
-    y: number = 0,
-    r: number = 0,
-    theta: number = 0,
-  ): [number, number] => {
-    const dx = r * Math.cos(theta);
-    const dy = r * Math.sin(theta);
-    return [x + dx, y + dy];
-  };
+      currentSteps.forEach((currentStep) => {
+        if (Math.random() < 0.5) steps.push(currentStep);
+        else currentStep();
+      });
 
-  const canvas = document.getElementById("artPlumCanvas") as HTMLCanvasElement;
-  const size: CanvasSize = {
-    width: window.innerWidth,
-    height: window.innerHeight,
-  };
-  const { ctx } = initCanvas(canvas, size.width, size.height);
-  const { width, height } = canvas;
+      animationFrame = steps.length > 0 ? requestAnimationFrame(frame) : null;
+    };
 
-  let steps: Array<() => void> = [];
-  let prevSteps: Array<() => void> = [];
+    const stop = () => {
+      if (animationFrame !== null) cancelAnimationFrame(animationFrame);
+      animationFrame = null;
+      steps = [];
+    };
 
-  const step = (
-    x: number,
-    y: number,
-    rad: number,
-    counter: Counter = { value: 0 },
-  ): void => {
-    const length = Math.random() * len;
-    counter.value += 1;
+    const start = () => {
+      stop();
+      resizeCanvas();
+      if (!context) return;
+      context.clearRect(0, 0, size.width, size.height);
+      if (reducedMotion.matches || document.hidden) return;
 
-    const [nx, ny] = polar2cart(x, y, length, rad);
+      context.lineWidth = 1;
+      context.strokeStyle = "#88888825";
+      steps = [
+        () => step(randomMiddle() * size.width, -5, Math.PI / 2),
+        () => step(randomMiddle() * size.width, size.height + 5, -Math.PI / 2),
+        () => step(-5, randomMiddle() * size.height, 0),
+        () => step(size.width + 5, randomMiddle() * size.height, Math.PI),
+      ];
+      if (size.width < 500) steps = steps.slice(0, 2);
+      animationFrame = requestAnimationFrame(frame);
+    };
 
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(nx, ny);
-    ctx.stroke();
+    window.addEventListener(
+      "resize",
+      () => {
+        if (resizeTimer !== null) window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(start, 150);
+      },
+      { signal },
+    );
+    document.addEventListener("visibilitychange", start, { signal });
+    reducedMotion.addEventListener("change", start, { signal });
+    window.addEventListener(
+      "pagehide",
+      () => {
+        stop();
+        abortController.abort();
+      },
+      { once: true },
+    );
 
-    const rad1 = rad + Math.random() * r15;
-    const rad2 = rad - Math.random() * r15;
-
-    if (
-      nx < -100 ||
-      nx > size.width + 100 ||
-      ny < -100 ||
-      ny > size.height + 100
-    )
-      return;
-
-    const rate = counter.value <= MIN_BRANCH ? 0.8 : 0.5;
-
-    if (Math.random() < rate) steps.push(() => step(nx, ny, rad1, counter));
-    if (Math.random() < rate) steps.push(() => step(nx, ny, rad2, counter));
-  };
-
-  const frame = (): void => {
-    prevSteps = steps;
-    steps = [];
-
-    if (!prevSteps.length) return;
-
-    prevSteps.forEach((i) => {
-      if (Math.random() < 0.5) steps.push(i);
-      else i();
-    });
-
-    requestAnimationFrame(frame);
-  };
-
-  const start = (): void => {
-    ctx.clearRect(0, 0, width, height);
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = color;
-    prevSteps = [];
-    steps = [
-      () => step(randomMiddle() * size.width, -5, r90),
-      () => step(randomMiddle() * size.width, size.height + 5, -r90),
-      () => step(-5, randomMiddle() * size.height, 0),
-      () => step(size.width + 5, randomMiddle() * size.height, r180),
-    ];
-    if (size.width < 500) steps = steps.slice(0, 2);
-    requestAnimationFrame(frame);
-  };
-
-  start();
-
-  window.addEventListener("resize", () => {
-    size.width = window.innerWidth;
-    size.height = window.innerHeight;
-    initCanvas(canvas, size.width, size.height);
     start();
-  });
+  }
 </script>
+
+<style>
+  @media (prefers-reduced-motion: reduce) {
+    .art-plums {
+      display: none;
+    }
+  }
+</style>

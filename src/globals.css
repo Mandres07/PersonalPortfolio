@@ -1,10 +1,14 @@
-@tailwind base;
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant theme-blackwhite (&:where([data-theme="blackwhite"], [data-theme="blackwhite"] *));
 
 @font-face {
   font-family: "Camingo Code";
   src: url("/fonts/JanFromm-CamingoCodeRegular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -12,32 +16,45 @@
   src: url("/fonts/JanFromm-CamingoCodeBold.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
+  font-display: swap;
 }
 
-@theme {
-   --font-mono: 'Camingo Code', monospace, system-ui;
+@theme inline {
+  --font-mono: "Camingo Code", ui-monospace, monospace;
+  --color-skin-base: rgb(var(--color-text-base));
+  --color-skin-muted: rgb(var(--color-text-muted));
+  --color-skin-inverted: rgb(var(--color-text-inverted));
+  --color-skin-fill: rgb(var(--color-fill));
+  --color-skin-button-accent: rgb(var(--color-button-accent));
+  --color-skin-button-accent-hover: rgb(var(--color-button-accent-hover));
+  --color-skin-button-muted: rgb(var(--color-button-muted));
+  --color-skin-hue: rgb(var(--color-nav));
+  --color-skin-nav: rgb(var(--color-nav));
 }
 
 @layer base {
   :root {
     --color-text-base: 0, 0, 0;
-    --color-text-muted: 120, 120, 120;
+    --color-text-muted: 85, 85, 85;
     --color-text-inverted: 255, 255, 255;
     --color-fill: 245, 245, 245;
     --muted: 200, 200, 200;
     --color: 249, 115, 22;
     --color-button-accent: 249, 115, 22;
+    --color-nav: 154, 52, 18;
     --color-button-accent-hover: 55, 55, 55;
     --color-button-muted: 244, 239, 238;
+    --color-accent-foreground: 0, 0, 0;
 
     [data-theme="blue"] {
       --color-text-base: 15, 23, 42;
-      --color-text-muted: 100, 116, 139;
+      --color-text-muted: 65, 75, 90;
       --color-text-inverted: 240, 240, 240;
       --color-fill: 203, 213, 225;
-      --muted: 148, 163, 184;
+      --muted: 201, 220, 247;
       --color: 59, 130, 246;
       --color-button-accent: 59, 130, 246;
+      --color-nav: 23, 61, 168;
       --color-button-accent-hover: 0, 185, 255;
       --color-button-muted: 226, 232, 240;
     }
@@ -50,78 +67,87 @@
       --muted: 245, 215, 215;
       --color: 220, 38, 38;
       --color-button-accent: 220, 38, 38;
+      --color-nav: 160, 20, 20;
       --color-button-accent-hover: 185, 28, 28;
       --color-button-muted: 255, 220, 220;
+      --color-accent-foreground: 255, 255, 255;
     }
 
     [data-theme="yellow"] {
       --color-text-base: 40, 30, 0;
-      --color-text-muted: 120, 100, 30;
+      --color-text-muted: 90, 75, 20;
       --color-text-inverted: 255, 255, 255;
       --color-fill: 255, 250, 230;
       --muted: 245, 230, 150;
       --color: 245, 180, 0;
       --color-button-accent: 245, 180, 0;
+      --color-nav: 133, 77, 14;
       --color-button-accent-hover: 210, 150, 0;
       --color-button-muted: 255, 240, 180;
     }
 
     [data-theme="green"] {
       --color-text-base: 40, 40, 40;
-      --color-text-muted: 110, 110, 110;
+      --color-text-muted: 75, 75, 75;
       --color-text-inverted: 230, 230, 230;
       --color-fill: 236, 252, 203;
       --muted: 189, 220, 147;
       --color: 101, 163, 13;
       --color-button-accent: 101, 163, 13;
+      --color-nav: 63, 98, 18;
       --color-button-accent-hover: 120, 220, 120;
       --color-button-muted: 211, 235, 173;
     }
 
     [data-theme="purple"] {
       --color-text-base: 35, 25, 50;
-      --color-text-muted: 110, 90, 140;
+      --color-text-muted: 80, 65, 105;
       --color-text-inverted: 255, 255, 255;
       --color-fill: 243, 232, 255;
       --muted: 220, 200, 240;
       --color: 139, 92, 246;
       --color-button-accent: 139, 92, 246;
+      --color-nav: 106, 39, 210;
       --color-button-accent-hover: 109, 40, 217;
       --color-button-muted: 237, 233, 254;
+      --color-accent-foreground: 255, 255, 255;
     }
 
     [data-theme="pink"] {
       --color-text-base: 40, 40, 40;
-      --color-text-muted: 110, 110, 110;
+      --color-text-muted: 70, 70, 70;
       --color-text-inverted: 255, 240, 245;
       --color-fill: 248, 187, 208;
       --muted: 244, 143, 177;
       --color: 233, 30, 99;
       --color-button-accent: 233, 30, 99;
+      --color-nav: 126, 18, 62;
       --color-button-accent-hover: 194, 24, 91;
       --color-button-muted: 255, 240, 245;
     }
 
     [data-theme="aqua"] {
       --color-text-base: 0, 55, 75;
-      --color-text-muted: 80, 120, 140;
+      --color-text-muted: 45, 85, 100;
       --color-text-inverted: 240, 250, 255;
       --color-fill: 220, 250, 255;
       --muted: 180, 230, 240;
       --color: 6, 182, 212;
       --color-button-accent: 6, 182, 212;
+      --color-nav: 12, 100, 124;
       --color-button-accent-hover: 2, 132, 199;
       --color-button-muted: 207, 250, 254;
     }
 
     [data-theme="sepia"] {
       --color-text-base: 60, 40, 30;
-      --color-text-muted: 120, 100, 80;
+      --color-text-muted: 95, 75, 55;
       --color-text-inverted: 255, 255, 255;
       --color-fill: 250, 240, 220;
       --muted: 230, 210, 190;
       --color: 193, 154, 107;
       --color-button-accent: 193, 154, 107;
+      --color-nav: 120, 53, 15;
       --color-button-accent-hover: 160, 120, 90;
       --color-button-muted: 240, 225, 200;
     }
@@ -134,8 +160,10 @@
       --muted: 230, 230, 230;
       --color: 0, 0, 0;
       --color-button-accent: 0, 0, 0;
+      --color-nav: 0, 0, 0;
       --color-button-accent-hover: 40, 40, 40;
       --color-button-muted: 245, 245, 245;
+      --color-accent-foreground: 255, 255, 255;
     }
   }
 
@@ -147,17 +175,20 @@
     --muted: 36, 36, 36;
     --color: 227, 77, 10;
     --color-button-accent: 227, 77, 10;
+    --color-nav: 251, 146, 60;
     --color-button-accent-hover: 231, 121, 43;
     --color-button-muted: 26, 26, 26;
+    --color-accent-foreground: 0, 0, 0;
 
     [data-theme="blue"] {
       --color-text-base: 248, 250, 252;
       --color-text-muted: 148, 163, 184;
       --color-text-inverted: 240, 240, 240;
       --color-fill: 2, 6, 23;
-      --muted: 51, 65, 85;
+      --muted: 36, 78, 138;
       --color: 59, 130, 246;
       --color-button-accent: 59, 130, 246;
+      --color-nav: 65, 134, 246;
       --color-button-accent-hover: 0, 185, 255;
       --color-button-muted: 30, 41, 59;
     }
@@ -170,8 +201,10 @@
       --muted: 85, 40, 40;
       --color: 252, 63, 63;
       --color-button-accent: 252, 63, 63;
+      --color-nav: 255, 110, 110;
       --color-button-accent-hover: 200, 30, 30;
       --color-button-muted: 90, 45, 45;
+      --color-accent-foreground: 0, 0, 0;
     }
 
     [data-theme="yellow"] {
@@ -182,18 +215,20 @@
       --muted: 80, 60, 20;
       --color: 252, 211, 77;
       --color-button-accent: 252, 211, 77;
+      --color-nav: 252, 211, 77;
       --color-button-accent-hover: 234, 179, 8;
       --color-button-muted: 70, 50, 10;
     }
 
     [data-theme="green"] {
       --color-text-base: 230, 230, 230;
-      --color-text-muted: 104, 124, 104;
+      --color-text-muted: 150, 170, 150;
       --color-text-inverted: 230, 230, 230;
       --color-fill: 10, 20, 10;
       --muted: 54, 64, 54;
       --color: 132, 204, 22;
       --color-button-accent: 132, 204, 22;
+      --color-nav: 132, 204, 22;
       --color-button-accent-hover: 120, 220, 120;
       --color-button-muted: 34, 44, 34;
     }
@@ -206,8 +241,10 @@
       --muted: 74, 55, 104;
       --color: 168, 129, 255;
       --color-button-accent: 168, 129, 255;
+      --color-nav: 189, 159, 255;
       --color-button-accent-hover: 139, 92, 246;
       --color-button-muted: 60, 50, 80;
+      --color-accent-foreground: 0, 0, 0;
     }
 
     [data-theme="pink"] {
@@ -215,11 +252,12 @@
       --color-text-muted: 255, 182, 193;
       --color-text-inverted: 40, 40, 40;
       --color-fill: 40, 40, 40;
-      --muted: 110, 110, 110;
+      --muted: 188, 32, 92;
       --color: 255, 105, 180;
       --color-button-accent: 255, 105, 180;
+      --color-nav: 255, 135, 195;
       --color-button-accent-hover: 255, 182, 193;
-      --color-button-muted: 255, 240, 245;
+      --color-button-muted: 60, 45, 55;
     }
 
     [data-theme="aqua"] {
@@ -230,8 +268,9 @@
       --muted: 40, 60, 70;
       --color: 34, 211, 238;
       --color-button-accent: 34, 211, 238;
+      --color-nav: 34, 211, 238;
       --color-button-accent-hover: 2, 132, 199;
-      --color-button-muted: 14, 116, 144;
+      --color-button-muted: 20, 45, 55;
     }
 
     [data-theme="sepia"] {
@@ -242,6 +281,7 @@
       --muted: 80, 65, 50;
       --color: 214, 175, 119;
       --color-button-accent: 214, 175, 119;
+      --color-nav: 214, 175, 119;
       --color-button-accent-hover: 180, 140, 100;
       --color-button-muted: 90, 75, 60;
     }
@@ -254,8 +294,10 @@
       --muted: 35, 35, 35;
       --color: 255, 255, 255;
       --color-button-accent: 255, 255, 255;
+      --color-nav: 255, 255, 255;
       --color-button-accent-hover: 220, 220, 220;
       --color-button-muted: 30, 30, 30;
+      --color-accent-foreground: 0, 0, 0;
     }
   }
 }

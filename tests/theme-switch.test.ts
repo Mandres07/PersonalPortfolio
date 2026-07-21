@@ -1,10 +1,12 @@
 // @vitest-environment jsdom
 import {
+  COLOR_THEMES,
+  applyTheme,
   getCurrentLanguage,
   getInitialDarkMode,
   getRedirectPath,
   initializeThemeSwitch,
-  redirectByLanguage,
+  isColorTheme,
   shouldRedirectLanguage,
   updateDataTheme,
   updateLanguage,
@@ -12,26 +14,21 @@ import {
 } from "@/lib/theme-switch";
 
 describe("theme-switch", () => {
-  type MatchMediaMock = {
-    matches: boolean;
-    media: string;
-    onchange: null;
-    addEventListener: ReturnType<typeof vi.fn>;
-    removeEventListener: ReturnType<typeof vi.fn>;
-    addListener: ReturnType<typeof vi.fn>;
-    removeListener: ReturnType<typeof vi.fn>;
-    dispatchEvent: ReturnType<typeof vi.fn>;
-  };
-
-  const mediaMap = new Map<string, MatchMediaMock>();
+  const mediaQueries = new Map<string, MediaQueryList>();
 
   beforeEach(() => {
-    mediaMap.clear();
+    localStorage.clear();
+    document.documentElement.className = "";
+    document.body.innerHTML = "";
+    document.body.removeAttribute("data-theme");
+    window.history.replaceState({}, "", "/");
+    mediaQueries.clear();
+
     Object.defineProperty(window, "matchMedia", {
-      writable: true,
-      value: vi.fn().mockImplementation((query: string) => {
-        const mock = {
-          matches: query.includes("prefers-color-scheme"),
+      configurable: true,
+      value: vi.fn((query: string) => {
+        const mediaQuery = {
+          matches: query === "(prefers-color-scheme: dark)",
           media: query,
           onchange: null,
           addEventListener: vi.fn(),
@@ -39,226 +36,155 @@ describe("theme-switch", () => {
           addListener: vi.fn(),
           removeListener: vi.fn(),
           dispatchEvent: vi.fn(),
-        };
-        mediaMap.set(query, mock);
-        return mock;
+        } as unknown as MediaQueryList;
+        mediaQueries.set(query, mediaQuery);
+        return mediaQuery;
       }),
     });
   });
 
-  test("detects the current language from the pathname", () => {
-    expect(getCurrentLanguage("/")).toBe("en");
-    expect(getCurrentLanguage("/es")).toBe("es");
+  test("validates the supported color themes", () => {
+    expect(COLOR_THEMES).toHaveLength(10);
+    expect(COLOR_THEMES.every(isColorTheme)).toBe(true);
+    expect(isColorTheme("unknown")).toBe(false);
+    expect(isColorTheme(null)).toBe(false);
+  });
+
+  test("detects locale boundaries and builds canonical locale routes", () => {
+    expect(getCurrentLanguage("/es/")).toBe("es");
     expect(getCurrentLanguage("/es/projects")).toBe("es");
-  });
-
-  test("decides when a language switch should redirect", () => {
+    expect(getCurrentLanguage("/escape")).toBe("en");
     expect(shouldRedirectLanguage("es", "/")).toBe(true);
-    expect(shouldRedirectLanguage("en", "/es")).toBe(true);
-    expect(shouldRedirectLanguage("en", "/")).toBe(false);
-    expect(shouldRedirectLanguage("es", "/es")).toBe(false);
-  });
-
-  test("returns the expected redirect path", () => {
+    expect(shouldRedirectLanguage("en", "/es/")).toBe(true);
+    expect(shouldRedirectLanguage("invalid", "/")).toBe(false);
     expect(getRedirectPath("en")).toBe("/");
-    expect(getRedirectPath("es")).toBe("/es");
+    expect(getRedirectPath("es")).toBe("/es/");
   });
 
-  test("computes the initial dark mode from storage and system preference", () => {
+  test("uses a valid stored mode before the system preference", () => {
     expect(getInitialDarkMode("dark", false)).toBe(true);
-    expect(getInitialDarkMode(null, true)).toBe(true);
     expect(getInitialDarkMode("light", true)).toBe(false);
+    expect(getInitialDarkMode("invalid", true)).toBe(true);
+    expect(getInitialDarkMode(null, false)).toBe(false);
   });
 
-  test("updates the data theme and persists it", () => {
-    updateDataTheme(document, "sepia");
-
-    expect(document.body.getAttribute("data-theme")).toBe("sepia");
-    expect(localStorage.getItem("data-theme")).toBe("sepia");
-  });
-
-  test("updates the theme button state and persistence", () => {
-    document.body.innerHTML = `<button id="themeSwitch" aria-pressed="false"></button>`;
+  test("applies dynamic labels and only persists explicit updates", () => {
+    document.body.innerHTML = `
+      <button id="themeSwitch" data-switch-dark="Use dark" data-switch-light="Use light"></button>
+    `;
     const button = document.getElementById("themeSwitch");
 
-    updateTheme(document, true, button);
+    applyTheme(document, true, button);
     expect(document.documentElement.classList.contains("dark")).toBe(true);
     expect(button?.getAttribute("aria-pressed")).toBe("true");
-    expect(localStorage.getItem("theme")).toBe("dark");
+    expect(button?.getAttribute("aria-label")).toBe("Use light");
+    expect(localStorage.getItem("theme")).toBeNull();
 
-    updateTheme(document, false, button);
+    updateTheme(document, window, false, button);
     expect(document.documentElement.classList.contains("dark")).toBe(false);
-    expect(button?.getAttribute("aria-pressed")).toBe("false");
+    expect(button?.getAttribute("aria-label")).toBe("Use dark");
     expect(localStorage.getItem("theme")).toBe("light");
   });
 
-  test("redirects by language and skips redirect when already on the same locale", () => {
-    const location = { href: "/" } as Location;
-    redirectByLanguage(location, "es");
-    expect(location.href).toBe("/es");
+  test("accepts valid color themes and ignores invalid values", () => {
+    expect(updateDataTheme(document, window, "sepia")).toBe("sepia");
+    expect(document.body.getAttribute("data-theme")).toBe("sepia");
+    expect(localStorage.getItem("data-theme")).toBe("sepia");
 
-    const setItem = vi.fn();
+    expect(updateDataTheme(document, window, "unsafe")).toBeNull();
+    expect(document.body.getAttribute("data-theme")).toBe("sepia");
+  });
+
+  test("persists language and redirects only when the locale changes", () => {
+    const assign = vi.fn();
     const windowLike = {
-      location: { pathname: "/es", href: "/es" },
-      localStorage: { setItem },
+      location: { pathname: "/", assign },
+      localStorage: { setItem: vi.fn() },
     } as unknown as Window;
 
     updateLanguage("es", windowLike);
+    expect(windowLike.localStorage.setItem).toHaveBeenCalledWith(
+      "language",
+      "es",
+    );
+    expect(assign).toHaveBeenCalledWith("/es/");
 
-    expect(setItem).toHaveBeenCalledWith("language", "es");
-    expect(windowLike.location.href).toBe("/es");
-  });
-
-  test("redirects when the selected language changes locale", () => {
-    const setItem = vi.fn();
-    const windowLike = {
-      location: { pathname: "/", href: "/" },
-      localStorage: { setItem },
-    } as unknown as Window;
-
+    assign.mockClear();
+    (windowLike.location as Location).pathname = "/es/";
     updateLanguage("es", windowLike);
-
-    expect(setItem).toHaveBeenCalledWith("language", "es");
-    expect(windowLike.location.href).toBe("/es");
+    expect(assign).not.toHaveBeenCalled();
   });
 
-  test("initializes the controls from the current page and persisted values", () => {
+  test("initializes persisted controls and exposes cleanup", () => {
     document.body.innerHTML = `
-      <button id="themeSwitch" aria-pressed="false"></button>
-      <select id="themeSelect">
-        <option value="green">green</option>
-        <option value="sepia">sepia</option>
-      </select>
-      <select id="languageSelect">
-        <option value="en">English</option>
-        <option value="es">Spanish</option>
-      </select>
+      <button id="themeSwitch" data-switch-dark="Use dark" data-switch-light="Use light"></button>
+      <select id="themeSelect"><option value="green">green</option><option value="sepia">sepia</option></select>
+      <select id="languageSelect"><option value="en">English</option><option value="es">Spanish</option></select>
     `;
-    document.body.setAttribute("data-theme", "green");
+    document.body.dataset.theme = "green";
     localStorage.setItem("theme", "dark");
     localStorage.setItem("data-theme", "sepia");
-    window.history.replaceState({}, "", "/es");
+    window.history.replaceState({}, "", "/es/");
 
-    initializeThemeSwitch({ document, window });
+    const cleanup = initializeThemeSwitch({ document, window });
 
     expect(document.documentElement.classList.contains("dark")).toBe(true);
     expect(
-      document.getElementById("themeSwitch")?.getAttribute("aria-pressed"),
-    ).toBe("true");
+      document.getElementById("themeSwitch")?.getAttribute("aria-label"),
+    ).toBe("Use light");
     expect(
       (document.getElementById("themeSelect") as HTMLSelectElement).value,
     ).toBe("sepia");
     expect(
       (document.getElementById("languageSelect") as HTMLSelectElement).value,
     ).toBe("es");
-    expect(localStorage.getItem("language")).toBe("es");
-    expect(
-      mediaMap
-        .get("(prefers-color-scheme: dark)")
-        ?.addEventListener.mock.calls[0]?.[0],
-    ).toBe("change");
+    expect(cleanup).toBeTypeOf("function");
+    cleanup();
   });
 
-  test("toggles dark mode through the button without view transitions", () => {
+  test("follows system changes only without an explicit preference", () => {
     document.body.innerHTML = `
-      <button id="themeSwitch" aria-pressed="false"></button>
-      <select id="themeSelect"><option value="green">green</option></select>
-      <select id="languageSelect"><option value="en">English</option></select>
+      <button id="themeSwitch" data-switch-dark="Use dark" data-switch-light="Use light"></button>
     `;
-    document.body.setAttribute("data-theme", "green");
-
     initializeThemeSwitch({ document, window });
+    const query = mediaQueries.get("(prefers-color-scheme: dark)");
+    const callback = vi.mocked(query!.addEventListener).mock.calls[0][1] as (
+      event: MediaQueryListEvent,
+    ) => void;
 
-    const button = document.getElementById("themeSwitch") as HTMLButtonElement;
-    button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-
+    callback({ matches: false } as MediaQueryListEvent);
     expect(document.documentElement.classList.contains("dark")).toBe(false);
-    expect(button.getAttribute("aria-pressed")).toBe("false");
-    expect(localStorage.getItem("theme")).toBe("light");
+
+    localStorage.setItem("theme", "dark");
+    callback({ matches: true } as MediaQueryListEvent);
+    expect(document.documentElement.classList.contains("dark")).toBe(false);
   });
 
-  test("uses the view transition path when supported", async () => {
+  test("skips view transitions when reduced motion is requested", () => {
     document.body.innerHTML = `
-      <button id="themeSwitch" aria-pressed="false"></button>
-      <select id="themeSelect"><option value="green">green</option></select>
-      <select id="languageSelect"><option value="en">English</option></select>
+      <button id="themeSwitch" data-switch-dark="Use dark" data-switch-light="Use light"></button>
     `;
-    document.body.setAttribute("data-theme", "green");
-
-    const animate = vi.fn();
-    document.documentElement.animate = animate;
-
+    const originalMatchMedia = window.matchMedia;
     Object.defineProperty(window, "matchMedia", {
-      writable: true,
-      value: vi.fn().mockImplementation((query: string) => {
-        const mock = {
-          matches: query.includes("prefers-color-scheme")
-            ? false
-            : false,
-          media: query,
-          onchange: null,
-          addEventListener: vi.fn(),
-          removeEventListener: vi.fn(),
-          addListener: vi.fn(),
-          removeListener: vi.fn(),
-          dispatchEvent: vi.fn(),
-        };
-        mediaMap.set(query, mock);
-        return mock;
+      configurable: true,
+      value: vi.fn((query: string) => {
+        const result = originalMatchMedia(query);
+        Object.defineProperty(result, "matches", {
+          value: query.includes("reduced-motion"),
+        });
+        return result;
       }),
     });
-
-    const startViewTransition = vi.fn((callback: () => void) => {
-      callback();
-      return { ready: Promise.resolve() };
-    });
+    const startViewTransition = vi.fn();
     Object.defineProperty(document, "startViewTransition", {
       configurable: true,
       value: startViewTransition,
     });
 
     initializeThemeSwitch({ document, window });
+    document.getElementById("themeSwitch")?.click();
 
-    const button = document.getElementById("themeSwitch") as HTMLButtonElement;
-    button.dispatchEvent(
-      new MouseEvent("click", { bubbles: true, clientX: 10, clientY: 20 }),
-    );
-    await Promise.resolve();
-
-    expect(startViewTransition).toHaveBeenCalledTimes(1);
-    expect(animate).toHaveBeenCalledTimes(1);
-    expect(document.documentElement.classList.contains("dark")).toBe(true);
-  });
-
-  test("updates the selected data theme and language from change events", () => {
-    document.body.innerHTML = `
-      <button id="themeSwitch" aria-pressed="false"></button>
-      <select id="themeSelect">
-        <option value="green">green</option>
-        <option value="sepia">sepia</option>
-      </select>
-      <select id="languageSelect">
-        <option value="en">English</option>
-        <option value="es">Spanish</option>
-      </select>
-    `;
-    document.body.setAttribute("data-theme", "green");
-    window.history.replaceState({}, "", "/es");
-
-    initializeThemeSwitch({ document, window });
-
-    const themeSelect = document.getElementById("themeSelect") as HTMLSelectElement;
-    themeSelect.value = "sepia";
-    themeSelect.dispatchEvent(new Event("change", { bubbles: true }));
-
-    const languageSelect = document.getElementById(
-      "languageSelect",
-    ) as HTMLSelectElement;
-    languageSelect.value = "es";
-    languageSelect.dispatchEvent(new Event("change", { bubbles: true }));
-
-    expect(document.body.getAttribute("data-theme")).toBe("sepia");
-    expect(localStorage.getItem("data-theme")).toBe("sepia");
-    expect(localStorage.getItem("language")).toBe("es");
+    expect(startViewTransition).not.toHaveBeenCalled();
+    expect(localStorage.getItem("theme")).toBe("dark");
   });
 });

@@ -1,83 +1,50 @@
 ---
+import { getTranslations } from "@/i18n";
+import type { Locale, SectionId } from "@/types";
+
 interface Props {
-  lang: string;
+  locale: Locale;
+  sections: SectionId[];
 }
 
-const { lang } = Astro.props;
+const { locale, sections } = Astro.props;
+const t = getTranslations(locale);
+const sectionInfo: Record<SectionId, { icon: string; label: string }> = {
+  experience: { icon: "🧑🏽‍💻", label: t.sections.experience },
+  work: { icon: "🛠️", label: t.sections.projects },
+  education: { icon: "🎓", label: t.sections.education },
+  images: { icon: "🏞️", label: t.sections.images },
+  skills: { icon: "⚡️", label: t.sections.skills },
+};
 ---
 
 <nav
-  aria-label={lang == "es" ? "Navegacion por secciones" : "Section navigation"}
-  class="sticky top-0 z-10 w-full bg-skin-fill/90 py-3 font-mono md:block lg:w-full"
+  aria-label={t.navigation.label}
+  class="bg-skin-fill/95 dark:bg-skin-fill sticky top-0 z-10 w-full py-3 font-mono md:block lg:w-full"
 >
   <ul class="flex items-center justify-between">
-    <li
-      data-section="experience"
-      class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
-    >
-      <a
-        href="#experience"
-        aria-label={lang == "es" ? "Ir a Experiencia" : "Go to Experience"}
-        >🧑🏽‍💻 <span class="hidden md:inline"
-          >{lang == "es" ? "Experiencia" : "Experience"}</span
-        ></a
-      >
-    </li>
-    <li
-      data-section="work"
-      class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
-    >
-      <a
-        href="#work"
-        aria-label={lang == "es" ? "Ir a Proyectos" : "Go to Projects"}
-        >🛠️ <span class="hidden md:inline"
-          >{lang == "es" ? "Proyectos" : "Projects"}</span
-        ></a
-      >
-    </li>
-    <li
-      data-section="education"
-      class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
-    >
-      <a
-        href="#education"
-        aria-label={lang == "es" ? "Ir a Educacion" : "Go to Education"}
-        >🎓 <span class="hidden md:inline"
-          >{lang == "es" ? "Educación" : "Education"}</span
-        ></a
-      >
-    </li>
-    <li
-      data-section="images"
-      class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
-    >
-      <a
-        href="#images"
-        aria-label={lang == "es" ? "Ir a Imagenes" : "Go to Images"}
-        >🏞️ <span class="hidden md:inline"
-          >{lang == "es" ? "Imágenes" : "Images"}</span
-        ></a
-      >
-    </li>
-    <li
-      data-section="skills"
-      class="nav-item rounded-md p-2 transition-all duration-200 ease-linear hover:border-skin-hue/20 hover:bg-skin-button-accent/20 hover:text-skin-hue"
-    >
-      <a
-        href="#skills"
-        aria-label={lang == "es" ? "Ir a Habilidades" : "Go to Skills"}
-        >⚡️ <span class="hidden md:inline"
-          >{lang == "es" ? "Skills" : "Skills"}</span
-        ></a
-      >
-    </li>
+    {
+      sections.map((section) => {
+        const { icon, label } = sectionInfo[section];
+        return (
+          <li
+            data-section={section}
+            class="nav-item hover:border-skin-nav/20 hover:bg-skin-button-accent/20 hover:text-skin-nav dark:hover:bg-skin-button-accent/10 rounded-md p-2 transition-all duration-200 ease-linear"
+          >
+            <a href={`#${section}`} aria-label={t.navigation.goTo(label)}>
+              <span aria-hidden="true">{icon}</span>{" "}
+              <span class="hidden md:inline">{label}</span>
+            </a>
+          </li>
+        );
+      })
+    }
   </ul>
 </nav>
 
 <script>
   import { initializeSectionNavigation } from "@/lib/navigation";
 
-  document.addEventListener("DOMContentLoaded", () => {
-    initializeSectionNavigation(document, window);
-  });
+  const destroyNavigation = initializeSectionNavigation(document, window);
+  window.addEventListener("pagehide", destroyNavigation, { once: true });
 </script>

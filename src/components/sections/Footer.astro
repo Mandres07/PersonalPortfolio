@@ -1,31 +1,28 @@
 ---
+import { getTranslations } from "@/i18n";
+import type { Locale } from "@/types";
+
 interface Props {
-  lang: string;
+  locale: Locale;
 }
 
-const { lang } = Astro.props;
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+const year = new Date().getFullYear();
 ---
 
 <footer
   id="tail"
-  class="slide-enter flex w-full justify-center bg-skin-hue/15 px-5 py-3 text-center font-mono md:col-span-6 md:pb-14 md:pt-1"
+  class="slide-enter bg-skin-button-accent/15 flex w-full justify-center px-5 py-3 text-center font-mono md:col-span-6 md:pt-1 md:pb-14"
 >
   <div class="flex items-center space-x-0 text-xs opacity-80">
-    <span class="gap-1 text-center no-underline">
+    <div class="gap-1 text-center no-underline">
       <p class="mt-2 text-center">
-        {
-          lang == "en"
-            ? "Working remotely 🌍 (GMT-5) - Built with Astro + Tailwind CSS."
-            : "En Remoto 🌍 (GMT-5) - Creado con Astro + Tailwind CSS."
-        }
+        {t.footer.remote}
       </p>
       <p class="mt-2 text-center">
-         {
-            lang == "en"
-              ? "© 2025 - Mario Andrés Morales. Made with 💻, ❤️, and a lot of semicolons."
-              : "© 2025 - Mario Andrés Morales. Hecho con 💻, ❤️, y {muchos} [corchetes]."
-          }
+        © {year} - {t.footer.copyright}
       </p>
-    </span>
+    </div>
   </div>
 </footer>

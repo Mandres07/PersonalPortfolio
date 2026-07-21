@@ -1,42 +1,48 @@
 ---
-import Section from "@/components/Section.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
-import { type Basics } from "@/types";
+import { getTranslations } from "@/i18n";
+import { type Basics, type Locale } from "@/types";
 
 interface Props {
   basics: Basics;
-  lang: string;
+  locale: Locale;
 }
 
-const { basics, lang } = Astro.props;
+const { basics, locale } = Astro.props;
 const { name, label, image, location, profiles, email, phone } = basics;
 const { city, region, address } = location;
+const t = getTranslations(locale);
 ---
 
-<Section>
+<header>
   <div class="flex flex-col-reverse gap-6">
     <div class="info">
       <h1>{name}</h1>
-      <h2>{label}</h2>
-      <section class="mt-2 flex items-center gap-2 text-skin-muted">
-        <Icon name="mdi:world" width={20} height={20} />
+      <p class="job-title">{label}</p>
+      <address class="text-skin-muted mt-2 flex items-center gap-2 not-italic">
+        <Icon name="mdi:world" width={20} height={20} aria-hidden="true" />
         {address}, {city}, {region}
-      </section>
-      <section class="print none flex items-center gap-2 text-skin-muted">
-        <Icon name="mdi:email" width={20} height={20} />
+      </address>
+      <p class="print none text-skin-muted flex items-center gap-2">
+        <Icon name="mdi:email" width={20} height={20} aria-hidden="true" />
         {email}
-      </section>
+      </p>
       <ul id="social-icons">
         {
           email && (
             <li>
               <a
                 href={`mailto:${email}`}
-                title={lang == "en" ? "Send email to me" : "Enviarme un correo"}
-                aria-label={lang == "en" ? "Send email" : "Enviar correo"}
+                title={t.actions.sendEmail}
+                aria-label={t.actions.sendEmail}
               >
-                <Icon name="mdi:email" width={20} height={20} aria-hidden="true" />
+                <Icon
+                  name="mdi:email"
+                  width={20}
+                  height={20}
+                  aria-hidden="true"
+                />
               </a>
             </li>
           )
@@ -46,12 +52,17 @@ const { city, region, address } = location;
             <li>
               <a
                 href={`https://wa.me/${phone}`}
-                title={lang == "en" ? "Send me a message" : "Enviarme un mensaje"}
+                title={t.actions.sendMessage}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={lang == "en" ? "Send WhatsApp message" : "Enviar mensaje por WhatsApp"}
+                aria-label={t.actions.sendMessage}
               >
-                <Icon name="ri:whatsapp-fill" width={20} height={20} aria-hidden="true" />
+                <Icon
+                  name="ri:whatsapp-fill"
+                  width={20}
+                  height={20}
+                  aria-hidden="true"
+                />
               </a>
             </li>
           )
@@ -62,10 +73,10 @@ const { city, region, address } = location;
               <li>
                 <a
                   href={url}
-                  title={`${lang == "en" ? "Visit profile on" : "Visitar perfil en"} ${network}`}
+                  title={t.actions.visitProfile(network)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`${lang == "en" ? "Visit profile on" : "Visitar perfil en"} ${network}`}
+                  aria-label={t.actions.visitProfile(network)}
                 >
                   <Icon name={icon} width={20} height={20} aria-hidden="true" />
                 </a>
@@ -76,8 +87,10 @@ const { city, region, address } = location;
         <li>
           <button
             type="button"
-            class="footer-button group flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border border-solid border-skin-hue bg-transparent text-skin-hue transition-all duration-200 ease-linear hover:bg-skin-button-accent hover:text-skin-inverted max-sm:hidden [&>span]:hover:text-skin-inverted"
-            aria-label={lang == "en" ? "Open command palette" : "Abrir paleta de comandos"}
+            disabled
+            data-command-palette-trigger
+            class="footer-button group border-skin-button-accent text-skin-button-accent hover:bg-skin-button-accent hover:text-skin-inverted [&>span]:hover:text-skin-inverted flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border border-solid bg-transparent transition-all duration-200 ease-linear max-sm:hidden"
+            aria-label={t.actions.openPalette}
           >
             <Icon name="ri:command-fill" class="h-5 w-5" aria-hidden="true" />
           </button>
@@ -92,31 +105,36 @@ const { city, region, address } = location;
           width={600}
           src={image}
           alt={name}
+          loading="eager"
+          fetchpriority="high"
+          sizes="128px"
         />
         <div class="pointer-events-none absolute -inset-2">
           <div
-            class="absolute -inset-y-8 right-0 w-px bg-skin-hue/50 [mask-image:linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
+            class="bg-skin-button-accent/50 absolute -inset-y-8 right-0 w-px [mask-image:linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
           >
           </div>
           <div
-            class="absolute -inset-y-8 left-0 w-px bg-skin-hue/50 [mask-image:linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
+            class="bg-skin-button-accent/50 absolute -inset-y-8 left-0 w-px [mask-image:linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
           >
           </div>
           <div
-            class="absolute -inset-x-8 bottom-0 h-px bg-skin-hue/50 [mask-image:linear-gradient(to_left,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
+            class="bg-skin-button-accent/50 absolute -inset-x-8 bottom-0 h-px [mask-image:linear-gradient(to_left,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
           >
           </div>
           <div
-            class="absolute -inset-x-8 top-0 h-px bg-skin-hue/50 [mask-image:linear-gradient(to_left,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
+            class="bg-skin-button-accent/50 absolute -inset-x-8 top-0 h-px [mask-image:linear-gradient(to_left,transparent,white_4rem,white_calc(100%-4rem),transparent)]"
           >
           </div>
         </div>
       </figure>
     </div>
   </div>
-</Section>
+</header>
 
 <style>
+  @reference "../../globals.css";
+
   .info {
     @apply flex flex-col gap-1 pr-8;
   }
@@ -125,8 +143,8 @@ const { city, region, address } = location;
     @apply text-4xl font-bold;
   }
 
-  h2 {
-    @apply text-balance font-mono text-base font-bold;
+  .job-title {
+    @apply font-mono text-base font-bold text-balance;
   }
 
   img {
@@ -134,7 +152,7 @@ const { city, region, address } = location;
   }
 
   span {
-    @apply flex items-center gap-1 text-xs text-skin-hue;
+    @apply text-skin-button-accent flex items-center gap-1 text-xs;
   }
 
   #social-icons {
@@ -143,7 +161,7 @@ const { city, region, address } = location;
 
   #social-icons a,
   #social-icons button {
-    @apply inline-flex size-8 items-center justify-center rounded-md border border-solid border-skin-hue bg-transparent text-skin-hue transition-all duration-200 ease-linear hover:bg-skin-button-accent hover:text-skin-inverted;
+    @apply border-skin-button-accent text-skin-button-accent hover:bg-skin-button-accent hover:text-skin-inverted inline-flex size-8 items-center justify-center rounded-md border border-solid bg-transparent transition-all duration-200 ease-linear;
   }
 
   @media (width <= 700px) {
@@ -163,7 +181,7 @@ const { city, region, address } = location;
       @apply text-3xl;
     }
 
-    h2 {
+    .job-title {
       text-wrap: balance;
     }
 

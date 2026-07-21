@@ -1,120 +1,60 @@
-# 🌐 Personal Portfolio
+# Personal Portfolio
 
-A clean, modern, and responsive developer portfolio to showcase my skills, projects, and experience. Built with performance and accessibility in mind, and designed for both personal branding and SEO.
+A bilingual, accessible portfolio for Mario Andrés Morales, built as a static Astro site and deployed to Cloudflare Pages. English is served at `/` and Spanish at `/es/`.
 
-> 🚀 Inspired by [MiraHikari/portfolio](https://github.com/MiraHikari/portfolio) — adapted and extended to match my vision and tech preferences.
+## Stack
 
----
+- Astro 7 with strict TypeScript and content collections
+- Tailwind CSS 4 through its Vite plugin
+- Vitest for unit and component tests
+- Playwright and Axe for browser accessibility tests
+- Cloudflare Pages and Wrangler for deployment
 
-## 👣 Changes Implemented
+## Requirements
 
-- Added more color options to the theme selector
-- Added a language selector to choose between English and Spanish
-- Change the layout to have a static side (aside left) and scrollable side on large screens. On smaller screens then it only has one column all scrollable
-- Implemented a Navigation bar that is sticky to the top in large screens
-- Added Camingo Code custom font as monospace
-- Small UI tweaks here and there.
+- Node.js 22.12 or newer (`.node-version` pins 22.14.0)
+- npm 9.6.5 or newer; npm is the only supported package manager
 
-## 📸 Live
-
-[**https://mandres.dev**](https://mandres.dev)
-
----
-
-## 🛠️ Stack
-
-- [**Astro**](https://astro.build/) - The next-gen web framework.
-- [**Typescript**](https://www.typescriptlang.org/) - JavaScript with type syntax.
-- [**TailwindCSS**](https://tailwindcss.com/) - Utility-first CSS framework.
-- [**Iconify**](https://iconify.design/) - Icon library.
-- [**FancyBox**](https://fancyapps.com/fancybox/3/) - Image viewer.
-- [**Ninja Keys**](https://github.com/ssleptsov/ninja-keys) - Dropdown menu with keyboard shortcuts made in pure JavaScript.
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js ^18.x
-- npm or pnpm
-
-### 1. Installation
+## Local development
 
 ```bash
-git clone https://github.com/Mandres07/PersonalPortfolio.git
-pnpm install
+npm ci
+npm run dev
 ```
 
-### 2. Add Your Content:
+The site is available at [http://localhost:4321](http://localhost:4321).
 
-Edit the `content/cv.en.json` file to create your own Portfolio/CV data.
-You can also edit its Spanish version at `content/cv.es.json`
+Localized CV data lives in `src/content/cv.json` and `src/content/cv.es.json`. Both files are validated against the shared schema in `src/content.config.ts`; stable record IDs must remain aligned between locales.
 
-### 3. Launch the Development Server:
+## Quality commands
+
+| Command                        | Purpose                                             |
+| ------------------------------ | --------------------------------------------------- |
+| `npm run format`               | Format supported project files                      |
+| `npm run format:check`         | Check formatting without changing files             |
+| `npm run check`                | Run Astro and TypeScript diagnostics                |
+| `npm test`                     | Run unit and component tests                        |
+| `npm run test:coverage`        | Run tests with coverage gates                       |
+| `npm run test:e2e`             | Run Playwright and Axe browser tests                |
+| `npm run build`                | Validate and create the static production build     |
+| `npm audit --audit-level=high` | Fail on high or critical dependency vulnerabilities |
+
+Install Playwright's browser once before running the end-to-end suite locally:
 
 ```bash
-# Enjoy the results
-pnpm dev
+npx playwright install chromium
 ```
-1. Open [**http://localhost:4321**](http://localhost:4321/) in your browser to view the result 🚀
 
-### 4. Customisable colours:
-Change the data-theme of `cv.json` and choose one of the colour themes defined in theme.css.
+## Deployment
 
----
+Cloudflare Pages is the only supported production target. Authenticate Wrangler, then run:
 
-## 🧞 Commands
-
-|     | Command         | Action                                                                       |
-| :-- | :-------------- | :--------------------------------------------------------------------------- |
-| ⚙️  | `dev` or `start` | Launches a local development server at `localhost:4321`.                   |
-| ⚙️  | `build`         | Checks for errors and creates a production build in `./dist/`. |
-| ⚙️  | `preview`       | Local preview at `localhost:4321`                                       |
-| 📦  | `deploy:vercel`         | Deploy on Vercel.                           |
-| 📦 | `deploy:cloudflare`       | Deploy on Cloudflare, please run `wrangler login` first.                                           |                                |
----
-
-## 📁 Project Structure
-
+```bash
+npm run deploy:cloudflare
 ```
-public/
-├── files/
-├── fonts/
-├── images/
-└── sitemap.xml
-src/
-├── components/
-├── content/
-├── layouts/
-├── pages/
-├── globals.css
-└── types.d.ts
-```
----
 
-## 🛠️ Built With
+The build output is `dist/`. Cloudflare response and cache policies are defined in `public/_headers`; sitemap files are generated by `@astrojs/sitemap` and discovered through `public/robots.txt`.
 
-- 🚀 Astro
-- ✨ TailwindCSS
-- 🛠️ TypeScript
-- 🛠️ JavaScript
-- ☁️ Cloudflare Pages
+## License
 
----
-
-## 📝 License
-
-This project is [MIT](./LICENSE) licensed.
-
-CV JSON schema from [**jsonresume.org**](https://jsonresume.org/schema/)
-
-This project is based on software by **MiraHikari**, licensed under the [MIT License](./LICENSE).  
-Modifications made by **Mario Andrés Morales © 2025**.
-
----
-
-## 📫 Contact
-
-Maintained by [@Mandres07](https://github.com/Mandres07)  
-For questions, feel free to open an issue or start a discussion.
+This project is [MIT licensed](./LICENSE) and was adapted from [MiraHikari/portfolio](https://github.com/MiraHikari/portfolio).

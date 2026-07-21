@@ -1,32 +1,35 @@
 ---
 import Section from "../Section.astro";
 import { Icon } from "astro-icon/components";
-import { type Skill } from "@/types";
+import { getTranslations } from "@/i18n";
+import { type Locale, type Skill } from "@/types";
 
 interface Props {
-  className: string;
   skills: Skill[];
-  lang: string;
+  locale: Locale;
 }
-const { className, skills, lang } = Astro.props;
+const { skills, locale } = Astro.props;
+const t = getTranslations(locale);
 ---
 
-<Section className={className} title={lang == "en" ? "Skills" : "Habilidades"} id="skills">
-   <ul
-      class="inline-flex flex-wrap gap-4 font-mono [&>li>svg]:text-skin-hue [&>li]:text-sm"
-   >
-      {
-         skills.map(({ name, icon, level }) => {
-            return (
-               <li
-                  class="flex items-center gap-1 rounded-md border border-solid border-skin-hue/20 bg-skin-button-accent/20 px-1 py-0.5 text-xs text-skin-hue"
-                  title={level}
-               >
-                  {icon && <Icon name={icon} width={16} height={16} />}{" "}
-                  <span>{name}</span>
-               </li>
-            );
-         })
-      }
-   </ul>
+<Section title={t.sections.skills} id="skills">
+  <ul
+    class="[&>li>svg]:text-skin-hue inline-flex flex-wrap gap-4 font-mono [&>li]:text-sm"
+  >
+    {
+      skills.map(({ name, icon, level }) => {
+        return (
+          <li
+            class="border-skin-muted/60 bg-skin-button-muted/70 text-skin-base flex items-center gap-1 rounded-md border border-solid px-1 py-0.5 text-xs"
+            title={level}
+          >
+            {icon && (
+              <Icon name={icon} width={16} height={16} aria-hidden="true" />
+            )}{" "}
+            <span>{name}</span>
+          </li>
+        );
+      })
+    }
+  </ul>
 </Section>

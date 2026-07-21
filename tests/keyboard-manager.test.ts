@@ -2,7 +2,6 @@
 import {
   buildProfilesInfo,
   createKeyboardCommands,
-  dispatchCommandPaletteShortcut,
 } from "@/lib/keyboard-manager";
 import type { Profile } from "@/types";
 
@@ -23,26 +22,28 @@ describe("keyboard manager helpers", () => {
   ];
 
   test("builds profile command metadata from social profiles", () => {
-    const info = buildProfilesInfo(profiles, "en");
+    const info = buildProfilesInfo(profiles, "en", "Cmd");
 
     expect(info).toHaveLength(2);
     expect(info[0]).toMatchObject({
       id: "GitHub",
-      title: "Visit GitHub",
-      hotkey: "ctrl+G",
+      title: "Visit profile on GitHub",
+      hotkey: "Cmd+G",
     });
   });
 
   test("creates resume and social commands with localized text", () => {
     const openWindow = vi.fn();
     const commands = createKeyboardCommands(
-      buildProfilesInfo(profiles, "es"),
+      buildProfilesInfo(profiles, "es", "Ctrl"),
       "es",
       openWindow,
+      "Ctrl",
     );
 
     expect(commands[0].title).toBe("Imprimir CV");
     expect(commands[0].section).toBe("Acciones");
+    expect(commands[0].hotkey).toBe("Ctrl+P");
 
     commands[0].handler();
     commands[1].handler();
@@ -57,17 +58,5 @@ describe("keyboard manager helpers", () => {
       "https://github.com/Mandres07",
       "_blank",
     );
-  });
-
-  test("dispatches the command palette shortcut event", () => {
-    const listener = vi.fn();
-    document.addEventListener("keydown", listener);
-
-    dispatchCommandPaletteShortcut(document, KeyboardEvent);
-
-    expect(listener).toHaveBeenCalledTimes(1);
-    const event = listener.mock.calls[0][0] as KeyboardEvent;
-    expect(event.key).toBe("K");
-    expect(event.ctrlKey).toBe(true);
   });
 });

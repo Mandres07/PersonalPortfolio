@@ -22,17 +22,21 @@ describe("navigation", () => {
     const navItems = document.querySelectorAll(".nav-item");
     setActiveNavItem(navItems, "skills");
 
-    expect(navItems[0].classList.contains("text-skin-hue")).toBe(false);
-    expect(navItems[1].classList.contains("text-skin-hue")).toBe(true);
+    expect(navItems[0].classList.contains("text-skin-nav")).toBe(false);
+    expect(navItems[1].classList.contains("text-skin-nav")).toBe(true);
+    expect(
+      navItems[1].classList.contains("dark:bg-skin-button-accent/10"),
+    ).toBe(true);
     expect(navItems[1].querySelector("a")?.getAttribute("aria-current")).toBe(
       "location",
     );
   });
 
-  test("registers an observer for each section", () => {
+  test("observes only linked sections and disconnects during cleanup", () => {
     document.body.innerHTML = `
       <section class="main-section" id="experience"></section>
       <section class="main-section" id="skills"></section>
+      <section class="main-section" id="projects"></section>
       <ul>
         <li class="nav-item" data-section="experience"><a href="#experience"></a></li>
         <li class="nav-item" data-section="skills"><a href="#skills"></a></li>
@@ -40,6 +44,7 @@ describe("navigation", () => {
     `;
 
     const observe = vi.fn();
+    const disconnect = vi.fn();
     class MockIntersectionObserver {
       constructor(
         public callback: IntersectionObserverCallback,
@@ -47,15 +52,17 @@ describe("navigation", () => {
       ) {}
 
       observe = observe;
-      disconnect = vi.fn();
+      disconnect = disconnect;
       unobserve = vi.fn();
       takeRecords = vi.fn(() => []);
     }
 
     vi.stubGlobal("IntersectionObserver", MockIntersectionObserver);
 
-    initializeSectionNavigation(document, window);
+    const cleanup = initializeSectionNavigation(document, window);
 
     expect(observe).toHaveBeenCalledTimes(2);
+    cleanup();
+    expect(disconnect).toHaveBeenCalledOnce();
   });
 });

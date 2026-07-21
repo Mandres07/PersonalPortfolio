@@ -1,50 +1,53 @@
 ---
 import ArtPlums from "@/components/ArtPlums.astro";
+import { getTranslations } from "@/i18n";
 import { buildLayoutMetadata } from "@/lib/layout";
+import type { Locale, Profile } from "@/types";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import "../globals.css";
 
 interface Props {
-  title: string;
   personName: string;
-  lang: string;
+  jobTitle: string;
+  locale: Locale;
   image: string;
-  summary: string;
-  url: string;
-  siteUrl: string;
-  alternateUrls: {
-    en: string;
-    es: string;
-  };
+  summary: string[];
+  profiles: Profile[];
   theme: string;
-  analyticsCode?: string;
 }
 
+const { personName, jobTitle, locale, image, summary, profiles, theme } =
+  Astro.props;
+const siteUrl = Astro.site ?? new URL(Astro.url.origin);
+const currentPath = locale === "es" ? "/es/" : "/";
+const url = new URL(currentPath, siteUrl).toString();
+const alternateUrls = {
+  en: new URL("/", siteUrl).toString(),
+  es: new URL("/es/", siteUrl).toString(),
+};
+const title = `${personName} — ${jobTitle}`;
+const t = getTranslations(locale);
 const {
-  title,
+  absoluteImage,
+  plainSummary,
+  twitterDomain,
+  ogLocale,
+  alternateOgLocale,
+  personSchema,
+} = buildLayoutMetadata({
   personName,
-  lang,
+  jobTitle,
+  lang: locale,
   image,
   summary,
   url,
-  siteUrl,
-  alternateUrls,
-  theme,
-  analyticsCode,
-} = Astro.props;
-const { absoluteImage, plainSummary, twitterDomain, personSchema } =
-  buildLayoutMetadata({
-    personName,
-    lang,
-    image,
-    summary,
-    url,
-    siteUrl,
-  });
+  siteUrl: siteUrl.toString(),
+  profiles,
+});
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <title>{title}</title>
@@ -57,32 +60,80 @@ const { absoluteImage, plainSummary, twitterDomain, personSchema } =
     <link rel="alternate" href={alternateUrls.en} hreflang="en" />
     <link rel="alternate" href={alternateUrls.es} hreflang="es" />
     <link rel="alternate" href={alternateUrls.en} hreflang="x-default" />
-    <link rel="preload" as="image" href={image} />
     <meta property="og:url" content={url} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={personName} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={alternateOgLocale} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={plainSummary} />
     <meta property="og:image" content={absoluteImage} />
-    <meta name="referrer" content="no-referrer" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="1024" />
+    <meta property="og:image:alt" content={personName} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:domain" content={twitterDomain} />
     <meta name="twitter:url" content={url} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={plainSummary} />
     <meta name="twitter:image" content={absoluteImage} />
-    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
-    {analyticsCode && <script is:inline src={analyticsCode} />}
+    <meta name="twitter:image:alt" content={personName} />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(personSchema)}
+    />
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        const storedMode = localStorage.getItem("theme");
+        const prefersDark = matchMedia("(prefers-color-scheme: dark)").matches;
+        root.classList.toggle(
+          "dark",
+          storedMode === "dark" || (storedMode === null && prefersDark),
+        );
+      })();
+    </script>
   </head>
-  <body data-theme={theme} class="relative bg-skin-fill font-sans">
+  <body
+    data-theme={theme}
+    class="bg-skin-fill text-skin-base relative font-sans"
+  >
+    <script is:inline>
+      (() => {
+        const storedColor = localStorage.getItem("data-theme");
+        const allowed = [
+          "red",
+          "blue",
+          "yellow",
+          "purple",
+          "green",
+          "orange",
+          "pink",
+          "aqua",
+          "sepia",
+          "blackwhite",
+        ];
+        if (storedColor && allowed.includes(storedColor)) {
+          document.body.dataset.theme = storedColor;
+        }
+      })();
+    </script>
     <ArtPlums />
     <a href="#main-content" class="skip-link">
-      {lang === "es" ? "Saltar al contenido principal" : "Skip to main content"}
+      {t.skipLink}
     </a>
-    <main id="main-content" class="grid h-screen grid-cols-1 grid-rows-[1fr_auto_auto_auto_auto]">
+    <main
+      id="main-content"
+      tabindex="-1"
+      class="grid min-h-dvh grid-cols-1 grid-rows-[1fr_auto_auto_auto_auto]"
+    >
       <slot />
     </main>
 
     <style>
+      @reference "../globals.css";
+
       html {
         scroll-behavior: smooth;
       }
@@ -94,6 +145,11 @@ const { absoluteImage, plainSummary, twitterDomain, personSchema } =
 
       a {
         text-decoration: none;
+      }
+
+      :focus-visible {
+        outline: 3px solid rgb(var(--color));
+        outline-offset: 3px;
       }
 
       ul {
@@ -108,7 +164,7 @@ const { absoluteImage, plainSummary, twitterDomain, personSchema } =
         top: 1rem;
         z-index: 50;
         transform: translateY(-200%);
-        border: 1px solid rgb(var(--color-hue));
+        border: 1px solid rgb(var(--color));
         border-radius: 0.375rem;
         background: rgb(var(--color-fill));
         color: rgb(var(--color-text-base));
@@ -129,12 +185,12 @@ const { absoluteImage, plainSummary, twitterDomain, personSchema } =
       h2,
       h3,
       h4 {
-        @apply font-sans text-skin-base;
+        @apply text-skin-base font-sans;
         margin: 0;
       }
 
       p {
-        @apply text-sm text-skin-muted;
+        @apply text-skin-muted text-sm;
         line-height: 1.5;
         text-wrap: pretty;
       }
@@ -162,6 +218,29 @@ const { absoluteImage, plainSummary, twitterDomain, personSchema } =
 
         article {
           break-inside: avoid;
+        }
+
+        canvas,
+        button,
+        select,
+        nav,
+        #normal-footer {
+          display: none !important;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
         }
       }
     </style>
