@@ -1,0 +1,118 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import { getTranslations } from "@/i18n";
+import type { Locale, Project } from "@/types";
+
+interface Props {
+  project: Project;
+  locale: Locale;
+}
+const { project, locale } = Astro.props;
+const { id, name, url, description, highlights, github, image, isActive } =
+  project;
+const t = getTranslations(locale);
+---
+
+<article
+  aria-labelledby={`project-${id}`}
+  class="bg-skin-button-muted/50 border-skin-nav/20 overflow-hidden rounded-xl border"
+>
+  {
+    image.position === "container" && (
+      <a
+        href={image.url}
+        data-src={image.url}
+        data-fancybox="projects"
+        data-caption={name}
+        aria-label={t.actions.screenshot(name)}
+        class="group bg-skin-fill/50 relative block aspect-video overflow-hidden"
+      >
+        <Image
+          src={image.url}
+          alt={image.alt ?? t.projects.screenshotAlt(name)}
+          width={image.width}
+          height={image.height}
+          loading="lazy"
+          sizes="(min-width: 1280px) 320px, (min-width: 1024px) 25vw, (min-width: 768px) calc((100vw - 8rem) / 2), calc(100vw - 4rem)"
+          class="h-full w-full object-cover object-top transition-transform duration-200 motion-safe:group-hover:scale-105 motion-reduce:transition-none"
+        />
+        <span class="bg-skin-fill text-skin-base absolute right-2 bottom-2 rounded px-2 py-1 text-xs">
+          {t.projects.screenshot}
+        </span>
+      </a>
+    )
+  }
+  <div class="flex min-w-0 flex-col items-start gap-3 p-5">
+    <h3
+      id={`project-${id}`}
+      class="text-lg leading-snug font-semibold text-balance"
+    >
+      {
+        isActive ? (
+          <a
+            href={url}
+            title={t.actions.visit(name)}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-skin-hue underline-offset-4 hover:underline"
+          >
+            {name}
+            <Icon
+              name="ri:arrow-up-line"
+              class="ml-1 inline size-4 rotate-45"
+              aria-hidden="true"
+            />
+          </a>
+        ) : (
+          name
+        )
+      }
+    </h3>
+    <p class="text-skin-base text-sm">{description}</p>
+    {
+      highlights.length > 0 && (
+        <ul class="text-skin-base ml-4 list-disc space-y-1 text-sm">
+          {highlights.map((highlight) => (
+            <li>{highlight}</li>
+          ))}
+        </ul>
+      )
+    }
+    <div class="mt-auto flex flex-wrap gap-4 pt-1">
+      {
+        isActive && (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t.actions.visit(name)}
+            class="text-skin-hue inline-flex min-h-11 items-center gap-2 rounded-md text-sm font-semibold underline underline-offset-4"
+          >
+            {t.projects.visit}
+            <Icon
+              name="ri:arrow-up-line"
+              class="size-4 rotate-45"
+              aria-hidden="true"
+            />
+          </a>
+        )
+      }
+      {
+        github && (
+          <a
+            href={github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t.actions.repository(name)}
+            title={t.actions.repository(name)}
+            class="text-skin-hue inline-flex min-h-11 items-center gap-2 rounded-md text-sm underline underline-offset-4"
+          >
+            <Icon name="mdi:github" width={20} height={20} aria-hidden="true" />
+            GitHub
+          </a>
+        )
+      }
+    </div>
+  </div>
+</article>

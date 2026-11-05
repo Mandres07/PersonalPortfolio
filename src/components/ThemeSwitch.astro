@@ -16,14 +16,14 @@ const selectedTheme = COLOR_THEMES.includes(defaultTheme as ColorTheme)
   : "green";
 ---
 
-<div class="inline-flex items-center">
+<div class="flex items-center">
   <div
-    class="group/theme flex cursor-pointer items-center gap-2 rounded-md bg-transparent"
+    class="group/theme flex flex-wrap items-center gap-2 rounded-md bg-transparent"
   >
     <button
       type="button"
       id="themeSwitch"
-      class="cursor-pointer"
+      class="inline-flex size-11 cursor-pointer items-center justify-center rounded-md"
       data-switch-dark={t.theme.switchToDark}
       data-switch-light={t.theme.switchToLight}
       aria-label={t.theme.switchToDark}
@@ -53,7 +53,7 @@ const selectedTheme = COLOR_THEMES.includes(defaultTheme as ColorTheme)
     <div class="relative flex">
       <select
         id="themeSelect"
-        class="text-skin-base ring-skin-muted focus:ring-skin-hue block w-full appearance-none rounded-md border-0 bg-transparent py-1.5 pr-10 pl-3 font-mono ring-1 ring-inset focus:ring-2 focus-visible:outline-none sm:text-sm sm:leading-6"
+        class="text-skin-base ring-skin-muted focus:ring-skin-hue block min-h-11 w-full appearance-none rounded-md border-0 bg-transparent py-2 pr-10 pl-3 font-mono text-sm ring-1 ring-inset focus:ring-2 focus-visible:outline-none"
       >
         {
           COLOR_THEMES.map((theme) => (
@@ -76,7 +76,7 @@ const selectedTheme = COLOR_THEMES.includes(defaultTheme as ColorTheme)
     <div class="relative flex">
       <select
         id="languageSelect"
-        class="text-skin-base ring-skin-muted focus:ring-skin-hue block appearance-none rounded-md border-0 bg-transparent py-1.5 pr-10 pl-3 font-mono ring-1 ring-inset focus:ring-2 focus-visible:outline-none sm:text-sm sm:leading-6"
+        class="text-skin-base ring-skin-muted focus:ring-skin-hue block min-h-11 appearance-none rounded-md border-0 bg-transparent py-2 pr-10 pl-3 font-mono text-sm ring-1 ring-inset focus:ring-2 focus-visible:outline-none"
       >
         <option value="en" selected={locale === "en"}
           >🇺🇸 {t.theme.languages.en}</option

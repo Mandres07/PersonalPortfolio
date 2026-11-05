@@ -4,17 +4,32 @@ import type { Locale } from "@/types";
 
 interface Props {
   locale: Locale;
+  email?: string;
 }
 
-const { locale } = Astro.props;
+const { locale, email } = Astro.props;
 const t = getTranslations(locale);
 const year = new Date().getFullYear();
 ---
 
 <footer
   id="tail"
-  class="slide-enter bg-skin-button-accent/15 flex w-full justify-center px-5 py-3 text-center font-mono md:col-span-6 md:pt-1 md:pb-14"
+  class="slide-enter bg-skin-button-accent/15 flex w-full flex-col items-center gap-6 px-8 pt-10 pb-[calc(6rem+env(safe-area-inset-bottom))] text-center sm:pb-20 md:col-span-6"
 >
+  {
+    email && (
+      <div class="flex flex-col items-center gap-3">
+        <h2 class="text-2xl font-bold">{t.contact.title}</h2>
+        <p>{t.contact.description}</p>
+        <a
+          href={`mailto:${email}`}
+          class="bg-skin-nav text-skin-fill inline-flex min-h-11 items-center justify-center rounded-md px-5 py-2 text-sm font-semibold transition-opacity hover:opacity-90"
+        >
+          {t.actions.emailMe}
+        </a>
+      </div>
+    )
+  }
   <div class="flex items-center space-x-0 text-xs opacity-80">
     <div class="gap-1 text-center no-underline">
       <p class="mt-2 text-center">

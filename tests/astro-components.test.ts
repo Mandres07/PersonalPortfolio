@@ -9,6 +9,7 @@ import Hero from "@/components/sections/Hero.astro";
 import Images from "@/components/sections/Images.astro";
 import Navigation from "@/components/sections/Navigation.astro";
 import Projects from "@/components/sections/Projects.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
 import Skills from "@/components/sections/Skills.astro";
 import ThemeSwitch from "@/components/ThemeSwitch.astro";
 import CVData from "@/content/cv.json";
@@ -34,11 +35,13 @@ describe("Astro content components", () => {
   ] as const)("Footer renders %s copy", async (locale, expected) => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(Footer, {
-      props: { locale },
+      props: { locale, email: "mario@example.com" },
     });
 
     expect(result).toContain(expected);
     expect(result).toContain(String(new Date().getFullYear()));
+    expect(result).toContain('href="mailto:mario@example.com"');
+    expect(result).toContain(locale === "en" ? "Let’s talk" : "Conversemos");
   });
 
   test("Navigation renders only supplied sections", async () => {
@@ -122,6 +125,19 @@ describe("Astro content components", () => {
     expect(result).toContain("mailto:mario@example.com");
     expect(result).toContain('loading="eager"');
     expect(result).toContain('fetchpriority="high"');
+    expect(result).toContain("Email me");
+    expect(result.match(/href="mailto:mario@example.com"/g)).toHaveLength(1);
+    expect(result).not.toContain('href="#work"');
+  });
+
+  test("Hero localizes the combined email action", async () => {
+    const container = await AstroContainer.create();
+    const result = await container.renderToString(Hero, {
+      props: { locale: "es", basics: CV.basics },
+    });
+
+    expect(result).toContain("Escríbeme");
+    expect(result).not.toContain('href="#work"');
   });
 
   test("Education renders entries, dates, and certificates", async () => {
@@ -304,6 +320,55 @@ describe("Astro content components", () => {
     expect(skills).toContain('title="Intermedio"');
   });
 
+  test("Projects renders every project together without a disclosure", async () => {
+    const container = await AstroContainer.create();
+    const result = await container.renderToString(Projects, {
+      props: { locale: "es", projects: CV.projects },
+    });
+    expect(result).toContain("Proyectos");
+    for (const project of CV.projects) {
+      expect(result).toContain(`id="project-${project.id}"`);
+    }
+    expect(result).not.toContain("<details");
+    expect(result).toContain("Captura del proyecto FinalScore.win");
+  });
+
+  test("inactive projects retain screenshots without advertising an app link", async () => {
+    const container = await AstroContainer.create();
+    const project = {
+      ...CV.projects[0],
+      isActive: false,
+      highlights: [],
+      image: { ...CV.projects[0].image, alt: "Custom screenshot description" },
+    };
+    const result = await container.renderToString(ProjectCard, {
+      props: { locale: "es", project },
+    });
+
+    expect(result).toContain('alt="Custom screenshot description"');
+    expect(result).toContain('data-fancybox="projects"');
+    expect(result).not.toContain(`href="${project.url}"`);
+    expect(result).not.toContain("Abrir aplicación");
+    expect(result).not.toContain("<ul");
+  });
+
+  test("projects without a container screenshot still expose their app and repository", async () => {
+    const container = await AstroContainer.create();
+    const project = {
+      ...CV.projects[0],
+      github: "https://github.com/example/project",
+      image: { ...CV.projects[0].image, position: "cover" as const },
+    };
+    const result = await container.renderToString(ProjectCard, {
+      props: { locale: "en", project },
+    });
+
+    expect(result).toContain(`href="${project.url}"`);
+    expect(result).toContain(`href="${project.github}"`);
+    expect(result).toContain("Open app");
+    expect(result).not.toContain('data-fancybox="projects"');
+  });
+
   test("Page renders the complete portfolio composition", async () => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(Page, {
@@ -316,5 +381,11 @@ describe("Astro content components", () => {
     expect(result).toContain("Projects");
     expect(result).toContain("Image Gallery");
     expect(result).toContain(">Command</kbd>");
+    expect(result.indexOf('id="work"')).toBeLessThan(
+      result.indexOf('id="experience"'),
+    );
+    expect(result.indexOf('id="about"')).toBeLessThan(
+      result.indexOf('id="themeSwitch"'),
+    );
   });
 });

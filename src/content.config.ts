@@ -99,6 +99,7 @@ const cv = defineCollection({
         name: z.string().min(1),
         image: z.object({
           url: z.string().min(1),
+          alt: z.string().min(1).optional(),
           position: z.enum(["container", "cover"]),
           width: z.number().int().positive(),
           height: z.number().int().positive(),

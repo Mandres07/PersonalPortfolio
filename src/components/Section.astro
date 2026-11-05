@@ -3,18 +3,28 @@ interface Props {
   id: string;
   title: string;
   className?: string;
+  compact?: boolean;
 }
 
-const { className, title, id } = Astro.props;
+const { className, title, id, compact = false } = Astro.props;
 ---
 
 <section
   id={id}
-  class:list={["main-section flex scroll-mt-20 flex-col gap-4", className]}
+  class:list={[
+    "main-section flex scroll-mt-36 flex-col lg:scroll-mt-24",
+    compact ? "gap-3" : "gap-4",
+    className,
+  ]}
 >
   {
     (
-      <h2 class="relative mb-2 flex w-full items-center gap-3 font-mono text-3xl font-bold">
+      <h2
+        class:list={[
+          "relative flex w-full items-center gap-3 font-mono text-3xl font-bold",
+          !compact && "mb-2",
+        ]}
+      >
         {title}
       </h2>
     )

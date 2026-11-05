@@ -672,6 +672,27 @@
   ],
   "projects": [
     {
+      "id": "lista-de-compras",
+      "name": "Lista de Compras",
+      "image": {
+        "url": "/images/lista-de-compras-sign-in.webp",
+        "alt": "Lista de Compras sign-in screen",
+        "position": "container",
+        "width": 1440,
+        "height": 720
+      },
+      "isActive": true,
+      "description": "Shared household inventory and grocery shopping.",
+      "highlights": [
+        "🏠 Shared household inventory",
+        "🛒 Purchases update stock on receipt",
+        "👥 Family accounts and invitations",
+        "🚀 Next.js, React, Tailwind, MongoDB"
+      ],
+      "url": "https://lista-de-compras-beta-eight.vercel.app/inventory",
+      "github": null
+    },
+    {
       "id": "finalscore",
       "name": "FinalScore.win",
       "image": {

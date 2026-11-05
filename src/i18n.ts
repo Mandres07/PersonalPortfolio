@@ -15,6 +15,7 @@ const translations = {
     },
     navigation: {
       label: "Section navigation",
+      gallery: "Gallery",
       goTo: (label: string) => `Go to ${label}`,
     },
     commandSections: {
@@ -46,6 +47,7 @@ const translations = {
       repository: (name: string) => `View ${name} repository on GitHub`,
       screenshot: (name: string) => `Open project screenshot for ${name}`,
       sendEmail: "Send email",
+      emailMe: "Email me",
       sendMessage: "Send WhatsApp message",
       openPalette: "Open command palette",
       paletteHint: "Press Ctrl/Command + K to open the command palette.",
@@ -61,6 +63,15 @@ const translations = {
       responsibilities: "Responsibilities",
       achievements: "Achievements",
       technologies: "Technologies used",
+    },
+    projects: {
+      visit: "Open app",
+      screenshot: "View screenshot",
+      screenshotAlt: (name: string) => `${name} project screenshot`,
+    },
+    contact: {
+      title: "Let’s talk",
+      description: "Have a project in mind? Send me an email.",
     },
     dates: { present: "Present" },
     footer: {
@@ -82,6 +93,7 @@ const translations = {
     },
     navigation: {
       label: "Navegación por secciones",
+      gallery: "Galería",
       goTo: (label: string) => `Ir a ${label}`,
     },
     commandSections: {
@@ -113,6 +125,7 @@ const translations = {
       repository: (name: string) => `Ver el repositorio de ${name} en GitHub`,
       screenshot: (name: string) => `Abrir captura del proyecto ${name}`,
       sendEmail: "Enviar correo",
+      emailMe: "Escríbeme",
       sendMessage: "Enviar mensaje por WhatsApp",
       openPalette: "Abrir paleta de comandos",
       paletteHint:
@@ -129,6 +142,15 @@ const translations = {
       responsibilities: "Responsabilidades",
       achievements: "Logros",
       technologies: "Tecnologías usadas",
+    },
+    projects: {
+      visit: "Abrir aplicación",
+      screenshot: "Ver captura",
+      screenshotAlt: (name: string) => `Captura del proyecto ${name}`,
+    },
+    contact: {
+      title: "Conversemos",
+      description: "¿Tienes un proyecto en mente? Escríbeme por correo.",
     },
     dates: { present: "Actual" },
     footer: {

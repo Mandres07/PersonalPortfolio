@@ -21,8 +21,8 @@ interface Props {
 const { CV, locale } = Astro.props;
 const basics = CV.basics;
 const availableSections: SectionId[] = [
-  ...(CV.work.length ? (["experience"] as const) : []),
   ...(CV.projects.length ? (["work"] as const) : []),
+  ...(CV.work.length ? (["experience"] as const) : []),
   ...(CV.education.length || CV.certificates.length
     ? (["education"] as const)
     : []),
@@ -41,23 +41,23 @@ const availableSections: SectionId[] = [
   theme={basics.theme}
 >
   <div
-    class="relative container grid max-w-7xl grid-cols-1 gap-4 p-8 md:gap-12 md:p-16 md:pb-10 lg:grid-cols-5 xl:gap-24"
+    class="relative container grid max-w-7xl grid-cols-1 gap-8 px-8 pt-8 pb-28 sm:pt-0 sm:pb-8 md:gap-12 md:px-16 md:pb-10 lg:grid-cols-5 lg:gap-x-16 lg:gap-y-4 xl:gap-x-24"
   >
+    <Navigation locale={locale} sections={availableSections} />
     <aside
-      class="slide-enter space-y-10 ease-in lg:sticky lg:top-16 lg:col-span-2 lg:self-start"
+      class="slide-enter space-y-6 ease-in lg:sticky lg:top-24 lg:col-span-2 lg:row-span-2 lg:row-start-1 lg:self-start"
     >
       <Hero basics={basics} locale={locale} />
       <About summary={basics.summary} locale={locale} />
       <ThemeSwitch locale={locale} defaultTheme={basics.theme} />
     </aside>
-    <div class="slide-enter-content space-y-6 lg:col-span-3">
-      <Navigation locale={locale} sections={availableSections} />
-      {CV.work.length > 0 && <Experience locale={locale} work={CV.work} />}
+    <div class="slide-enter-content min-w-0 space-y-12 lg:col-span-3">
       {
         CV.projects.length > 0 && (
           <Projects locale={locale} projects={CV.projects} />
         )
       }
+      {CV.work.length > 0 && <Experience locale={locale} work={CV.work} />}
       {
         (CV.education.length > 0 || CV.certificates.length > 0) && (
           <Education
@@ -75,7 +75,7 @@ const availableSections: SectionId[] = [
       {CV.skills.length > 0 && <Skills locale={locale} skills={CV.skills} />}
     </div>
   </div>
-  <Footer locale={locale} />
+  <Footer locale={locale} email={basics.email} />
   <KeyboardManager locale={locale} profiles={basics.profiles} />
   <script>
     import { initializeGallery } from "@/lib/gallery";

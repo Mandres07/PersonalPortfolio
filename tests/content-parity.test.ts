@@ -28,4 +28,20 @@ describe("localized CV content", () => {
       ).toBe(true);
     }
   });
+
+  test("keeps the grocery app consistent across locales", () => {
+    for (const cv of [cvEn, cvEs]) {
+      expect(
+        cv.projects.find(({ id }) => id === "lista-de-compras"),
+      ).toMatchObject({
+        name: "Lista de Compras",
+        url: "https://lista-de-compras-beta-eight.vercel.app/inventory",
+        image: {
+          url: "/images/lista-de-compras-sign-in.webp",
+          width: 1440,
+          height: 720,
+        },
+      });
+    }
+  });
 });

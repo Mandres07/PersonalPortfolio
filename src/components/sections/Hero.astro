@@ -35,7 +35,7 @@ const t = getTranslations(locale);
               <a
                 href={`mailto:${email}`}
                 title={t.actions.sendEmail}
-                aria-label={t.actions.sendEmail}
+                class="email-action"
               >
                 <Icon
                   name="mdi:email"
@@ -43,6 +43,7 @@ const t = getTranslations(locale);
                   height={20}
                   aria-hidden="true"
                 />
+                {t.actions.emailMe}
               </a>
             </li>
           )
@@ -156,12 +157,20 @@ const t = getTranslations(locale);
   }
 
   #social-icons {
-    @apply mt-2 flex gap-1 text-sm;
+    @apply mt-3 flex flex-wrap gap-1.5 text-sm;
   }
 
   #social-icons a,
   #social-icons button {
-    @apply border-skin-button-accent text-skin-button-accent hover:bg-skin-button-accent hover:text-skin-inverted inline-flex size-8 items-center justify-center rounded-md border border-solid bg-transparent transition-all duration-200 ease-linear;
+    @apply border-skin-nav text-skin-nav hover:bg-skin-button-muted inline-flex size-11 items-center justify-center rounded-md border border-solid bg-transparent transition-colors duration-200 ease-linear;
+  }
+
+  #social-icons .email-action {
+    @apply bg-skin-nav text-skin-fill hover:bg-skin-nav w-auto gap-2 px-3 font-semibold hover:opacity-90;
+  }
+
+  #social-icons [data-command-palette-trigger] {
+    @apply hidden sm:inline-flex;
   }
 
   @media (width <= 700px) {

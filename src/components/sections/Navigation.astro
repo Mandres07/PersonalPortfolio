@@ -13,27 +13,36 @@ const sectionInfo: Record<SectionId, { icon: string; label: string }> = {
   experience: { icon: "🧑🏽‍💻", label: t.sections.experience },
   work: { icon: "🛠️", label: t.sections.projects },
   education: { icon: "🎓", label: t.sections.education },
-  images: { icon: "🏞️", label: t.sections.images },
+  images: { icon: "🏞️", label: t.navigation.gallery },
   skills: { icon: "⚡️", label: t.sections.skills },
 };
 ---
 
 <nav
   aria-label={t.navigation.label}
-  class="bg-skin-fill/95 dark:bg-skin-fill sticky top-0 z-10 w-full py-3 font-mono md:block lg:w-full"
+  class="bg-skin-fill/85 border-skin-nav/20 fixed inset-x-0 bottom-0 z-30 w-full border-t pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] font-mono backdrop-blur-md sm:sticky sm:inset-x-auto sm:top-0 sm:bottom-auto sm:z-10 sm:border-t-0 sm:pb-2 lg:col-span-3 lg:col-start-3 lg:row-start-1"
 >
-  <ul class="flex items-center justify-between">
+  <ul
+    id="section-links"
+    class="grid grid-cols-5 gap-1 px-4 sm:flex sm:flex-wrap sm:justify-center sm:gap-2 sm:px-0 lg:justify-between lg:gap-0"
+  >
     {
       sections.map((section) => {
         const { icon, label } = sectionInfo[section];
         return (
           <li
             data-section={section}
-            class="nav-item hover:border-skin-nav/20 hover:bg-skin-button-accent/20 hover:text-skin-nav dark:hover:bg-skin-button-accent/10 rounded-md p-2 transition-all duration-200 ease-linear"
+            class="nav-item hover:bg-skin-button-accent/20 hover:text-skin-nav dark:hover:bg-skin-button-accent/10 rounded-md transition-colors duration-200 ease-linear"
           >
-            <a href={`#${section}`} aria-label={t.navigation.goTo(label)}>
-              <span aria-hidden="true">{icon}</span>{" "}
-              <span class="hidden md:inline">{label}</span>
+            <a
+              href={`#${section}`}
+              aria-label={t.navigation.goTo(label)}
+              class="relative flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-md px-2 py-2 text-sm sm:px-3"
+            >
+              <span aria-hidden="true" class="text-xl sm:text-base">
+                {icon}
+              </span>
+              <span class="sr-only sm:not-sr-only">{label}</span>
             </a>
           </li>
         );

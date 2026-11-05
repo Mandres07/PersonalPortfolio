@@ -2,8 +2,6 @@
 import { getViteConfig } from "astro/config";
 
 export default getViteConfig({
-  // Astro's Vite helper forwards Vitest configuration at runtime.
-  // @ts-expect-error `test` is intentionally supplied for Vitest.
   test: {
     globals: true,
     include: ["tests/**/*.test.ts"],
@@ -11,10 +9,10 @@ export default getViteConfig({
     coverage: {
       provider: "v8",
       reporter: ["text", "html"],
-      all: true,
       include: [
         "src/lib/**/*.ts",
         "src/components/Section.astro",
+        "src/components/ProjectCard.astro",
         "src/components/KeyboardManager.astro",
         "src/components/ThemeSwitch.astro",
         "src/components/pages/Page.astro",
