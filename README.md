@@ -12,12 +12,13 @@ A bilingual, accessible portfolio for Mario Andrés Morales, built as a static A
 
 ## Requirements
 
-- Node.js 22.23.4 or newer (`.node-version` pins 22.23.4)
+- Node.js 22.23.4 or newer (`.node-version` and `.nvmrc` pin 22.23.4)
 - npm 9.6.5 or newer; npm is the only supported package manager
 
 ## Local development
 
 ```bash
+nvm use # If using nvm; run nvm install first if the pinned version is missing.
 npm ci
 npm run dev
 ```
